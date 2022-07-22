@@ -1,0 +1,101 @@
+.Login_container {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  background-color: #fafafa;
+}
+
+.Login_container-login-form_instagram-image {
+  width: 200px;
+  margin-right: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.Login_container_login-form_box-1 {
+  width: 350px;
+  height: 400px;
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+
+  .Login_container-login_form-container {
+    display: flex;
+    position: relative;
+    align-items: stretch;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+    }
+  }
+}
+
+.Login_container_login-form_box-2 {
+  width: 350px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login_container_login_signup_separator {
+  p {
+    position: relative;
+    margin-top: 20px;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .one {
+    margin-top: 0;
+  }
+  .one:before {
+    content: "";
+    display: block;
+    border-top: solid 1px black;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+  }
+
+  .one span {
+    background: #fff;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+.Login_container_get_the_app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  .Login_container_get_instagram_store-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  img {
+    width: 150px;
+  }
+}
