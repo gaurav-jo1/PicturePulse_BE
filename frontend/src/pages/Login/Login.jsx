@@ -8,6 +8,7 @@ import home_phones from "../../assets/home_phones.webp";
 import Insta_log from "../../assets/Instagram_logo.webp";
 import apple_store from "../../assets/apple_store.webp";
 import play_store from "../../assets/play_store.webp";
+import Facebook_logo from "../../assets/Facebook_logo.png";
 
 // styling
 import "./Login.scss";
@@ -25,22 +26,29 @@ const Login = () => {
           </div>
           <div className="Login_container-login_form-container">
             <form action="">
-              <div>
-                <div>
+              <div className="form_container-div">
+                <div className="form_container-username_div">
                   <label> <span>Phone number, username, or email</span>
                     <input aria-label="Phone number, username, or email" aria-required="true"  type="text" name="username" />
                   </label>
                 </div>
-                <div>
+                <div className="form_container-password_div">
                 <label> <span>Password</span>
                   <input aria-label="Password" type="password" name="password" />
                 </label>
                 </div>
+                <div className="form_container-submit_div">
                 <input type="submit" value="Login" />
+                </div>
                 <div className="Login_container_login_signup_separator">
                   <p className="one"> <span>OR</span> </p>
                 </div>
               </div>
+              <a href="www.facebook.com">
+                <div className="Login_container_login_facebook">
+                    <p> <img src={Facebook_logo} alt="facebook_logo" /> &nbsp;Log in with Facebook</p>
+                </div>
+              </a>
               <Link to="/">Forgot password?</Link>
             </form>
           </div>
