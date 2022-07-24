@@ -1,8 +1,13 @@
 import React from "react";
+
+// Tools
 import { Link } from "react-router-dom";
+
+//  media files
 import Insta_log from "../../assets/Instagram_logo.webp";
 import "./SignUp.scss";
 
+// styling
 const SignUp = () => {
   return (
     <div className="Signup_container">
@@ -39,20 +44,12 @@ const SignUp = () => {
             </form>
           </div>
           <div className="Signup_container-desc">
-            <p>
-              People who use our service may have uploaded your contact
-              information to instagra. <a href="/">Learn More</a>
-            </p>
-            <p>
-              By signing up, you agree to our <a href="/">Terms</a>,{" "}
-              <a href="/">Data Policy</a> and <a href="/">Cookies Policy</a>.
-            </p>
+            <p> People who use our service may have uploaded your contact information to instagra. <a href="/">Learn More</a></p>
+            <p> By signing up, you agree to our <a href="/">Terms</a> <a href="/">Data Policy</a> and <a href="/">Cookies Policy</a>.</p>
           </div>
         </div>
         <div className="Signup_container-box_2">
-          <p>
-            Have an account? <Link to="/login">Log in</Link>
-          </p>
+          <p> Have an account? <Link to="/login">Log in</Link> </p>
         </div>
         <div className="Signup_container-box_3">
           <p>Get the app</p>
