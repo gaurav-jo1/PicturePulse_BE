@@ -5,6 +5,8 @@ import SignUp from "./pages/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 
+import './App.scss';
+
 
 const App = () => {
   return (

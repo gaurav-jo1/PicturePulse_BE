@@ -40,7 +40,7 @@ const Login = () => {
                 <div className="form_container-submit_div">
                 <input type="submit" value="Login" />
                 </div>
-                <div className="Login_container_login_signup_separator">
+                <div className="separator_OR">
                   <p className="one"> <span>OR</span> </p>
                 </div>
               </div>
