@@ -1,175 +1,114 @@
 .Login_container {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
   background-color: #fafafa;
-}
-
-.Login_container_login-form_box-1 {
-  width: 350px;
-  height: 400px;
-  background-color: white;
-  padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  justify-content: center;
+  padding-top: 30px;
+}
 
-  .Login_container-login-form_instagram-image {
-    width: 200px;
-    margin-top: 20px;
+.Login_container-Instagram_main {
+  display: flex;
+  justify-content: center;
+}
 
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
+.Login_container-login_form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 100%;
+  margin-top: 15px;
 
-  .Login_container-login_form-container {
+  .Login_container_login-form_box-1 {
     display: flex;
-    position: relative;
-    align-items: stretch;
-    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #dbd9d9;
+    background-color: white;
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .Login_container-login-form_instagram-image {
+      width: 200px;
+      margin: 36px 0 12px 0;
 
-      .form_container-div {
-        position: relative;
-        margin-bottom: 20px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
-        .form_container-username_div {
-          width: 280px;
+    .form_container-div {
+      .form_container_inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
 
-          input {
-            height: 35px;
-            width: 100%;
-            background-color: #fafafa;
-            margin-bottom: 5px;
-            border: none;
-            padding-left: 10px;
-            border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
-            border-radius: 2px;
-            outline: pink;
-            z-index: 1;
-          }
+        // The inputs are goona replace with reusable class name
 
-          input:focus {
-            border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
-          }
-          span {
-            position: absolute;
-            top: 9px;
-            left: 0;
-            padding-left: 10px;
-            font-size: 15px;
-            color: rgba(var(--f52, 142, 142, 142), 1);
-          }
-        }
-
-        .form_container-password_div {
-          width: 280px;
-
-          input {
-            height: 35px;
-            width: 100%;
-            background-color: #fafafa;
-            margin-bottom: 5px;
-            border: none;
-            padding-left: 10px;
-            border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
-            border-radius: 2px;
-            outline: pink;
-            z-index: 1;
-          }
-
-          input:focus {
-            border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
-          }
-          span {
-            position: absolute;
-            top: 48px;
-            left: 0;
-            padding-left: 10px;
-            font-size: 15px;
-            color: rgba(var(--f52, 142, 142, 142), 1);
-          }
+        input {
+          padding: 13px 45px;
+          margin: 3px 0;
+          background-color: #fafafa;
+          border: 1px solid #dbd9d9;
         }
 
         .form_container-submit_div {
-          width: 280px;
-          margin-top: 10px;
-          margin-bottom: 15px;
-
-          input {
-            height: 30px;
-            width: 100%;
-            background-color: #0095f6;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-          }
+            input {
+                margin-top: 10px;
+                padding: 6px 120px;
+            }
         }
       }
 
-      a {
+      .separator_OR {
+        margin: 15px 0;
+      }
+
+      .form_container_links {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
 
-        .Login_container_login_facebook {
-          margin-bottom: 20px;
-        }
-        p {
-          color: #0f5e93;
+        a {
+            margin-top: 8px;
+          text-decoration: none;
           font-weight: bold;
-          font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-            "Lucida Sans", Arial, sans-serif;
-          display: flex;
 
-          img {
-            width: 20px;
-            height: 20px;
+          .Login_container_login_facebook {
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
+        }
+
+        .Login_container-forgot_password-p  {
+            margin-top: 15px;
+                font-size: 12px;
+                font-weight: bold;
+        
         }
       }
     }
   }
-}
 
-.Login_container_login-form_box-2 {
-  width: 350px;
-  height: 50px;
-  background-color: white;
-  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  a {
-    font-weight: bold;
-    color: #0095f6;
-  }
-}
-
-.Login_container_get_the_app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-
-  .Login_container_get_instagram_store-images {
+  .Login_container_login-form_box-2 {
+    width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-top: 20px;
+    border: 1px solid #dbd9d9;
+    margin-top: 10px;
+    padding: 23px 0px;
+    background-color: white;
   }
 
-  img {
-    width: 150px;
+  .Login_container_login-form_box-3 {
+    width: 100%;
+    margin-top: 20px;
   }
 }

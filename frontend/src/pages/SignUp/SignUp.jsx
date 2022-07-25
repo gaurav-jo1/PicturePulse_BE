@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 
 //  media files
 import Insta_log from "../../assets/Instagram_logo.webp";
-import "./SignUp.scss";
+import Footer from "../../components/ExternalLinks/Footer";
+import Getapp from "../../components/Getapp/Getapp";
 
 // styling
+import "./SignUp.scss";
+
 const SignUp = () => {
   return (
     <div className="Signup_container">
@@ -52,8 +55,11 @@ const SignUp = () => {
           <p> Have an account? <Link to="/login">Log in</Link> </p>
         </div>
         <div className="Signup_container-box_3">
-          <p>Get the app</p>
+          <Getapp />
         </div>
+      </div>
+      <div className="Login_container-external_links">
+        <Footer />
       </div>
     </div>
   );
