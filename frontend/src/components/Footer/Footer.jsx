@@ -9,6 +9,7 @@ const Footer = () => {
         <div className='External_Links-container_group-1'>
           <a href="/"> <p>Meta</p> </a>
           <a href="/"> <p>About</p> </a>
+          <a href="/"> <p>Blog</p> </a>
           <a href="/"> <p>Jobs</p> </a>
           <a href="/"> <p>Help</p> </a>
           <a href="/"> <p>API</p> </a>
@@ -18,8 +19,7 @@ const Footer = () => {
           <a href="/"> <p>Hashtags</p> </a>
           <a href="/"> <p>Locations</p> </a>
           <a href="/"> <p>Instagram Lite</p> </a>
-          <a href="/"> <p>Contact Uploading &</p> </a>
-          <a href="/"> <p>Non-Users</p> </a>
+          <a href="/"> <p>Contact Uploading & Non-Users</p></a>
         </div>
         <div className='External_Links-container_group-2'>
           <a href="/"> <p>Dance</p> </a>

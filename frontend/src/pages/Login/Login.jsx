@@ -12,7 +12,7 @@ import { IoLogoFacebook } from "react-icons/io";
 import Getapp from "../../components/Getapp/Getapp";
 // styling
 import "./Login.scss";
-import Footer from "../../components/ExternalLinks/Footer";
+import Footer from "../../components/Footer/Footer";
 
 const Login = () => {
   return (
@@ -29,14 +29,20 @@ const Login = () => {
               <div className="form_container-div">
                 <form action="">
                   <div className="form_container_inputs">
-                    <div className="form_container-username_div">
-                        <input type="text" name="username" placeholder="Phone number, username, or email" />
-                    </div>
-                    <div className="form_container-password_div">
-                      <input type="password" name="password" placeholder="Password" />
+                      <div  className="form_container-input_label_div">
+                        <label>
+                          <span>Phone number, username, or email</span>
+                        <input type="text" name="username" />
+                        </label>
+                      </div>
+                    <div className="form_container-input_label_div">
+                        <label>
+                          <span>Password</span>
+                          <input type="password" name="password" />
+                        </label>
                     </div>
                     <div className="form_container-submit_div">
-                      <input type="submit" value="Login" />
+                      <button type="submit">Log in</button>
                     </div>
                   </div>
                   <div className="separator_OR">
@@ -49,7 +55,7 @@ const Login = () => {
                       <p> &nbsp;Log in with Facebook </p>
                     </div>
                     </a>
-                    <p className="Login_container-forgot_password-p"> <Link to="/">Forgot password?</Link> </p>
+                    <Link className="Login_container-forgot_password-p" to="/">Forgot password?</Link>
                   </div>
                 </form>
               </div>

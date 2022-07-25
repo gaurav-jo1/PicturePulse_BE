@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 //  media files
 import Insta_log from "../../assets/Instagram_logo.webp";
-import Footer from "../../components/ExternalLinks/Footer";
+import Footer from "../../components/Footer/Footer";
 import Getapp from "../../components/Getapp/Getapp";
 
 // styling
