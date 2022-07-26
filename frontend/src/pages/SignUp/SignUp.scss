@@ -1,88 +1,101 @@
 .Signup_container {
+  background-color: #fafafa;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #fafafa;
-  height: 100vh;
+  justify-content: center;
+  padding-top: 30px;
 }
 
 .Signup_container-box_1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid black;
   width: 350px;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #dbd9d9;
 
   .Signup_container-Instagram_image {
-    width: 200px;
-    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+    margin-bottom: 12px;
 
     img {
-      width: 100%;
+      width: 200px;
       height: 100%;
     }
   }
 
   .Signup_container-Heading_signup_for_friends {
-    font-weight: 300;
-    padding: 20px 30px;
     text-align: center;
-  }
 
-  .Signup_container-Signup_facebook-button {
-    margin-bottom: 20px;
-    button {
-      padding: 8px 40px;
-      border: none;
-      border-radius: 5px;
+    h2 {
+      color: rgba(var(--f52, 142, 142, 142), 1);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 20px;
+      margin: 0 40px 10px;
+      text-align: center;
     }
   }
 
-  .Signup_container-Signup_form-container {
+  .Login_container_login-a {
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+
     align-items: center;
-    width: 100%;
+    margin: 5px 40px;
 
-    form {
-      .form_container-div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 20px;
+    .Login_container_login_facebook {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 0;
+      background-color: #0095f6;
+      border: 1px solid #dbd9d9;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      width: 100%;
 
-        input {
-          padding: 10px 30px;
-          margin-bottom: 10px;
-        }
+      h2 {
+        position: relative;
+        top: 2px;
       }
     }
   }
+  .separator_OR {
+    margin: 10px 0;
+  }
 
-  .Signup_container-desc{
+  .Signup_container-Signup_form-container {
+    margin-bottom: 30px;
+  }
+
+  .Signup_container-desc {
     text-align: center;
-    padding: 5px 20px;
+
+    p {
+      color: rgba(var(--f52, 142, 142, 142), 1);
+      font-size: 14px;
+      line-height: 20px;
+      margin: 10px 40px;
+    }
   }
 }
 
 .Signup_container-box_2 {
-  background: #ffffff;
-  border: 1px solid black;
-  padding: 10px 20px;
-  margin: 10px 0;
-
-  p {
-    text-align: center;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #dbd9d9;
+  margin-top: 10px;
+  padding: 23px 0px;
+  background-color: white;
 }
 
 .Signup_container-box_3 {
-    padding: 10px 20px;
-
-    p {
-        text-align: center;
-    }
+  width: 100%;
+  margin-top: 20px;
 }

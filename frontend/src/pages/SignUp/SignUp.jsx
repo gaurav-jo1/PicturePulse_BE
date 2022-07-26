@@ -1,4 +1,5 @@
 import React from "react";
+import { IoLogoFacebook } from "react-icons/io";
 
 // Tools
 import { Link } from "react-router-dom";
@@ -20,35 +21,53 @@ const SignUp = () => {
             <img src={Insta_log} alt="instalogo" />
           </div>
           <div className="Signup_container-Heading_signup_for_friends">
-            <h3>Sign up to see photos and videos from your friends</h3>
+            <h2>Sign up to see photos and videos from your friends</h2>
           </div>
-          <div className="Signup_container-Signup_facebook-button">
-            <button>Sign up with Facebook</button>
-          </div>
+          <a className="Login_container_login-a" href="www.facebook.com">
+            <div className="Login_container_login_facebook">
+              <h2><IoLogoFacebook /></h2>
+              <p> &nbsp;Log in with Facebook </p>
+            </div>
+          </a>
           <div className="separator_OR">
             <p className="one"> <span>OR</span> </p>
           </div>
           <div className="Signup_container-Signup_form-container">
             <form action="">
-              <div className="form_container-div">
-                <div className="form_container-email_div">
-                  <input type="text" placeholder="Mobile Number or Email" />
+              <div className="form_container_inputs">
+                <div className="form_container-input_label_div">
+                  <label>
+                    <span>Mobile Number or Email</span>
+                    <input type="text" name="username" />
+                  </label>
                 </div>
-                <div className="form_container-fullname_div">
-                  <input type="text" placeholder="Full Name" />
+                <div className="form_container-input_label_div">
+                  <label>
+                    <span>Full Name</span>
+                    <input type="text" name="full_name" />
+                  </label>
                 </div>
-                <div className="form_container-username_div">
-                  <input type="text" placeholder="Username" />
+                <div className="form_container-input_label_div">
+                  <label>
+                    <span>Username</span>
+                    <input type="text" name="username" />
+                  </label>
                 </div>
-                <div className="form_container-password_div">
-                  <input type="password" placeholder="Password" />
+                <div className="form_container-input_label_div">
+                  <label>
+                    <span>Password</span>
+                    <input type="password" name="password" />
+                  </label>
+                </div>
+                <div className="Signup_container-desc">
+                  <p> People who use our service may have uploaded your contact information to instagra. <a href="/">Learn More</a></p>
+                  <p> By signing up, you agree to our <a href="/">Terms</a> <a href="/">Data Policy</a> and <a href="/">Cookies Policy</a>.</p>
+                </div>
+                <div className="form_container-submit_div">
+                  <button type="submit">Sign up</button>
                 </div>
               </div>
             </form>
-          </div>
-          <div className="Signup_container-desc">
-            <p> People who use our service may have uploaded your contact information to instagra. <a href="/">Learn More</a></p>
-            <p> By signing up, you agree to our <a href="/">Terms</a> <a href="/">Data Policy</a> and <a href="/">Cookies Policy</a>.</p>
           </div>
         </div>
         <div className="Signup_container-box_2">

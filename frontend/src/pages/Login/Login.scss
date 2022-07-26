@@ -5,12 +5,11 @@
   align-items: center;
   justify-content: center;
   padding-top: 30px;
-  padding-right: 35px;
 }
 
 .Login_container-Instagram_main {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .Login_container-login_form-container {
@@ -41,48 +40,40 @@
       }
     }
 
-    .form_container-div {
-      .form_container_inputs {
-        display: flex;
-        flex-direction: column;
-        margin-top: 15px;
+    .separator_OR {
+      margin: 10px 0;
+    }
 
-        input,
-        button {
-          width: 100%;
-        }
-      }
+    .form_container_links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
 
-      .separator_OR {
-        margin: 10px 0;
-      }
+      .Login_container_login-a {
+        margin-top: 8px;
+        text-decoration: none;
+        font-weight: bold;
 
-      .form_container_links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 15px 0;
+        .Login_container_login_facebook {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 8px;
+          color: #385185;
 
-        a {
-          margin-top: 8px;
-          text-decoration: none;
-          font-weight: bold;
-
-          .Login_container_login_facebook {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 8px;
-            color: #385185;
+          h2 {
+            position: relative;
+            top: 2px;
           }
         }
+      }
 
-        .Login_container-forgot_password-p {
-          margin-top: 15px;
-          font-size: 12px;
-          color: #4e68a0;
-        }
+      .Login_container-forgot_password-p {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #4e68a0;
       }
     }
   }

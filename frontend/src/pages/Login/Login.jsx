@@ -26,49 +26,57 @@ const Login = () => {
             <div className="Login_container-login-form_instagram-image">
               <img src={Insta_log} alt="" />
             </div>
-              <div className="form_container-div">
-                <form action="">
-                  <div className="form_container_inputs">
-                      <div  className="form_container-input_label_div">
-                        <label>
-                          <span>Phone number, username, or email</span>
-                        <input type="text" name="username" />
-                        </label>
-                      </div>
-                    <div className="form_container-input_label_div">
-                        <label>
-                          <span>Password</span>
-                          <input type="password" name="password" />
-                        </label>
-                    </div>
-                    <div className="form_container-submit_div">
-                      <button type="submit">Log in</button>
-                    </div>
+            <div className="form_container-div">
+              <form action="">
+                <div className="form_container_inputs">
+                  <div className="form_container-input_label_div">
+                    <label>
+                      <span>Phone number, username, or email</span>
+                      <input type="text" name="username" />
+                    </label>
                   </div>
-                  <div className="separator_OR">
-                    <p className="one"> <span>OR</span> </p>
+                  <div className="form_container-input_label_div">
+                    <label>
+                      <span>Password</span>
+                      <input type="password" name="password" />
+                    </label>
                   </div>
-                  <div className="form_container_links">
-                    <a href="www.facebook.com">
+                  <div className="form_container-submit_div">
+                    <button type="submit">Log in</button>
+                  </div>
+                </div>
+                <div className="separator_OR">
+                  <p className="one">
+                    {" "}
+                    <span>OR</span>{" "}
+                  </p>
+                </div>
+                <div className="form_container_links">
+                  <a className="Login_container_login-a" href="www.facebook.com">
                     <div className="Login_container_login_facebook">
-                      <IoLogoFacebook />
+                      <h2> <IoLogoFacebook /> </h2>
                       <p> &nbsp;Log in with Facebook </p>
                     </div>
-                    </a>
-                    <Link className="Login_container-forgot_password-p" to="/">Forgot password?</Link>
-                  </div>
-                </form>
-              </div>
+                  </a>
+                  <Link className="Login_container-forgot_password-p" to="/">
+                    Forgot password?
+                  </Link>
+                </div>
+              </form>
+            </div>
           </div>
           <div className="Login_container_login-form_box-2">
-            <p> Don't have an account? <Link to="/signup">Sign Up</Link>  </p>
+            <p>
+              {" "}
+              Don't have an account? <Link to="/signup">Sign Up</Link>{" "}
+            </p>
           </div>
           <div className="Login_container_login-form_box-3">
             <Getapp />
           </div>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 };
