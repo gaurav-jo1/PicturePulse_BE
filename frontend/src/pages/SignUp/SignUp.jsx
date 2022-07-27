@@ -37,26 +37,22 @@ const SignUp = () => {
               <div className="form_container_inputs">
                 <div className="form_container-input_label_div">
                   <label>
-                    <span>Mobile Number or Email</span>
-                    <input type="text" name="username" />
+                    <input type="text" name="username" placeholder="Mobile Number or Email"/>
                   </label>
                 </div>
                 <div className="form_container-input_label_div">
                   <label>
-                    <span>Full Name</span>
-                    <input type="text" name="full_name" />
+                    <input type="text" name="full_name" placeholder="Full Name"/>
                   </label>
                 </div>
                 <div className="form_container-input_label_div">
                   <label>
-                    <span>Username</span>
-                    <input type="text" name="username" />
+                    <input type="text" name="username" placeholder="Username" />
                   </label>
                 </div>
                 <div className="form_container-input_label_div">
                   <label>
-                    <span>Password</span>
-                    <input type="password" name="password" />
+                    <input type="password" name="password" placeholder="Password"/>
                   </label>
                 </div>
                 <div className="Signup_container-desc">

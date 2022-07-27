@@ -1,3 +1,5 @@
+// ------ OR -------
+
 .separator_OR {
   padding: 0px 40px;
 
@@ -6,7 +8,7 @@
     margin-top: 20px;
     text-align: center;
     position: relative;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #a3a2a2;
   }
@@ -33,6 +35,8 @@
   }
 }
 
+// Inputs in Forms
+
 .form_container_inputs {
   display: flex;
   flex-direction: column;
@@ -41,6 +45,11 @@
   input,
   button {
     width: 100%;
+
+  }
+
+  button {
+    cursor: pointer;
   }
 }
 
@@ -56,23 +65,21 @@
     position: relative;
     color: rgba(var(--i1d, 38, 38, 38), 1);
 
-    span {
-      position: absolute;
-      right: 0;
-      left: 8px;
-      height: 36px;
-      font-size: 12px;
-      line-height: 36px;
-      overflow: hidden;
-      color: rgba(var(--f52, 142, 142, 142), 1);
-    }
     input {
-      padding: 9px 0 7px 6px;
+      padding: 7px 0 7px 7px;
+      font-size: 12px;
       background: rgba(var(--b3f, 250, 250, 250), 1);
-      border: 0;
+      border: none;
+      cursor: text;
+    }
+
+    input:focus {
+      outline: none;
     }
   }
 }
+
+// Submit button in forms
 
 .form_container-submit_div {
   display: flex;

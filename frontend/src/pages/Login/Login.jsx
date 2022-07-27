@@ -1,11 +1,16 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 
 // Tools
 import { Link } from "react-router-dom";
 
 //  media files
-import home_phones from "../../assets/home_phones.webp";
 import Insta_log from "../../assets/Instagram_logo.webp";
+import screenshot1  from "../../assets/screenshot1.webp"
+import screenshot2  from "../../assets/screenshot2.webp"
+import screenshot3  from "../../assets/screenshot3.webp"
+import screenshot4  from "../../assets/screenshot4.webp"
+
+
 
 import { IoLogoFacebook } from "react-icons/io";
 
@@ -13,32 +18,42 @@ import Getapp from "../../components/Getapp/Getapp";
 // styling
 import "./Login.scss";
 import Footer from "../../components/Footer/Footer";
+let screenshots = [screenshot1, screenshot2, screenshot3, screenshot4];
 
 const Login = () => {
+  const [screenshot, setScreenshot] = useState(screenshot1);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScreenshot(screenshots[Math.floor(Math.random() * screenshots.length)]);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
     <div className="Login_container">
       <div className="Login_container-Instagram_main">
         <div className="Login_container-home_phone">
-          <img src={home_phones} alt="Insta_pics" />
+          <div className="Login_container-home_screenshots">
+            <img src={screenshot} alt="screenshot1" />
+          </div>
         </div>
         <div className="Login_container-login_form-container">
           <div className="Login_container_login-form_box-1">
             <div className="Login_container-login-form_instagram-image">
-              <img src={Insta_log} alt="" />
+              <img src={Insta_log} alt="Instagram" />
             </div>
             <div className="form_container-div">
               <form action="">
                 <div className="form_container_inputs">
                   <div className="form_container-input_label_div">
                     <label>
-                      <span>Phone number, username, or email</span>
-                      <input type="text" name="username" />
+                      <input type="text" name="username" required placeholder="Phone number, username, or email"/>
                     </label>
                   </div>
                   <div className="form_container-input_label_div">
                     <label>
-                      <span>Password</span>
-                      <input type="password" name="password" />
+                      <input type="password" name="password" placeholder="Password" required />
                     </label>
                   </div>
                   <div className="form_container-submit_div">
