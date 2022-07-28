@@ -6,6 +6,7 @@ import { GrHomeRounded } from "react-icons/gr";
 import {IoPaperPlaneOutline} from 'react-icons/io5'
 import {BsCircle, BsHeart} from 'react-icons/bs'
 import {CgAddR} from 'react-icons/cg'
+import {HiSearch} from 'react-icons/hi'
 
 import "./Navbar.scss";
 
@@ -20,7 +21,8 @@ const Navbar = () => {
         </div>
         <div className="Navbar_container-Box2">
           <div className="Navbar_container-Box2-search">
-            <input type="text" placeholder="Search" />
+            <span><HiSearch/></span>
+            <input type="text" placeholder="     Search" />
           </div>
         </div>
         <div className="Navbar_container-Box3">

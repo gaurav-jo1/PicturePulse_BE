@@ -15,6 +15,13 @@
 }
 .Navbar_container-Box2 {
 
+    span {
+        position: relative;
+        top: 1.5px;
+        left: 30px;
+        color: rgba(158, 136, 136, 0.851);
+    }
+
     .Navbar_container-Box2-search {
         display: flex;
         align-items: center;
