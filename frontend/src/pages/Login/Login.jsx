@@ -1,15 +1,10 @@
-import React,{useState, useEffect} from "react";
+import React from "react";
 
 // Tools
 import { Link } from "react-router-dom";
 
 //  media files
 import Insta_log from "../../assets/Instagram_logo.webp";
-import screenshot1  from "../../assets/screenshot1.webp"
-import screenshot2  from "../../assets/screenshot2.webp"
-import screenshot3  from "../../assets/screenshot3.webp"
-import screenshot4  from "../../assets/screenshot4.webp"
-
 
 
 import { IoLogoFacebook } from "react-icons/io";
@@ -18,24 +13,14 @@ import Getapp from "../../components/Getapp/Getapp";
 // styling
 import "./Login.scss";
 import Footer from "../../components/Footer/Footer";
-let screenshots = [screenshot1, screenshot2, screenshot3, screenshot4];
 
 const Login = () => {
-  const [screenshot, setScreenshot] = useState(screenshot1);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScreenshot(screenshots[Math.floor(Math.random() * screenshots.length)]);
-    }, 1500);
-    return () => clearInterval(interval);
-  }, []);
-
 
   return (
     <div className="Login_container">
       <div className="Login_container-Instagram_main">
         <div className="Login_container-home_phone">
           <div className="Login_container-home_screenshots">
-            <img src={screenshot} alt="screenshot1" />
           </div>
         </div>
         <div className="Login_container-login_form-container">

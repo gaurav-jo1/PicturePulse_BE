@@ -22,11 +22,36 @@
     .Login_container-home_screenshots {
       margin: 27px 0 0 113px;
       position: relative;
+      height: 581.15px;
+      background-repeat: no-repeat;
+      animation-name: animate;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-duration: 30s;
+      animation-iteration-count: infinite;
 
       img {
-        transition: ease-in-out 0.3s;
+        position: absolute;
       }
-      
+
+      @keyframes animate {
+        0% {
+          background-image: url(../../assets/screenshot1.webp);
+          animation-timing-function: ease-in;
+        }
+
+        35% {
+          background-image: url(../../assets/screenshot2.webp);
+        }
+
+        65% {
+          background-image: url(../../assets/screenshot3.webp);
+        }
+
+        100% {
+          background-image: url(../../assets/screenshot4.webp);
+        }
+      }
     }
   }
 }
