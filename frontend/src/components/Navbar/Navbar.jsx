@@ -30,8 +30,8 @@ const Navbar = () => {
             <li> <a href="/"><GrHomeRounded /></a>  </li>
             <li> <a href="/"><IoPaperPlaneOutline/> </a></li>
             <li> <a href="/"><CgAddR/> </a></li>
-            <li> <a href="/"><BsCircle/></a> </li>
             <li> <a href="/"><BsHeart /></a>  </li>
+            <li> <a href="/"><BsCircle/></a> </li>
           </ul>
         </div>
       </div>
