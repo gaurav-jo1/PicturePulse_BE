@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext }  from "react";
 
 // Tools
 import { Link } from "react-router-dom";
@@ -13,8 +13,10 @@ import Getapp from "../../components/Getapp/Getapp";
 // styling
 import "./Login.scss";
 import Footer from "../../components/Footer/Footer";
+import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
+  let {loginUser} = useContext(AuthContext)
 
   return (
     <div className="Login_container">
@@ -29,11 +31,11 @@ const Login = () => {
               <img src={Insta_log} alt="Instagram" />
             </div>
             <div className="form_container-div">
-              <form action="">
+              <form onSubmit={loginUser}>
                 <div className="form_container_inputs">
                   <div className="form_container-input_label_div">
                     <label>
-                      <input type="text" name="username" required placeholder="Phone number, username, or email"/>
+                      <input type="text" name="email" required placeholder="Phone number, username, or email"/>
                     </label>
                   </div>
                   <div className="form_container-input_label_div">

@@ -12,7 +12,6 @@ import "./Navbar.scss";
 
 const Navbar = () => {
   return (
-    <navigator>
       <div className="Navbar_container">
         <div className="Navbar_container-Box1">
           <div className="Navbar_container-Box1-logo">
@@ -35,7 +34,6 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </navigator>
   );
 };
 
