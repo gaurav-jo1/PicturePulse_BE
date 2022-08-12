@@ -3,11 +3,10 @@ import Profile from "./pages/Profile/Profile";
 import SignUp from "./pages/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import PrivateRoute from './utils/UserValid'
+import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 
-import './App.scss';
-
+import "./App.scss";
 
 const App = () => {
   return (

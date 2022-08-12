@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <h1>Hello World</h1>
+      <h1>This is profile page</h1>
     </div>
   )
 }
