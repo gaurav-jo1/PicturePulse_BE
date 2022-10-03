@@ -1,25 +1,20 @@
 import React from "react";
-import Profile from "./pages/Profile/Profile";
-import SignUp from "./pages/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login/Login";
-import PrivateRoute from "./utils/PrivateRoute";
-import { AuthProvider } from "./context/AuthContext";
 
 import "./App.scss";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ThemeContextProvider from "./context/ThemeContextProvider";
 
 const App = () => {
   return (
     <div className="app">
-      <AuthProvider>
+      <ThemeContextProvider>
         <Routes>
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<Profile />} />
-          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
-      </AuthProvider>
+      </ThemeContextProvider>
     </div>
   );
 };

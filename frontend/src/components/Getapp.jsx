@@ -1,9 +1,9 @@
 import React from "react";
 
-import apple_store from "../../assets/apple_store.webp";
-import play_store from "../../assets/play_store.webp";
+import apple_store from "../assets/apple_store.webp";
+import play_store from "../assets/play_store.webp";
 
-import './Getapp.scss'
+import '../styling/Getapp.scss'
 
 const Getapp = () => {
   return (

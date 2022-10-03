@@ -5,12 +5,12 @@ import { IoLogoFacebook } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 //  media files
-import Insta_log from "../../assets/Instagram_logo.webp";
-import Footer from "../../components/Footer/Footer";
-import Getapp from "../../components/Getapp/Getapp";
+import Insta_logo_light from "../assets/Instagram_logo_light.webp";
+import Footer from "../components/Footer";
+import Getapp from "../components/Getapp";
 
 // styling
-import "./SignUp.scss";
+import "../styling/SignUp.scss";
 
 const SignUp = () => {
   return (
@@ -18,7 +18,7 @@ const SignUp = () => {
       <div className="Signup_container-form">
         <div className="Signup_container-box_1">
           <div className="Signup_container-Instagram_image">
-            <img src={Insta_log} alt="instalogo" />
+            <img src={Insta_logo_light} alt="instalogo" />
           </div>
           <div className="Signup_container-Heading_signup_for_friends">
             <h2>Sign up to see photos and videos from your friends</h2>

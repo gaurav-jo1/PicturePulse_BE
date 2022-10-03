@@ -1,6 +1,6 @@
 import React from "react";
 
-import Instagram_logo from "../../assets/Instagram_logo.webp";
+import Instagram_logo from "../assets/Instagram_logo.webp";
 
 import { GrHomeRounded } from "react-icons/gr";
 import {IoPaperPlaneOutline} from 'react-icons/io5'
@@ -8,7 +8,7 @@ import {BsCircle, BsHeart} from 'react-icons/bs'
 import {CgAddR} from 'react-icons/cg'
 import {HiSearch} from 'react-icons/hi'
 
-import "./Navbar.scss";
+import "../styling/Navbar.scss";
 
 const Navbar = () => {
   return (
