@@ -36,24 +36,24 @@ const Login = () => {
             <div className="form_container-div">
               <form>
                 <div className="form_container_inputs">
-                  <div className="form_container-input_label_div">
+                  <div className={`form_container-input_label_div-${theme}`}>
                     <label>
                       <input type="text" name="email" required placeholder="Phone number, username, or email" />
                     </label>
                   </div>
-                  <div className="form_container-input_label_div">
+                  <div className={`form_container-input_label_div-${theme}`}>
                     <label>
                       <input type="password" name="password" placeholder="Password" required/>
                     </label>
                   </div>
-                  <div className="form_container-submit_div">
+                  <div className={`form_container-submit_div-${theme}`}>
                     <button type="submit">Log in</button>
                   </div>
                 </div>
-                <div className="separator_OR">
+                <div className={`separator_OR_${theme}`}>
                   <p className="one"> <span>OR</span> </p>
                 </div>
-                <div className="form_container_links">
+                <div className={`form_container_links_${theme}`}>
                   <a className="Login_container_login-a" href="www.facebook.com">
                     <div className="Login_container_login_facebook">
                       <h2> <IoLogoFacebook /></h2>
@@ -65,8 +65,8 @@ const Login = () => {
               </form>
             </div>
           </div>
-          <div className="Login_container_login-form_box-2">
-            <p> Don't have an account? <Link to="/signup">Sign Up</Link>{" "}</p>
+          <div className={`Login_container_login-form_box-2_${theme}`}>
+            <p> Don't have an account? <Link to="/signup"><span>Sign Up</span></Link>{" "}</p>
           </div>
           <div className="Login_container_login-form_box-3"> <Getapp /></div>
         </div>

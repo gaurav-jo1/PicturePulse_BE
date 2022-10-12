@@ -1,6 +1,6 @@
 // ------ OR -------
 
-.separator_OR {
+@mixin separator($bg) {
   padding: 0px 40px;
 
   p {
@@ -28,11 +28,19 @@
   }
 
   .one span {
-    background: #fff;
+    background: $bg;
     padding: 0 20px;
     position: relative;
     z-index: 5;
   }
+}
+
+.separator_OR_light {
+  @include separator(white)
+}
+
+.separator_OR_dark {
+  @include separator(#1c1f1e)
 }
 
 // Inputs in Forms
@@ -52,9 +60,9 @@
   }
 }
 
-.form_container-input_label_div {
+@mixin userInput($border) {
   margin: 0 40px 6px;
-  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  border: 1px solid $border;
 
   label {
     display: flex;
@@ -78,9 +86,16 @@
   }
 }
 
+.form_container-input_label_div-light {
+  @include userInput(rgba(var(--ca6, 219, 219, 219), 1))
+}
+.form_container-input_label_div-dark {
+  @include userInput(white,)
+}
+
 // Submit button in forms
 
-.form_container-submit_div {
+@mixin loginfacebook($border) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,10 +104,17 @@
   button {
     padding: 8px 0;
     background-color: #0095f6;
-    border: 1px solid #dbd9d9;
+    border: 1px solid $border;
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     color: #ffffff;
   }
+}
+
+.form_container-submit_div-light {
+  @include loginfacebook(rgba(var(--ca6, 219, 219, 219), 1));
+}
+.form_container-submit_div-dark {
+  @include loginfacebook(white);
 }
