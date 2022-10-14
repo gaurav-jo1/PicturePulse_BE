@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a85f9bb0.css",
+    "main.js": "/static/js/main.ff82597c.js",
+    "static/media/insta_background.png": "/static/media/insta_background.e926e2c415fdf44bb7d7.png",
+    "static/media/Instagram_logo.webp": "/static/media/Instagram_logo.408249a8d13084548f84.webp",
+    "static/media/screenshot1.webp": "/static/media/screenshot1.fa5551ad8bad867f40f2.webp",
+    "static/media/screenshot4.webp": "/static/media/screenshot4.3cc9190debc9e38e037d.webp",
+    "static/media/screenshot3.webp": "/static/media/screenshot3.b3386b95b428d33f97d3.webp",
+    "static/media/home_phones.webp": "/static/media/home_phones.74bf09196eabec65584f.webp",
+    "static/media/screenshot2.webp": "/static/media/screenshot2.d9774c7648f75dac01d0.webp",
+    "static/media/play_store.webp": "/static/media/play_store.927da1e20704179d6d76.webp",
+    "static/media/apple_store.webp": "/static/media/apple_store.276373ef3b3503b229ad.webp",
+    "index.html": "/index.html",
+    "main.a85f9bb0.css.map": "/static/css/main.a85f9bb0.css.map",
+    "main.ff82597c.js.map": "/static/js/main.ff82597c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a85f9bb0.css",
+    "static/js/main.ff82597c.js"
+  ]
+}

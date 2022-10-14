@@ -18,7 +18,7 @@
 @mixin signUpBox($bg) {
   width: 350px;
   height: 100%;
-  background-color: $bg ;
+  background-color: $bg;
   border: 1px solid #dbd9d9;
 
   .Signup_container-Instagram_image {
@@ -95,11 +95,11 @@
 }
 
 .Signup_container-box_1_light {
-  @include signUpBox(white)
+  @include signUpBox(white);
 }
 
 .Signup_container-box_1_dark {
-  @include signUpBox(#1c1f1e)
+  @include signUpBox(#1c1f1e);
 }
 
 @mixin signUpBox2($bg, $col) {
@@ -117,11 +117,11 @@
 }
 
 .Signup_container-box_2_light {
-  @include signUpBox2(white,  #314672)
+  @include signUpBox2(white, #314672);
 }
 
 .Signup_container-box_2_dark {
-  @include signUpBox2(#1c1f1e,rgb(217, 200, 200))
+  @include signUpBox2(#1c1f1e, rgb(217, 200, 200));
 }
 
 .Signup_container-box_3 {
