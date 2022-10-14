@@ -7,10 +7,18 @@
   padding-top: 30px;
 }
 
-.Signup_container-box_1 {
+.light {
+  background-color: #fafafa;
+}
+.dark {
+  background-color: rgb(42, 43, 46);
+  color: #fafafa;
+}
+
+@mixin signUpBox($bg) {
   width: 350px;
   height: 100%;
-  background-color: white;
+  background-color: $bg ;
   border: 1px solid #dbd9d9;
 
   .Signup_container-Instagram_image {
@@ -65,7 +73,8 @@
       }
     }
   }
-  .separator_OR {
+  .separator_OR_dark,
+  .separator_OR_light {
     margin: 10px 0;
   }
 
@@ -85,14 +94,34 @@
   }
 }
 
-.Signup_container-box_2 {
+.Signup_container-box_1_light {
+  @include signUpBox(white)
+}
+
+.Signup_container-box_1_dark {
+  @include signUpBox(#1c1f1e)
+}
+
+@mixin signUpBox2($bg, $col) {
   width: 100%;
   display: flex;
   justify-content: center;
   border: 1px solid #dbd9d9;
   margin-top: 10px;
   padding: 23px 0px;
-  background-color: white;
+  background-color: $bg;
+
+  span {
+    color: $col;
+  }
+}
+
+.Signup_container-box_2_light {
+  @include signUpBox2(white,  #314672)
+}
+
+.Signup_container-box_2_dark {
+  @include signUpBox2(#1c1f1e,rgb(217, 200, 200))
 }
 
 .Signup_container-box_3 {

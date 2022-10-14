@@ -14,7 +14,6 @@
   color: #fafafa;
 }
 
-
 .Login_container-Instagram_main {
   display: flex;
   justify-content: space-around;
@@ -84,13 +83,13 @@
     }
   }
 
-  .separator_OR_dark,.separator_OR_light{
+  .separator_OR_dark,
+  .separator_OR_light {
     margin: 10px 0;
   }
-
 }
 
-@mixin formLink($col,  $col2) {
+@mixin formLink($col, $col2) {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,10 +123,10 @@
 }
 
 .form_container_links_light {
-  @include formLink(#385185,#385185)
+  @include formLink(#385185, #385185);
 }
 .form_container_links_dark {
-  @include formLink(#0f8ee2, rgb(217, 200, 200))
+  @include formLink(#0f8ee2, rgb(217, 200, 200));
 }
 
 .Login_container-login_form-container {
@@ -139,13 +138,12 @@
   margin-top: 15px;
 
   .Login_container_login-form_box-1_light {
-    @include boxs(white, #dbd9d9, );
-  }
-  
-  .Login_container_login-form_box-1_dark {
-    @include boxs(#1c1f1e,#a1a1a1,);
+    @include boxs(white, #dbd9d9);
   }
 
+  .Login_container_login-form_box-1_dark {
+    @include boxs(#1c1f1e, #a1a1a1);
+  }
 
   @mixin box2($bg, $col, $border) {
     width: 100%;
@@ -161,10 +159,10 @@
     }
   }
   .Login_container_login-form_box-2_dark {
-    @include box2(#1c1f1e,  rgb(217, 200, 200),#a1a1a1)
+    @include box2(#1c1f1e, rgb(217, 200, 200), #a1a1a1);
   }
   .Login_container_login-form_box-2_light {
-    @include box2(white, #314672, #dbd9d9)
+    @include box2(white, #314672, #dbd9d9);
   }
 
   .Login_container_login-form_box-3 {

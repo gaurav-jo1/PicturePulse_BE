@@ -36,11 +36,11 @@
 }
 
 .separator_OR_light {
-  @include separator(white)
+  @include separator(white);
 }
 
 .separator_OR_dark {
-  @include separator(#1c1f1e)
+  @include separator(#1c1f1e);
 }
 
 // Inputs in Forms
@@ -87,10 +87,10 @@
 }
 
 .form_container-input_label_div-light {
-  @include userInput(rgba(var(--ca6, 219, 219, 219), 1))
+  @include userInput(rgba(var(--ca6, 219, 219, 219), 1));
 }
 .form_container-input_label_div-dark {
-  @include userInput(white,)
+  @include userInput(white);
 }
 
 // Submit button in forms
