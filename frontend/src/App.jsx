@@ -5,6 +5,8 @@ import "./App.scss";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import RequireAuth from "./utils/RequireAuth";
 import ThemeContextProvider from "./context/ThemeContextProvider";
 
 const App = () => {
@@ -12,7 +14,10 @@ const App = () => {
     <div className="app">
       <ThemeContextProvider>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route element={<RequireAuth />}>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/profile" element={<ProfilePage />} />
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
