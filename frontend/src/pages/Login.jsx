@@ -1,6 +1,10 @@
 // Tools
-import React, { useContext } from "react";
+import React, {useState, useContext } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode"
+import axios from "axios";
 
 // Component
 import Footer from "../components/Footer";
@@ -16,9 +20,34 @@ import Getapp from "../components/Getapp";
 // styling
 import "../styling/Login.scss";
 import Header from "../components/Header";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const {theme} = useContext(ThemeContext)
+  const {setAuthTokens,setUser} = useContext(AuthContext)
+  const [userInput, setUserInput] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  let navigate = useNavigate();
+
+  const mutation = useMutation(
+    (body) => axios.post("http://127.0.0.1:8000/api/token/", body),
+    {
+      onSuccess(data) {
+        setAuthTokens(data.data)
+        setUser(jwt_decode(data.data.access))
+        localStorage.setItem('authTokens', JSON.stringify(data.data))
+        navigate("/")
+      },
+      onError(error) {
+        alert("Got error from backend", error);
+      },
+    }
+  );
+
+  function callLogin(e) {
+    e.preventDefault()
+    mutation.mutate({ username: userInput, password: userPassword });
+  }
   return (
     <div className={`Login_container ${theme}`}>
       <div className="Login_header_container">
@@ -38,16 +67,16 @@ const Login = () => {
                 <div className="form_container_inputs">
                   <div className={`form_container-input_label_div-${theme}`}>
                     <label>
-                      <input type="text" name="email" required placeholder="Phone number, username, or email" />
+                      <input type="text" name="username" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Phone number, username, or email" required/>
                     </label>
                   </div>
                   <div className={`form_container-input_label_div-${theme}`}>
                     <label>
-                      <input type="password" name="password" placeholder="Password" required/>
+                      <input type="password" name="password" value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder="Password" required/>
                     </label>
                   </div>
                   <div className={`form_container-submit_div-${theme}`}>
-                    <button type="submit">Log in</button>
+                    <button onClick={callLogin} type="submit">Log in</button>
                   </div>
                 </div>
                 <div className={`separator_OR_${theme}`}>

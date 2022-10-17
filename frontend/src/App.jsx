@@ -8,21 +8,24 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import RequireAuth from "./utils/RequireAuth";
 import ThemeContextProvider from "./context/ThemeContextProvider";
+import AuthProvider from "./context/AuthContext";
 
 const App = () => {
   return (
-    <div className="app">
-      <ThemeContextProvider>
-        <Routes>
-          <Route element={<RequireAuth />}>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/profile" element={<ProfilePage />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </ThemeContextProvider>
-    </div>
+    <AuthProvider>
+      <div className="app">
+        <ThemeContextProvider>
+          <Routes>
+            <Route element={<RequireAuth />}>
+              <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/profile" element={<ProfilePage />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </ThemeContextProvider>
+      </div>
+    </AuthProvider>
   );
 };
 
