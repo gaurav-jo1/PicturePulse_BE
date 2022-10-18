@@ -4,8 +4,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import UserInfoSerializers
+from .serializers import UserInfoSerializers,CurrentUserSerializer
 from .models import UserInfo
+from django.contrib.auth.models import User
 
 # Create your views here.
 def front(request):
@@ -32,5 +33,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def getUser(request):
     user = request.user
     userinfos = user.userinfo_set.all()
-    serializer = UserInfoSerializers(userinfos, many= True)
+    serializer = UserInfoSerializers(userinfos, many=True)
     return Response(serializer.data)
+
+

@@ -12,12 +12,16 @@ const HomePage = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization":"Bearer " + String(authTokens.access)
+        Authorization: "Bearer " + String(authTokens.access),
       },
       body: JSON.stringify(body),
     });
 
-  const { data: userinfos, isLoading, isError, } = useQuery(["notes"], () => {
+  const {
+    data: userinfos,
+    isLoading,
+    isError,
+  } = useQuery(["notes"], () => {
     return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
   });
 
@@ -25,21 +29,23 @@ const HomePage = () => {
 
   if (isError) return <h1>Error with request</h1>;
 
-  console.log(userinfos)
+  console.log(userinfos);
 
   return (
     <div>
       <Navbar />
       <div className="HomePage_container">
-        <h1>HomePage</h1>
-        <h1>Hellow {user.username}</h1>
-        <div>
         {userinfos?.map((userinfo) => (
-          <div  key={userinfo.user} className="user_profile_picture-container">
-            <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
+          <div  key={userinfo.user} >
+            <div className="user_profile_picture-container">
+              <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
+            </div>
+            <div className="user_profile_picture-userinfo">
+              <h1>@{userinfo.user.username}</h1>
+              <p>{userinfo.user.first_name} {userinfo.user.last_name}</p>
+            </div>
           </div>
         ))}
-        </div>
       </div>
     </div>
   );

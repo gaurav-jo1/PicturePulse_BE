@@ -1,4 +1,30 @@
 .HomePage_container {
-    height: 100vh;
-    background-color: #fafafa;
+  height: 100vh;
+  background-color: #fafafa;
+}
+
+.user_profile_picture-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+
+    img {
+        height: 450px;
+        width: 450px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.user_profile_picture-userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+
+    p {
+        margin-top: 10px;
+        font-size: 22px;
+    }
+
 }
