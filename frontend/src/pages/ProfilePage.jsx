@@ -29,7 +29,6 @@ const ProfilePage = () => {
 
   if (isError) return <h1>Error with request</h1>;
 
-  console.log(userinfos);
   return (
     <div>
       <Navbar />
