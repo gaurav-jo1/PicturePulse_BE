@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="Navbar_container-Box2">
         <div className="Navbar_container-Box2-search">
           { searchValue ? <span> <HiSearch style={{ visibility: "hidden"}} /> </span> : <span> <HiSearch /> </span>}
-          <input value={searchValue} type="text" placeholder="     Search" onChange={(e) => setSearchValue(e.target.value)}/>
+          <input value={searchValue} type="text" placeholder="   Search" onChange={(e) => setSearchValue(e.target.value)}/>
         </div>
       </div>
       <div className="Navbar_container-Box3">

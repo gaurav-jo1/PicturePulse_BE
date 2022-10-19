@@ -1,0 +1,50 @@
+.Profile_container {
+    height: 100vh;
+    background-color: #fafafa;
+  }
+  .user-userinfo {
+    padding-top: 20px;
+  }
+  
+  .user_profile_picture-container {
+    display: flex;
+    justify-content: center;
+  
+    img {
+      height: 450px;
+      width: 450px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0px 0px 15px 5px rgb(177, 70, 17);
+    }
+  
+    img:hover {
+      box-shadow: 0px 0px 16px 8px rgb(161, 67, 19);
+      transition: box-shadow 0.2s ease-in-out;
+    }
+  }
+  
+  .user_profile_picture-userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+  
+    p {
+      margin-top: 10px;
+      font-size: 22px;
+    }
+  
+    i {
+      margin-top: 10px;
+    }
+  }
+  
+  
+  .user_profile_picture-userinfo_fp {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 150px 0 150px;
+    color: blueviolet;
+    font-size: 18px;
+  }
