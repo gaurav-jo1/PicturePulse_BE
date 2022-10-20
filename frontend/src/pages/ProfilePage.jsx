@@ -1,10 +1,41 @@
 import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
 import "../styling/Profile.scss";
 
 const ProfilePage = () => {
-  const { userinfos } = useContext(AuthContext);
+  const { authTokens, callLogout, loading } = useContext(AuthContext);
+
+  const getInfo = (url, body) =>
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + String(authTokens.access),
+      },
+      body: JSON.stringify(body),
+    });
+
+  const {
+    data: userinfos,
+    isLoading,
+    isError,
+  } = useQuery(
+    ["notes"],
+    () => {
+      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
+    },
+    { enabled: !loading }
+  );
+
+  if (isLoading) return <h1>Loading....</h1>;
+
+  if (isError) return <h1>Error with request</h1>;
+
+  if (userinfos.code === "token_not_valid") return callLogout();
+
+  console.log(userinfos);
 
   return (
     <div>
