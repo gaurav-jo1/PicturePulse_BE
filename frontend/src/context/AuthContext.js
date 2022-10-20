@@ -1,14 +1,41 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import jwt_decode from "jwt-decode"
 
 export const AuthContext = createContext()
 
-const AuthProvider = (props) => {
+const AuthProvider = ({children}) => {
 
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    let [loading, setLoading] = useState(true)
+    console.log(loading)
+
+    // call logout
+
+    function callLogout(){
+        setAuthTokens(null)
+        setUser(null)
+        localStorage.removeItem('authTokens')
+    }
+
+    // Getting user info
+    const getInfo = (url, body) =>
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + String(authTokens.access),
+      },
+      body: JSON.stringify(body),
+    });
+
+    const {  data: userinfos } = useQuery(["notes"], () => {
+        return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
+    },{ enabled: !loading,});
+
+    // Updating refresh token
 
     const mutationR = useMutation(
         (body) => axios.post("http://127.0.0.1:8000/api/token/refresh/", body),
@@ -17,34 +44,43 @@ const AuthProvider = (props) => {
                 setAuthTokens(data.data)
                 setUser(jwt_decode(data.data.access))
                 localStorage.setItem('authTokens', JSON.stringify(data.data))
+                setLoading(false)
             },
             onError(error) {
-                setAuthTokens(null)
-                setUser(null)
-                localStorage.removeItem('authTokens')
+                callLogout()
                 console.log(error)
             },
         }
     );
 
+    
+
     function updateAccess() {
-        console.log("Update token called")
-        mutationR.mutate({refresh: authTokens.refresh })
+        if (authTokens) {
+            mutationR.mutate({ refresh: authTokens.refresh })
+        }
     }
 
+    // updating refresh token after revisit and access token expire time
+
     useEffect(() => {
+        if (loading) {
+            updateAccess()
+        }
         let fourMinutes = 1000 * 60 * 4
         let interval = setInterval(() => {
-            if(authTokens) {
+            if (authTokens) {
                 updateAccess()
             }
         }, fourMinutes)
         return () => clearInterval(interval)
-    }, [authTokens]) // eslint-disable-line
+    }, [authTokens,loading]) // eslint-disable-line
+
+    // if (userinfos.code === "token_not_valid") return callLogout();
 
     return (
-        <AuthContext.Provider value={{ user, setAuthTokens, setUser,authTokens }}>
-            {props.children}
+        <AuthContext.Provider value={{ user, setAuthTokens, setUser, authTokens, setLoading, callLogout,updateAccess, userinfos }}>
+            {loading ? null : children}
         </AuthContext.Provider>
     )
 }

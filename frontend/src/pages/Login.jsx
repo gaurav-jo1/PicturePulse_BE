@@ -23,12 +23,12 @@ import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const { theme } = useContext(ThemeContext);
-  const { setAuthTokens, setUser } = useContext(AuthContext);
+  const { setAuthTokens, setUser,setLoading } = useContext(AuthContext);
   const [userInput, setUserInput] = useState("");
   const [userPassword, setUserPassword] = useState("");
   let navigate = useNavigate();
 
-  const mutation = useMutation(
+  const mutation = useMutation(['getKeys'],
     (body) => axios.post("http://127.0.0.1:8000/api/token/", body),
     {
       onSuccess(data) {
@@ -36,6 +36,7 @@ const Login = () => {
         setUser(jwt_decode(data.data.access));
         localStorage.setItem("authTokens", JSON.stringify(data.data));
         navigate("/");
+        setLoading(false)
       },
       onError(error) {
         alert("Got error from backend", error);
