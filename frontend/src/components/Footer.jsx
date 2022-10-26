@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ThemeContext } from '../context/ThemeContextProvider'
 
 import '../styling/Footer.scss'
 
 const Footer = () => {
+  const {theme} = useContext(ThemeContext)
   return (
     <footer>
     <div className='External_Links-container'>
@@ -28,7 +30,7 @@ const Footer = () => {
           <a href="/"> <p>Music</p> </a>
           <a href="/"> <p>Visual Arts</p> </a>
         </div>
-        <div className='External_Links-container_group-3'>
+        <div className={`External_Links-container_group-3_${theme}`}>
           <select name="language">
             <option value="en">English</option>
             <option value="es">Spanish</option>

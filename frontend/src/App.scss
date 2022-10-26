@@ -51,7 +51,7 @@ a {
 }
 
 .separator_OR_dark {
-  @include separator(#1c1f1e);
+  @include separator(var(--box-color));
 }
 
 // Inputs in Forms

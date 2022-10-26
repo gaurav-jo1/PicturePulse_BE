@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import RequireAuth from "./utils/RequireAuth";
@@ -19,8 +19,8 @@ const App = () => {
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/profile" element={<ProfilePage />} />
             </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </ThemeContextProvider>
       </div>

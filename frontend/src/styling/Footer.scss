@@ -28,7 +28,7 @@
   }
 }
 
-.External_Links-container_group-3 {
+@mixin footerG3($bg) {
   display: flex;
   width: 100%;
   align-items: center;
@@ -39,7 +39,7 @@
   select {
     color: #8e8e8e;
     border: none;
-    background-color: #fafafa;
+    background-color: $bg;
   }
 
   p {
@@ -47,3 +47,11 @@
     font-size: 13px;
   }
 }
+
+.External_Links-container_group-3_light {
+  @include footerG3(#fafafa)
+}
+.External_Links-container_group-3_dark {
+  @include footerG3(#422d2d)
+}
+
