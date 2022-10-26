@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.db9f753a.css",
-    "main.js": "/static/js/main.078ed43b.js",
+    "main.js": "/static/js/main.a517e1cf.js",
     "static/media/Instagram_logo_dark.webp": "/static/media/Instagram_logo_dark.e3346fe48456d32f9a2c.webp",
     "static/media/screenshot1.webp": "/static/media/screenshot1.fa5551ad8bad867f40f2.webp",
     "static/media/screenshot4.webp": "/static/media/screenshot4.3cc9190debc9e38e037d.webp",
@@ -13,10 +13,10 @@
     "static/media/apple_store.webp": "/static/media/apple_store.276373ef3b3503b229ad.webp",
     "index.html": "/index.html",
     "main.db9f753a.css.map": "/static/css/main.db9f753a.css.map",
-    "main.078ed43b.js.map": "/static/js/main.078ed43b.js.map"
+    "main.a517e1cf.js.map": "/static/js/main.a517e1cf.js.map"
   },
   "entrypoints": [
     "static/css/main.db9f753a.css",
-    "static/js/main.078ed43b.js"
+    "static/js/main.a517e1cf.js"
   ]
 }

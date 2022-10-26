@@ -48,8 +48,9 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (loading) {
             updateAccess()
+            setLoading(false)
         }
-        let fourMinutes = 1000 * 60 * 4
+        let fourMinutes = 1000 * 60 * 15
         let interval = setInterval(() => {
             if (authTokens) {
                 updateAccess()

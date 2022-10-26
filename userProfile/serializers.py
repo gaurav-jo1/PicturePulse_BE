@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from .models import UserInfo
+from .models import UserInfo,UserMedia
 from django.contrib.auth.models import User
+
+class UserMediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserMedia
+        fields = '__all__'
 class CurrentUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -8,6 +13,7 @@ class CurrentUserSerializer(serializers.ModelSerializer):
 
 class UserInfoSerializers(serializers.ModelSerializer):
     user = CurrentUserSerializer(many=False)
+    usermedia = UserMediaSerializer(many=True)
     class Meta:
         model = UserInfo
         fields = '__all__'
