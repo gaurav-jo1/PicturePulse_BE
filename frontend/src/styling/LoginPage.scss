@@ -42,20 +42,19 @@
       }
 
       @keyframes animate {
-        0% {
+        0%, 100% {
           background-image: url(../assets/screenshot1.webp);
-          animation-timing-function: ease-in;
         }
 
-        35% {
+        25% {
           background-image: url(../assets/screenshot2.webp);
         }
 
-        65% {
+        50% {
           background-image: url(../assets/screenshot3.webp);
         }
 
-        100% {
+        75% {
           background-image: url(../assets/screenshot4.webp);
         }
       }
