@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
-import "../styling/Profile.scss";
+import "../styling/ProfilePage.scss";
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
@@ -22,7 +22,7 @@ const ProfilePage = () => {
     isLoading,
     isError,
   } = useQuery(
-    ["notes"],
+    ["userinfos"],
     () => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
     },
@@ -52,10 +52,10 @@ const ProfilePage = () => {
               />
             </div>
             <div className="user_profile_picture-userinfo">
-              <h1>@{userinfo.user.username}</h1>
-              <p>
+              <h1>
                 {userinfo.user.first_name} {userinfo.user.last_name}
-              </p>
+              </h1>
+              <p>@{userinfo.user.username}</p>
               <i>{userinfo.profession}</i>
             </div>
           </div>
