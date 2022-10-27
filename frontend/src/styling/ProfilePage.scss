@@ -10,10 +10,12 @@
 .Profile_container-user_nav_dark {
   background-image: url("../assets/jwst_bg.jpg");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   padding-bottom: 30px;
-  
-  h1,p,i {
+
+  h1,
+  p,
+  i {
     color: white;
     text-shadow: 2px 2px 0px #000000;
   }
@@ -23,8 +25,10 @@
   background-image: url("../assets/sunflower.jpg");
   background-repeat: no-repeat;
   padding-bottom: 30px;
-  background-size:cover;
-  h1,p,i {
+  background-size: cover;
+  h1,
+  p,
+  i {
     color: black;
     text-shadow: 2px 2px 0px #ffffff;
   }
@@ -72,4 +76,21 @@
   padding: 20px 150px 0 150px;
   color: blueviolet;
   font-size: 18px;
+}
+
+.Profiepage_user-media_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fill,minmax(300px, auto));
+  gap: 10px;
+  padding: 20px 40px;
+
+  .Profilepage_user-image_container {
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }

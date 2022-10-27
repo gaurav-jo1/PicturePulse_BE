@@ -27,7 +27,7 @@ const ProfilePage = () => {
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
-  console.log(userinfos);
+  let gallery = userinfos[0].usermedia
 
   return (
     <div>
@@ -54,7 +54,11 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className="Profiepage_user-media_container">
-        
+          {gallery.map((images) => (
+            <div className="Profilepage_user-image_container">
+              <img key={images.id} src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
+            </div>
+          ))}
       </div>
     </div>
   );
