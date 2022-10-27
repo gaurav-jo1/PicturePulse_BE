@@ -4,7 +4,6 @@
   align-items: center;
   overflow: hidden;
   padding-top: 5px;
-  border-bottom: 1px solid gray;
 }
 
 .Navbar_container-Box1 {
@@ -36,25 +35,42 @@
   }
 }
 
-.Navbar_container-Box3 {
-  .Navbar_container-Box3-icons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    list-style: none;
+@mixin box3Icons($bg) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
 
-    li {
-      margin: 0 10px;
-      img {
-        border-radius: 50%;
-      }
-      a {
-        text-decoration: none;
-        color: black;
-        font-size: 20px;
-        font-weight: bold;
-      }
+  li:first-child {
+    a {
+      font-size: 28px;
     }
+  }
+
+  li:last-child {
+    padding-bottom: 5px;
+  }
+
+  li {
+    margin: 0 10px;
+    img {
+      border-radius: 50%;
+    }
+    a {
+      text-decoration: none;
+      color: $bg;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+}
+
+.Navbar_container-Box3 {
+  .Navbar_container-Box3-icons_dark {
+    @include box3Icons(white);
+  }
+  .Navbar_container-Box3-icons_light {
+    @include box3Icons(black);
   }
 }
