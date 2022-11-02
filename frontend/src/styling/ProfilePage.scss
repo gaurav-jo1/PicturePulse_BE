@@ -1,6 +1,11 @@
-.Profile_container {
+.Profile_container_light {
   height: 100vh;
   background-color: #fafafa;
+}
+
+.Profile_container_dark {
+  height: 100vh;
+  background-color: #050100;
 }
 
 .user-userinfo {
@@ -70,22 +75,31 @@
   }
 }
 
-.user_profile_picture-userinfo_fp {
+@mixin userFollow($col) {
   display: flex;
   justify-content: space-between;
-  padding: 20px 150px 0 150px;
-  color: blueviolet;
+  padding: 35px 150px;
+  color: $col;
   font-size: 18px;
 }
 
-.Profiepage_user-media_container {
+.user_profile_picture-userinfo_fp_light {
+  @include userFollow(black);
+}
+
+.user_profile_picture-userinfo_fp_dark {
+  @include userFollow(rgb(243, 231, 231));
+}
+
+@mixin galleryImage($bg, $bg2, $svg, $font) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 10px;
   padding: 20px 40px;
+  background-color: $bg;
 
-    .Profilepage_user-image_container {
-      height: 370px;
+  .Profilepage_user-image_container {
+    height: 370px;
     img {
       height: 100%;
       width: 100%;
@@ -93,4 +107,30 @@
       cursor: pointer;
     }
   }
+
+  .Profilepage_user-image_uploader {
+    background-color: $bg2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+  
+    svg {
+      color: $svg;
+    }
+
+    p {
+      padding-top: 10px;
+      color: $font;
+    }
+  }
+}
+
+.Profiepage_user-media_container_dark {
+  @include galleryImage(#050100, var(--box-color), white, white)
+}
+
+.Profiepage_user-media_container_light {
+  @include galleryImage(white,rgb(228, 214, 214),#665e68, black)
 }

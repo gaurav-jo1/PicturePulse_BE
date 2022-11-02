@@ -1,18 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
-import ImageModal from "../components/ImageModal";
+import {BsImages} from "react-icons/bs"
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
-
-  const [clickedImg, setClickedImg] = useState(null);
-
-  console.log(clickedImg)
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -34,11 +30,9 @@ const ProfilePage = () => {
   if (userinfos.code === "token_not_valid") return callLogout();
   let gallery = userinfos[0].usermedia
 
-  if (clickedImg) return <ImageModal />
-
   return (
     <div>
-      <div className="Profile_container">
+      <div className={`Profile_container_${theme}`}>
         <div className={`Profile_container-user_nav_${theme}`}>
           <Navbar />
           {userinfos?.map((userinfo) => (
@@ -54,18 +48,22 @@ const ProfilePage = () => {
             </div>
           ))}
         </div>
-        <div className="user_profile_picture-userinfo_fp">
-          <p>10.3M followers</p>
-          <p>252 posts</p>
-          <p>496 following</p>
-        </div>
+          <div className={`user_profile_picture-userinfo_fp_${theme}`}>
+            <p> <strong>10.3M</strong> followers</p>
+            <p> <strong>252</strong> posts</p>
+            <p> <strong>496</strong> following</p>
+          </div>
       </div>
-      <div className="Profiepage_user-media_container">
+      <div className={`Profiepage_user-media_container_${theme}`}>
           {gallery.map((images) => (
-            <div key={images.id} className="Profilepage_user-image_container" onClick={() => setClickedImg(images)}>
+            <div key={images.id} className="Profilepage_user-image_container">
               <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
           ))}
+          <div className="Profilepage_user-image_uploader">
+            <BsImages  size="50px"/>
+            <p>Upload Image</p>
+          </div>
       </div>
     </div>
   );
