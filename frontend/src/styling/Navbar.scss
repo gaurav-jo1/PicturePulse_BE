@@ -7,13 +7,17 @@
 }
 
 .Navbar_container-Box1 {
+  .Navbar_container-Box1-logo {
+    width: 300px;
+  }
   img {
     width: 130px;
   }
 }
 
 .Navbar_container-Box2 {
-  padding: 0 150px 0 200px;
+  padding: 0 200px 0 200px;
+
   span {
     position: relative;
     top: 1.5px;

@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
+import ImageModal from "../components/ImageModal";
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
+
+  const [clickedImg, setClickedImg] = useState(null);
+
+  console.log(clickedImg)
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -28,6 +33,8 @@ const ProfilePage = () => {
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
   let gallery = userinfos[0].usermedia
+
+  if (clickedImg) return <ImageModal />
 
   return (
     <div>
@@ -55,8 +62,8 @@ const ProfilePage = () => {
       </div>
       <div className="Profiepage_user-media_container">
           {gallery.map((images) => (
-            <div className="Profilepage_user-image_container">
-              <img key={images.id} src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
+            <div key={images.id} className="Profilepage_user-image_container" onClick={() => setClickedImg(images)}>
+              <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
           ))}
       </div>
