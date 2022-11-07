@@ -1,12 +1,8 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import UserInfoSerializers, CurrentUserSerializer
-from .models import UserInfo
-from django.contrib.auth.models import User
+from .serializers import UserInfoSerializers
 
 # Create your views here.
 
@@ -32,10 +28,23 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getUser(request):
-    user = request.user
-    userinfos = user.userinfo_set.all()
-    serializer = UserInfoSerializers(userinfos, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def getUser(request):
+#     user = request.user
+#     userinfos = user.userinfo_set.all()
+#     serializer = UserInfoSerializers(userinfos, many=True)
+#     return Response(serializer.data)
+
+
+from rest_framework.views import APIView
+from rest_framework import permissions
+
+class getUser(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        userinfos = user.userinfo_set.all()
+        serializer = UserInfoSerializers(userinfos, many=True)
+        return Response(serializer.data)

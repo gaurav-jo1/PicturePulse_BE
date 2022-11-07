@@ -104,7 +104,6 @@
       height: 100%;
       width: 100%;
       object-fit: cover;
-      cursor: pointer;
     }
   }
 
@@ -113,10 +112,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     flex-direction: column;
-  
+    height: 370px;
+
     svg {
+      cursor: pointer;
       color: $svg;
     }
 
@@ -127,10 +127,35 @@
   }
 }
 
+.uploading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .Profilepage_image-uploader_button {
+    position: absolute;
+    bottom: 15px;
+  }
+
+  button {
+    padding: 5px 12px;
+    margin: 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #74a974;
+    align-items: center;
+
+    svg {
+      padding-top: 2px;
+    }
+  }
+}
+
 .Profiepage_user-media_container_dark {
-  @include galleryImage(#050100, var(--box-color), white, white)
+  @include galleryImage(#050100, var(--box-color), white, white);
 }
 
 .Profiepage_user-media_container_light {
-  @include galleryImage(white,rgb(228, 214, 214),#665e68, black)
+  @include galleryImage(white, rgb(228, 214, 214), #665e68, black);
 }

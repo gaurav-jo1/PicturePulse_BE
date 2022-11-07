@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import {BsImages} from "react-icons/bs"
+import {FiUpload} from "react-icons/fi"
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
+
+  const [file,  setFile] = useState(null)
+
+  const handleChange = (e) =>{
+    setFile(URL.createObjectURL(e.target.files[0]))
+  }
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -29,6 +36,11 @@ const ProfilePage = () => {
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
   let gallery = userinfos[0].usermedia
+
+  let onInputClick = (event) => {
+    event.target.value = ''
+  }
+
 
   return (
     <div>
@@ -60,8 +72,21 @@ const ProfilePage = () => {
               <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
           ))}
+          {
+            file &&             
+          <div className="Profilepage_user-image_container uploading">
+            <img src={file} alt="" />
+            <div className="Profilepage_image-uploader_button">
+              <button onClick={() => setFile(null)}>Cancel</button>
+              <button>Upload <FiUpload/> </button>
+            </div>
+          </div>
+          }
           <div className="Profilepage_user-image_uploader">
-            <BsImages  size="50px"/>
+            <label htmlFor="file-input">
+              <BsImages  size="50px"/>
+            </label>
+            <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{display: "none"}}/>
             <p>Upload Image</p>
           </div>
       </div>
