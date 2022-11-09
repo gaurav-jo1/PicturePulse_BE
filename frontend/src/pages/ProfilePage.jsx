@@ -1,20 +1,28 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import {BsImages} from "react-icons/bs"
 import {FiUpload} from "react-icons/fi"
+import client from "../react-query-client"
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
 
   const [file,  setFile] = useState(null)
+  const [previewImage,  setpreviewImage] = useState(null)
 
   const handleChange = (e) =>{
-    setFile(URL.createObjectURL(e.target.files[0]))
+    setpreviewImage(URL.createObjectURL(e.target.files[0]))
+    setFile(e.target.files[0])
+  
+  }
+
+  let onInputClick = (event) => {
+    event.target.value = ''
   }
 
   const getInfo = (url, body) =>
@@ -27,20 +35,44 @@ const ProfilePage = () => {
       body: JSON.stringify(body),
     });
 
+  const postMedia = (url, body) => {
+    const formData = new FormData();
+    formData.append("gallery", file )
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+  }
+
   const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());},
     { enabled: !loading }
   );
 
+  const mutation = useMutation(
+    (body) => postMedia("http://127.0.0.1:8000/postMedia/", body),
+    {
+      onSuccess(data) {
+        console.log("Got response from backend", data);
+        client.invalidateQueries("userinfos");
+        setpreviewImage(null);
+        setFile(null);
+      },
+      onError(error) {
+        console.log("Got error from backend", error);
+      },
+    }
+  );
+
+  function callMutation() {
+    mutation.mutate({ gallery: previewImage });
+  }
+
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
-  let gallery = userinfos[0].usermedia
 
-  let onInputClick = (event) => {
-    event.target.value = ''
-  }
-
+  console.log(file)
 
   return (
     <div>
@@ -67,7 +99,7 @@ const ProfilePage = () => {
           </div>
       </div>
       <div className={`Profiepage_user-media_container_${theme}`}>
-          {gallery.map((images) => (
+          {userinfos[0].usermedia.map((images) => (
             <div key={images.id} className="Profilepage_user-image_container">
               <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
@@ -75,10 +107,10 @@ const ProfilePage = () => {
           {
             file &&             
           <div className="Profilepage_user-image_container uploading">
-            <img src={file} alt="" />
+            <img src={previewImage} alt="" />
             <div className="Profilepage_image-uploader_button">
               <button onClick={() => setFile(null)}>Cancel</button>
-              <button>Upload <FiUpload/> </button>
+              <button onClick={callMutation}>Upload <FiUpload/> </button>
             </div>
           </div>
           }

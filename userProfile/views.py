@@ -2,7 +2,9 @@ from django.shortcuts import render
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
-from .serializers import UserInfoSerializers
+from .serializers import UserInfoSerializers, UserMediaSerializer
+from .models import UserMedia
+from rest_framework import status
 
 # Create your views here.
 
@@ -48,3 +50,17 @@ class getUser(APIView):
         userinfos = user.userinfo_set.all()
         serializer = UserInfoSerializers(userinfos, many=True)
         return Response(serializer.data)
+
+class postMedia(APIView):
+
+    def get(self, request):
+        usersMedia = UserMedia.objects.all()
+        serializer = UserMediaSerializer(usersMedia, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = UserMediaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
