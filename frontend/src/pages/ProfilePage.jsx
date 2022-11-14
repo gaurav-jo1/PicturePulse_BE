@@ -36,35 +36,38 @@ const ProfilePage = () => {
     const formData = new FormData();
     formData.append("gallery", file )
     fetch(url, {
-      method: "PATCH",
+      method: "POST",
       headers: { Authorization: "Bearer " + String(authTokens.access),},
       body: formData,
     });
   }
 
+
   const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());}, { enabled: !loading }
   );
+  const { data: usermedia,} = useQuery(["usermedia"],() => {
+      return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());}, { enabled: !loading }
+  );
 
   const mutation = useMutation(
-    (body) => postMedia("http://127.0.0.1:8000/userinfo/", body),
+    (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
     { onSuccess(data) {
         console.log("Got response from backend", data);
-        client.invalidateQueries("userinfos");
+        client.invalidateQueries("usermedia");
         setpreviewImage(null);
         setFile(null);
       }, onError(error) { console.log("Got error from backend", error);},
     }
   );
 
-  function callMutation() { mutation.mutate({ usermedia: file });}
+  function callMutation() { mutation.mutate({ gallery: file });}
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 
-  console.log(userinfos[0].usermedia)
-
+  console.log(usermedia)
   return (
     <div>
       <div className={`Profile_container_${theme}`}>
@@ -89,7 +92,7 @@ const ProfilePage = () => {
           </div>
       </div>
       <div className={`Profiepage_user-media_container_${theme}`}>
-          {userinfos[0].usermedia.map((images) => (
+          {usermedia?.map((images) => (
             <div key={images.id} className="Profilepage_user-image_container">
               <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
