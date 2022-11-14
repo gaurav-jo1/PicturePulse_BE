@@ -12,6 +12,7 @@ const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
 
+  const [enabled, setEnabled] = useState(null)
   const [file,  setFile] = useState(null)
   const [previewImage,  setpreviewImage] = useState(null)
 
@@ -46,20 +47,28 @@ const ProfilePage = () => {
   const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());}, { enabled: !loading }
   );
+
   const { data: usermedia,} = useQuery(["usermedia"],() => {
-      return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());}, { enabled: !loading }
-  );
+    return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());}, { enabled: !loading }
+);
 
   const mutation = useMutation(
     (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
     { onSuccess(data) {
         console.log("Got response from backend", data);
-        client.invalidateQueries("usermedia");
         setpreviewImage(null);
         setFile(null);
+        setEnabled(true)
+        client.invalidateQueries("usermedia")
       }, onError(error) { console.log("Got error from backend", error);},
     }
   );
+
+  if(enabled) {
+    client.invalidateQueries("usermedia")
+    setEnabled(null)
+  }
+
 
   function callMutation() { mutation.mutate({ gallery: file });}
 
