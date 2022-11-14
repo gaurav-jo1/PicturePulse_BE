@@ -18,12 +18,9 @@ const ProfilePage = () => {
   const handleChange = (e) =>{
     setpreviewImage(URL.createObjectURL(e.target.files[0]))
     setFile(e.target.files[0])
-  
   }
 
-  let onInputClick = (event) => {
-    event.target.value = ''
-  }
+  let onInputClick = (event) => { event.target.value = '' }
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -35,44 +32,38 @@ const ProfilePage = () => {
       body: JSON.stringify(body),
     });
 
-  const postMedia = (url, body) => {
+  const postMedia = (url) => {
     const formData = new FormData();
     formData.append("gallery", file )
     fetch(url, {
-      method: "POST",
+      method: "PATCH",
+      headers: { Authorization: "Bearer " + String(authTokens.access),},
       body: formData,
     });
   }
 
   const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"],() => {
-      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());},
-    { enabled: !loading }
+      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());}, { enabled: !loading }
   );
 
   const mutation = useMutation(
-    (body) => postMedia("http://127.0.0.1:8000/postMedia/", body),
-    {
-      onSuccess(data) {
+    (body) => postMedia("http://127.0.0.1:8000/userinfo/", body),
+    { onSuccess(data) {
         console.log("Got response from backend", data);
         client.invalidateQueries("userinfos");
         setpreviewImage(null);
         setFile(null);
-      },
-      onError(error) {
-        console.log("Got error from backend", error);
-      },
+      }, onError(error) { console.log("Got error from backend", error);},
     }
   );
 
-  function callMutation() {
-    mutation.mutate({ gallery: previewImage });
-  }
+  function callMutation() { mutation.mutate({ usermedia: file });}
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 
-  console.log(file)
+  console.log(userinfos[0].usermedia)
 
   return (
     <div>
@@ -89,8 +80,7 @@ const ProfilePage = () => {
                 <p>@{userinfo.user.username}</p>
                 <i>{userinfo.profession}</i>
               </div>
-            </div>
-          ))}
+            </div>))}
         </div>
           <div className={`user_profile_picture-userinfo_fp_${theme}`}>
             <p> <strong>10.3M</strong> followers</p>
@@ -104,20 +94,16 @@ const ProfilePage = () => {
               <img src={`http://127.0.0.1:8000/${images.gallery}`} alt="" />
             </div>
           ))}
-          {
-            file &&             
+          { file &&             
           <div className="Profilepage_user-image_container uploading">
             <img src={previewImage} alt="" />
             <div className="Profilepage_image-uploader_button">
               <button onClick={() => setFile(null)}>Cancel</button>
               <button onClick={callMutation}>Upload <FiUpload/> </button>
             </div>
-          </div>
-          }
+          </div> }
           <div className="Profilepage_user-image_uploader">
-            <label htmlFor="file-input">
-              <BsImages  size="50px"/>
-            </label>
+            <label htmlFor="file-input"> <BsImages  size="50px"/></label>
             <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{display: "none"}}/>
             <p>Upload Image</p>
           </div>

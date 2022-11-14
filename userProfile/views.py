@@ -40,7 +40,8 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 from rest_framework.views import APIView
-from rest_framework import permissions
+from rest_framework import permissions,authentication
+from rest_framework import viewsets
 
 class getUser(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -51,16 +52,16 @@ class getUser(APIView):
         serializer = UserInfoSerializers(userinfos, many=True)
         return Response(serializer.data)
 
-class postMedia(APIView):
-
-    def get(self, request):
-        usersMedia = UserMedia.objects.all()
-        serializer = UserMediaSerializer(usersMedia, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
+    def post(self, request, ):
         serializer = UserMediaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request):
+        serializer = UserInfoSerializers(data=request.data, partial=True) # set partial=True to update a data partially
+        if serializer.is_valid():
+            serializer.save()
+            return Response(code=201, data=serializer.data)
+        return Response(code=400, data="wrong parameters")
