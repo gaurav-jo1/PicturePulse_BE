@@ -17,3 +17,6 @@ class UserInfo(models.Model):
 class UserMedia(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     gallery = models.ImageField(upload_to="gallery")
+
+class Meta:
+    ordering = ['id']

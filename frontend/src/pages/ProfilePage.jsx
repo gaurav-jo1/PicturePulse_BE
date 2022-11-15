@@ -125,15 +125,12 @@ const ProfilePage = () => {
         </div>
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
           <p>
-            {" "}
             <strong>10.3M</strong> followers
           </p>
           <p>
-            {" "}
             <strong>252</strong> posts
           </p>
           <p>
-            {" "}
             <strong>496</strong> following
           </p>
         </div>
@@ -143,7 +140,7 @@ const ProfilePage = () => {
           <div key={images.id} className="Profilepage_user-image_container">
             <img src={`http://127.0.0.1:8000${images.gallery}`} alt="" />
           </div>
-        ))}
+        )).reverse()}
         {file && (
           <div className="Profilepage_user-image_container uploading">
             <img src={previewImage} alt="" />
@@ -157,7 +154,6 @@ const ProfilePage = () => {
         )}
         <div className="Profilepage_user-image_uploader">
           <label htmlFor="file-input">
-            {" "}
             <BsImages size="50px" />
           </label>
           <input
