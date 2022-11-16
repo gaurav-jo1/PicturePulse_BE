@@ -14,7 +14,6 @@ const ProfilePage = () => {
 
   const [file, setFile] = useState(null);
   const [previewImage, setpreviewImage] = useState(null);
-  const [callQuery, setCallQuery] = useState(null);
 
   const handleChange = (e) => {
     setpreviewImage(URL.createObjectURL(e.target.files[0]));
@@ -45,39 +44,30 @@ const ProfilePage = () => {
     });
   };
 
-  const {
-    data: userinfos,
-    isLoading,
-    isError,
-  } = useQuery(
-    ["userinfos"],
-    () => {
+  const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"], () => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
-    },
-    { enabled: !loading }
+    },{ enabled: !loading }
   );
 
-  const mutation = useMutation(
-    (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
-    {
-      onSuccess: (data) => {
-        console.log("Got response from backend successfull", data);
+  const mutation = useMutation((body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
+    { onSuccess: (data) => {
+        console.log("Got response from backend successfull",data );
         setpreviewImage(null);
         setFile(null);
-        setCallQuery(true);
-      },
-      onError(error) {
+        // setTimeout(function call_query() {
+        // console.log("usermedia query called")
+        // client.invalidateQueries("usermedia")
+        // },1000)
+      }, onError(error) {
         console.log("Got error from backend", error);
       },
     }
   );
 
-  const { data: usermedia } = useQuery(
-    ["usermedia"],
-    () => {
+
+  const { data: usermedia } = useQuery(["usermedia"], () => {
       return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());
-    },
-    { enabled: !loading }
+    },{ enabled: !loading }
   );
 
   function callMutation() {
@@ -88,14 +78,6 @@ const ProfilePage = () => {
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 
-  if(callQuery) {
-    setTimeout(function call_query() {
-      console.log("usermedia query called")
-      setCallQuery(null)
-      client.invalidateQueries("usermedia")
-    },1000)
-  }
-
   // console.log(usermedia);
   return (
     <div>
@@ -105,18 +87,10 @@ const ProfilePage = () => {
           {userinfos?.map((userinfo) => (
             <div key={userinfo.user} className="user-userinfo">
               <div className="user_profile_picture-container">
-                <img
-                  src={`http://127.0.0.1:8000/${userinfo.picture}`}
-                  alt={userinfo.user}
-                  width="500"
-                  height="600"
-                />
+                <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
               </div>
               <div className="user_profile_picture-userinfo">
-                <h1>
-                  {" "}
-                  {userinfo.user.first_name} {userinfo.user.last_name}
-                </h1>
+                <h1> {userinfo.user.first_name} {userinfo.user.last_name} </h1>
                 <p>@{userinfo.user.username}</p>
                 <i>{userinfo.profession}</i>
               </div>
@@ -124,15 +98,9 @@ const ProfilePage = () => {
           ))}
         </div>
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
-          <p>
-            <strong>10.3M</strong> followers
-          </p>
-          <p>
-            <strong>252</strong> posts
-          </p>
-          <p>
-            <strong>496</strong> following
-          </p>
+          <p> <strong>10.3M</strong> followers </p>
+          <p> <strong>252</strong> posts </p>
+          <p> <strong>496</strong> following </p>
         </div>
       </div>
       <div className={`Profiepage_user-media_container_${theme}`}>
@@ -146,23 +114,13 @@ const ProfilePage = () => {
             <img src={previewImage} alt="" />
             <div className="Profilepage_image-uploader_button">
               <button onClick={() => setFile(null)}>Cancel</button>
-              <button onClick={callMutation}>
-                Upload <FiUpload />{" "}
-              </button>
+              <button onClick={callMutation}> Upload <FiUpload /> </button>
             </div>
           </div>
         )}
         <div className="Profilepage_user-image_uploader">
-          <label htmlFor="file-input">
-            <BsImages size="50px" />
-          </label>
-          <input
-            id="file-input"
-            type="file"
-            onChange={handleChange}
-            onClick={onInputClick}
-            style={{ display: "none" }}
-          />
+          <label htmlFor="file-input"> <BsImages size="50px" /> </label>
+          <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}/>
           <p>Upload Image</p>
         </div>
       </div>

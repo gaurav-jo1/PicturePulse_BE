@@ -6,7 +6,9 @@ from .serializers import UserInfoSerializers, UserMediaSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import permissions
-
+from rest_framework import generics
+from django.contrib.auth.models import User
+from .serializers import RegisterSerializer
 
 # Create your views here.
 
@@ -57,3 +59,9 @@ class getMedia(APIView):
             serializer.save(user=self.request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = RegisterSerializer

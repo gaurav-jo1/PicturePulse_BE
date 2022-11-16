@@ -1,4 +1,6 @@
 import React,{useContext} from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useMutation } from "@tanstack/react-query";
 import { IoLogoFacebook } from "react-icons/io";
 
 // Tools
@@ -16,6 +18,17 @@ import "../styling/SignupPage.scss";
 
 const SignupPage = () => {
   const {theme} = useContext(ThemeContext)
+  // const { authTokens, callLogout, loading } = useContext(AuthContext);
+  
+  const sendInfo = (url, body) =>
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
   return (
     <div className={`Signup_container ${theme}`}>
       <div className="Signup_container-form">
@@ -39,24 +52,16 @@ const SignupPage = () => {
             <form action="">
               <div className="form_container_inputs">
                 <div className={`form_container-input_label_div-${theme}`}>
-                  <label>
-                    <input type="text" name="username" placeholder="Mobile Number or Email"/>
-                  </label>
+                  <label> <input type="text" name="username" placeholder="Mobile Number or Email"/> </label>
                 </div>
                 <div className={`form_container-input_label_div-${theme}`}>
-                  <label>
-                    <input type="text" name="full_name" placeholder="Full Name"/>
-                  </label>
+                  <label> <input type="text" name="full_name" placeholder="Full Name"/> </label>
                 </div>
                 <div className={`form_container-input_label_div-${theme}`}>
-                  <label>
-                    <input type="text" name="username" placeholder="Username" />
-                  </label>
+                  <label> <input type="text" name="username" placeholder="Username" /> </label>
                 </div>
                 <div className={`form_container-input_label_div-${theme}`}>
-                  <label>
-                    <input type="password" name="password" placeholder="Password"/>
-                  </label>
+                  <label> <input type="password" name="password" placeholder="Password"/> </label>
                 </div>
                 <div className="Signup_container-desc">
                   <p> People who use our service may have uploaded your contact information to instagra. <a href="/">Learn More</a></p>
@@ -64,7 +69,7 @@ const SignupPage = () => {
                 </div>
                 <div className={`form_container-submit_div-${theme}`}>
                     <button type="submit">Sign Up</button>
-                  </div>
+                </div>
               </div>
             </form>
           </div>
