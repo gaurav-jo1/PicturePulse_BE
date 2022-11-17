@@ -9,7 +9,7 @@ import { BsHeart } from "react-icons/bs";
 import {BiHomeHeart} from "react-icons/bi"
 import { CgAddR } from "react-icons/cg";
 import { HiSearch } from "react-icons/hi";
-
+import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png"
 import "../styling/Navbar.scss";
 import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../context/ThemeContextProvider";
@@ -30,22 +30,13 @@ const Navbar = () => {
       body: JSON.stringify(body),
     });
 
-  const {
-    data: userinfos,
-    isLoading,
-    isError,
-  } = useQuery(
-    ["userinfos"],
-    () => {
-      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
-    },
-    { enabled: !loading }
+  const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"],() =>
+    { return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());}
+    , { enabled: !loading }
   );
 
   if (isLoading) return <h1>Loading....</h1>;
-
   if (isError) return <h1>Error with request</h1>;
-
   if (userinfos.code === "token_not_valid") return callLogout();
 
   return (
@@ -53,82 +44,40 @@ const Navbar = () => {
       <div className="Navbar_container-Box1">
         <div className="Navbar_container-Box1-logo">
           <Link to="/">
-          {theme === "light" ? (
-                <img src={Insta_logo_light} alt="Instagram" />
-              ) : (
-                <img src={Insta_logo_dark} alt="Instagram" />
-              )}
+            {theme === "light"
+            ? (<img src={Insta_logo_light} alt="Instagram" />)
+            : (<img src={Insta_logo_dark} alt="Instagram" />)}
           </Link>
         </div>
       </div>
       <div className="Navbar_container-Box2">
         <div className="Navbar_container-Box2-search">
-          {searchValue ? (
-            <span>
-              {" "}
-              <HiSearch style={{ visibility: "hidden" }} />{" "}
-            </span>
-          ) : (
-            <span>
-              {" "}
-              <HiSearch />{" "}
-            </span>
-          )}
-          <input
-            value={searchValue}
-            type="text"
-            placeholder="   Search"
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+          <label><HiSearch/></label>
+          <input value={searchValue} type="text" onChange={(e) => setSearchValue(e.target.value)}/>
         </div>
       </div>
       <div className="Navbar_container-Box3">
         <ul className={`Navbar_container-Box3-icons_${theme}`}>
-          <li>
-            {" "}
-            <Link to="/">
-              {" "}
-              <BiHomeHeart />{" "}
-            </Link>{" "}
-          </li>
-          <li>
-            {" "}
-            <Link to="/">
-              {" "}
-              <IoPaperPlaneOutline />{" "}
-            </Link>{" "}
-          </li>
-          <li>
-            {" "}
-            <Link to="/">
-              {" "}
-              <CgAddR />{" "}
-            </Link>{" "}
-          </li>
-          <li>
-            {" "}
-            <Link to="/">
-              {" "}
-              <BsHeart />{" "}
-            </Link>{" "}
-          </li>
-          {userinfos?.map((userinfo) => (
+          <li> <Link to="/"> <BiHomeHeart /> </Link> </li>
+          <li> <Link to="/"> <IoPaperPlaneOutline /> </Link> </li>
+          <li> <Link to="/"> <CgAddR /> </Link> </li>
+          <li> <Link to="/"> <BsHeart /> </Link> </li>
+          { userinfos[0] 
+            ?  userinfos?.map((userinfo) => (
             <li key={userinfo.user}>
-              {" "}
               <Link to="/profile">
-                {" "}
-                <img
-                  src={`http://127.0.0.1:8000/${userinfo.picture}`}
-                  alt={userinfo.user}
-                  width="30"
-                  height="30"
-                />{" "}
-              </Link>{" "}
+                <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/>
+              </Link>
             </li>
-          ))}
-          <li>
-            <Header />
-          </li>
+          ))
+            : 
+            <li>
+              <Link to="/profile">
+                <img src={no_profile} alt="No Profile" width="30" height="30"/>
+              </Link>
+            </li>
+           }
+          <li> <Header /> </li>
         </ul>
       </div>
     </div>
