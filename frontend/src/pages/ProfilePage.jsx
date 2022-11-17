@@ -6,7 +6,8 @@ import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { BsImages } from "react-icons/bs";
 import { FiUpload } from "react-icons/fi";
-import client from "../react-query-client";
+import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png"
+// import client from "../react-query-client";
 
 const ProfilePage = () => {
   const { authTokens, callLogout, loading } = useContext(AuthContext);
@@ -78,16 +79,15 @@ const ProfilePage = () => {
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 
-  // console.log(usermedia);
   return (
     <div>
       <div className={`Profile_container_${theme}`}>
         <div className={`Profile_container-user_nav_${theme}`}>
           <Navbar />
-          {userinfos?.map((userinfo) => (
+          { userinfos[0] ? userinfos.map((userinfo) => (
             <div key={userinfo.user} className="user-userinfo">
               <div className="user_profile_picture-container">
-                <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
+                  <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
               </div>
               <div className="user_profile_picture-userinfo">
                 <h1> {userinfo.user.first_name} {userinfo.user.last_name} </h1>
@@ -95,7 +95,13 @@ const ProfilePage = () => {
                 <i>{userinfo.profession}</i>
               </div>
             </div>
-          ))}
+          )) :  
+          <div className="user-userinfo">
+              <div className="user_profile_picture-container">
+                  <img src={no_profile} alt="No profile" width="500" height="600" />
+              </div>
+          </div>
+            }
         </div>
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
           <p> <strong>10.3M</strong> followers </p>
