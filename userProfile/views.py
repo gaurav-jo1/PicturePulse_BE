@@ -6,8 +6,6 @@ from .serializers import UserInfoSerializers, UserMediaSerializer,UserSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import permissions
-from rest_framework import generics
-from django.contrib.auth.models import User
 from .serializers import RegisterSerializer
 
 # Create your views here.
@@ -33,8 +31,14 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-
 class getUser(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+
+class getUserInfo(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):

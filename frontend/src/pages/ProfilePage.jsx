@@ -45,17 +45,19 @@ const ProfilePage = () => {
     });
   };
 
-  const {
-    data: userinfos,
-    isLoading,
-    isError,
-  } = useQuery(
-    ["userinfos"],
-    () => {
+  const { data: userinfos, isLoading, isError,} = useQuery( ["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
     },
     { enabled: !loading }
   );
+
+  const { data: users} = useQuery( ["users"],() => {
+      return getInfo("http://127.0.0.1:8000/user/").then((t) => t.json());
+    },
+    { enabled: !loading }
+  );
+
+  console.log(users)
 
   const mutation = useMutation(
     (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
@@ -111,14 +113,11 @@ const ProfilePage = () => {
           </div>
         </div>
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
-          { userinfos && userinfos?.map((userinfo) => (
-              <div  key={userinfo.user}  className="user_profile_picture-userinfo">
-              <h1> {userinfo.user.first_name} {userinfo.user.last_name} </h1>
-              <p>@{userinfo.user.username}</p>
-              <i>{userinfo.profession}</i>
-            </div>
-            ))
-          }
+          <div className="user_profile_picture-userinfo">
+              <h1> {users.first_name} </h1>
+              <p>@{users.username}</p>
+              <i>{users.profession}</i>
+          </div>
           <div className="user_profile_picture-userinfo-follower">
             <p> <strong>10.3M</strong> followers </p>
             <p> <strong>252</strong> posts </p>
@@ -148,8 +147,7 @@ const ProfilePage = () => {
         )}
         <div className="Profilepage_user-image_uploader">
           <label htmlFor="file-input">
-            {" "}
-            <BsImages size="50px" />{" "}
+            <BsImages size="50px" />
           </label>
           <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}
           />
