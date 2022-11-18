@@ -71,55 +71,31 @@ const LoginPage = () => {
                 <div className="form_container_inputs">
                   <div className={`form_container-input_label_div-${theme}`}>
                     <label>
-                      <input
-                        type="text"
-                        name="username"
-                        value={userInput}
-                        onChange={(e) => setUserInput(e.target.value)}
-                        placeholder="Phone number, username, or email"
-                        required
-                      />
+                      <input type="text" name="username" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Phone number, username, or email" required />
                     </label>
                   </div>
                   <div className={`form_container-input_label_div-${theme}`}>
                     <label>
-                      <input
-                        type="password"
-                        name="password"
-                        value={userPassword}
-                        onChange={(e) => setUserPassword(e.target.value)}
-                        placeholder="Password"
-                        required
-                      />
+                      <input type="password" name="password" value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder="Password" required/>
                     </label>
                   </div>
                   <div className={`form_container-submit_div-${theme}`}>
-                    <button onClick={callLogin} type="submit">
-                      Log in
-                    </button>
+                    <button onClick={callLogin} type="submit"> Log in </button>
                   </div>
                 </div>
                 <div className={`separator_OR_${theme}`}>
                   <p className="one">
-                    {" "}
-                    <span>OR</span>{" "}
+                    <span>OR</span>
                   </p>
                 </div>
                 <div className={`form_container_links_${theme}`}>
-                  <a
-                    className="Login_container_login-a"
-                    href="www.facebook.com"
-                  >
+                  <a className="Login_container_login-a" href="www.facebook.com">
                     <div className="Login_container_login_facebook">
-                      <h2>
-                        {" "}
-                        <IoLogoFacebook />
-                      </h2>
+                      <h2> <IoLogoFacebook /></h2>
                       <p> &nbsp;Log in with Facebook </p>
                     </div>
                   </a>
                   <Link className="Login_container-forgot_password-p" to="/">
-                    {" "}
                     Forgot password?
                   </Link>
                 </div>

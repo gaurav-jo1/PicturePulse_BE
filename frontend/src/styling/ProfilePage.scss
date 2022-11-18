@@ -64,13 +64,12 @@
   padding-top: 30px;
 
   p {
-    margin-top: 10px;
     font-size: 25px;
     font-family: "Times New Roman", Times, serif;
   }
 
   i {
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: bold;
   }
 }
@@ -78,7 +77,8 @@
 @mixin userFollow($col) {
   display: flex;
   justify-content: space-between;
-  padding: 35px 150px;
+  flex-direction: column;
+  padding: 10px 150px;
   color: $col;
   font-size: 18px;
 }
@@ -89,6 +89,12 @@
 
 .user_profile_picture-userinfo_fp_dark {
   @include userFollow(rgb(243, 231, 231));
+}
+
+.user_profile_picture-userinfo-follower {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
 }
 
 @mixin galleryImage($bg, $bg2, $svg, $font) {
