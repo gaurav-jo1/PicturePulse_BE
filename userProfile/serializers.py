@@ -18,7 +18,7 @@ class UserMediaSerializer(serializers.ModelSerializer):
 
 
 class UserInfoSerializers(serializers.ModelSerializer):
-
+    user = UserSerializer(many=False)
     class Meta:
         model = UserInfo
         fields = '__all__'

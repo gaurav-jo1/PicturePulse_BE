@@ -7,6 +7,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import permissions
 from .serializers import RegisterSerializer
+from .models import UserInfo
 
 # Create your views here.
 
@@ -47,10 +48,11 @@ class getUserInfo(APIView):
         serializer = UserInfoSerializers(userinfos, many=True)
         return Response(serializer.data)
 
-    def post(self, request, ):
-        serializer = UserInfoSerializers(data=request.data)
+    def patch(self, request,pk ):
+        user = UserInfo.objects.get(pk=pk)
+        serializer = UserInfoSerializers(instance=user, data=request.data, partial=True)
         if serializer.is_valid():
-            serializer.save(user=self.request.user)
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
