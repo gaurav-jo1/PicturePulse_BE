@@ -8,7 +8,7 @@ from rest_framework.validators import UniqueValidator
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('first_name', 'username')
+        fields = ('id', 'first_name', 'username')
 
 
 class UserMediaSerializer(serializers.ModelSerializer):
@@ -19,9 +19,10 @@ class UserMediaSerializer(serializers.ModelSerializer):
 
 class UserInfoSerializers(serializers.ModelSerializer):
     user = UserSerializer(many=False)
+
     class Meta:
         model = UserInfo
-        fields = '__all__'
+        fields = ('id', 'picture', 'profession', 'user')
 
 
 class RegisterSerializer(serializers.ModelSerializer):

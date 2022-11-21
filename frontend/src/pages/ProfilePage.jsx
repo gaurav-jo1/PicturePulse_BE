@@ -82,6 +82,7 @@ const ProfilePage = () => {
     },
     { enabled: !loading }
   );
+  console.log(userinfos)
 
   function callMutation() {
     mutation.mutate({ gallery: file });
@@ -97,16 +98,12 @@ const ProfilePage = () => {
         <div className={`Profile_container-user_nav_${theme}`}>
           <Navbar />
           <div className="user-userinfo">
-            {userinfos[0] ? (
+            {(
               userinfos?.map((userinfo) => (
                 <div key={userinfo.user} className="user_profile_picture-container">
-                  <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" />
+                  {userinfo.picture ? <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" /> : <img src={no_profile} alt="noprofile" width="500" height="600" /> }
                 </div>
               ))
-            ) : (
-              <div className="user_profile_picture-container">
-                <img src={no_profile} alt="No profile" width="500" height="600" />
-              </div>
             )}
           </div>
         </div>

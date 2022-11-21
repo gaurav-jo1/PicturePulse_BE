@@ -62,21 +62,13 @@ const Navbar = () => {
           <li> <Link to="/"> <IoPaperPlaneOutline /> </Link> </li>
           <li> <Link to="/"> <CgAddR /> </Link> </li>
           <li> <Link to="/"> <BsHeart /> </Link> </li>
-          { userinfos[0] 
-            ?  userinfos?.map((userinfo) => (
+          {userinfos?.map((userinfo) => (
             <li key={userinfo.user}>
               <Link to="/profile">
-                <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/>
+                {userinfo.picture ? <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img src={no_profile} alt="no profile" width="30" height="30"/>}
               </Link>
             </li>
-          ))
-            : 
-            <li>
-              <Link to="/profile">
-                <img src={no_profile} alt="No Profile" width="30" height="30"/>
-              </Link>
-            </li>
-           }
+          )) }
           <li> <Header /> </li>
         </ul>
       </div>

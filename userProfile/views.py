@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework import permissions
 from .serializers import RegisterSerializer
 from .models import UserInfo
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -37,6 +38,14 @@ class getUser(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+    def patch(self, request,pk ):
+        user = User.objects.get(id=pk)
+        serializer = UserSerializer(instance=user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class getUserInfo(APIView):
