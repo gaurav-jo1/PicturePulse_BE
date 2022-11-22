@@ -42,10 +42,9 @@ class getUser(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
-    def patch(self, request, pk, format=None):
-        user = User.objects.get(id=pk)
-        serializer = UserSerializer(
-            instance=user, data=request.data, partial=True)
+    def patch(self, request, format=None):
+        userinfo = User.objects.get(username=request.user)
+        serializer = UserSerializer(instance=userinfo, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -63,8 +62,7 @@ class getUserInfo(APIView):
         return Response(serializer.data)
 
     def patch(self, request, format=None):
-        user = request.user
-        userinfo = UserInfo.objects.get(user=user)
+        userinfo = UserInfo.objects.get(user=request.user)
         serializer = UserInfoSerializers(instance=userinfo, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()

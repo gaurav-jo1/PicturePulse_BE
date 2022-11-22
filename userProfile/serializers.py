@@ -13,7 +13,7 @@ class UserMediaSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'username')
+        fields = ('id', 'first_name', 'username',)
 
 class UserInfoSerializers(serializers.ModelSerializer):
     user = UserSerializer(many=False, required=True)
@@ -22,6 +22,15 @@ class UserInfoSerializers(serializers.ModelSerializer):
         model = UserInfo
         fields = ('id', 'picture', 'profession', 'user')
 
+
+    # def update(self, instance, validated_data):
+    #     user_validated_data = validated_data.pop('user', None)
+    #     user = instance.user  
+    #     user.first_name = user_validated_data.get('first_name', user.first_name)
+    #     user.username = user_validated_data.get('username', user.username)
+    #     user.save()
+        
+    #     return instance
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
