@@ -23,14 +23,14 @@ class UserInfoSerializers(serializers.ModelSerializer):
         fields = ('id', 'picture', 'profession', 'user')
 
 
-    # def update(self, instance, validated_data):
-    #     user_validated_data = validated_data.pop('user', None)
-    #     user = instance.user  
-    #     user.first_name = user_validated_data.get('first_name', user.first_name)
-    #     user.username = user_validated_data.get('username', user.username)
-    #     user.save()
-        
-    #     return instance
+    def update(self, instance, validated_data):
+        user_validated_data = validated_data.pop('user', None)
+        instance.user.first_name = user_validated_data.get('first_name', instance.user.first_name)
+        instance.user.username = user_validated_data.get('username', instance.user.username)
+        instance.profession = validated_data.get('profession', instance.profession)
+        instance.save()
+
+        return instance
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
