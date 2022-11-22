@@ -5,20 +5,18 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'first_name', 'username')
-
-
 class UserMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserMedia
         fields = '__all__'
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'username')
 
 class UserInfoSerializers(serializers.ModelSerializer):
-    user = UserSerializer(many=False)
+    user = UserSerializer(many=False, required=True)
 
     class Meta:
         model = UserInfo

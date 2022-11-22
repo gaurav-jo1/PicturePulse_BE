@@ -2,13 +2,14 @@ from django.shortcuts import render
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
-from .serializers import UserInfoSerializers, UserMediaSerializer,UserSerializer
+from .serializers import UserInfoSerializers, UserMediaSerializer, UserSerializer
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework import permissions
+from rest_framework import permissions, authentication
 from .serializers import RegisterSerializer
 from .models import UserInfo
 from django.contrib.auth.models import User
+from rest_framework import exceptions
 
 # Create your views here.
 
@@ -33,15 +34,18 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+
 class getUser(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    def get(self, request):
+
+    def get(self, request, format=None):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
-    def patch(self, request,pk ):
+    def patch(self, request, pk, format=None):
         user = User.objects.get(id=pk)
-        serializer = UserSerializer(instance=user, data=request.data, partial=True)
+        serializer = UserSerializer(
+            instance=user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -51,30 +55,33 @@ class getUser(APIView):
 class getUserInfo(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request):
+    def get(self, request, format=None):
         user = request.user
+        print(user)
         userinfos = user.userinfo_set.all()
         serializer = UserInfoSerializers(userinfos, many=True)
         return Response(serializer.data)
 
-    def patch(self, request,pk ):
-        user = UserInfo.objects.get(pk=pk)
-        serializer = UserInfoSerializers(instance=user, data=request.data, partial=True)
+    def patch(self, request, format=None):
+        user = request.user
+        userinfo = UserInfo.objects.get(user=user)
+        serializer = UserInfoSerializers(instance=userinfo, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class getMedia(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request):
+    def get(self, request, format=None):
         user = request.user
         userinfos = user.usermedia_set.all()
         serializer = UserMediaSerializer(userinfos, many=True)
         return Response(serializer.data)
 
-    def post(self, request, ):
+    def post(self, request, format=None):
         serializer = UserMediaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=self.request.user)
@@ -83,7 +90,7 @@ class getMedia(APIView):
 
 
 class RegisterView(APIView):
-    def post(self, request):
+    def post(self, request, format=None):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
