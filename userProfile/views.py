@@ -35,20 +35,20 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-class getUser(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+# class getUser(APIView):
+#     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request, format=None):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
+#     def get(self, request, format=None):
+#         serializer = UserSerializer(request.user)
+#         return Response(serializer.data)
 
-    def patch(self, request, format=None):
-        userinfo = User.objects.get(username=request.user)
-        serializer = UserSerializer(instance=userinfo, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def patch(self, request, format=None):
+#         userinfo = User.objects.get(username=request.user)
+#         serializer = UserSerializer(instance=userinfo, data=request.data, partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class getUserInfo(APIView):
