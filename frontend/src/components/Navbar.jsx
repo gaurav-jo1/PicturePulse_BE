@@ -16,7 +16,7 @@ import { ThemeContext } from "../context/ThemeContextProvider";
 
 
 const Navbar = () => {
-  const { authTokens, callLogout, loading } = useContext(AuthContext);
+  const { authTokens, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
   const [searchValue, setSearchValue] = useState("");
 
@@ -37,7 +37,6 @@ const Navbar = () => {
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
-  if (userinfos.code === "token_not_valid") return callLogout();
 
   return (
     <div className="Navbar_container">

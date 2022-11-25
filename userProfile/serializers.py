@@ -13,7 +13,7 @@ class UserMediaSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'username',)
+        fields = ('id', 'first_name', 'username','email')
 
 class UserInfoSerializers(serializers.ModelSerializer):
     user = UserSerializer(many=False, required=True)

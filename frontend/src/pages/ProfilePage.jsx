@@ -8,10 +8,9 @@ import { BsImages } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FiUpload,FiEdit } from "react-icons/fi";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
-// import client from "../react-query-client";
 
 const ProfilePage = () => {
-  const { authTokens, callLogout, loading } = useContext(AuthContext);
+  const { authTokens, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
 
   const [file, setFile] = useState(null);
@@ -81,7 +80,7 @@ const ProfilePage = () => {
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
-  if (userinfos.code === "token_not_valid") return callLogout();
+  // if (userinfos.code === "token_not_valid") return callLogout();
 
   console.log(userinfos)
 

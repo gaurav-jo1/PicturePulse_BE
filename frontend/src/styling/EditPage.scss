@@ -120,8 +120,10 @@
   align-items: center;
   text-align: center;
 
-  svg {
-    margin-top: 10px;
+  .Editpage_meta_container_logo {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
   }
 
   h3 {
