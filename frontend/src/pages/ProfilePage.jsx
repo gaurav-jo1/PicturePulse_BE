@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { BsImages } from "react-icons/bs";
-
+import { Link } from "react-router-dom";
 import { FiUpload,FiEdit } from "react-icons/fi";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
 // import client from "../react-query-client";
@@ -91,13 +91,11 @@ const ProfilePage = () => {
         <div className={`Profile_container-user_nav_${theme}`}>
           <Navbar />
           <div className="user-userinfo">
-            {(
-              userinfos?.map((userinfo) => (
+            {( userinfos?.map((userinfo) => (
                 <div key={userinfo.user} className="user_profile_picture-container">
                   {userinfo.picture ? <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" /> : <img src={no_profile} alt="noprofile" width="500" height="600" /> }
                 </div>
-              ))
-            )}
+              )))}
           </div>
         </div>
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
@@ -106,10 +104,12 @@ const ProfilePage = () => {
               <h1> {userinfo.user.first_name} </h1>
               <p>@{userinfo.user.username}</p>
               <i>{userinfo.profession}</i>
-              <div className="user_userinfo-edit">
-                <p>Edit Profile&nbsp;</p>
-                <p> <FiEdit /></p>
-              </div>
+              <Link to="/Edit">
+                <div className="user_userinfo-edit">
+                    <p>Edit Profile&nbsp;</p>
+                    <p> <FiEdit /></p>
+                </div>
+              </Link>
             </div>
           ))}
           <div className="user_profile_picture-userinfo-follower">

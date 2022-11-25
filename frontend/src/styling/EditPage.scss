@@ -1,0 +1,137 @@
+.Editpage_container {
+  background-color: #fafafa;
+}
+
+.Editpage_container-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Editpage_container_div-edit {
+  width: 600px;
+  border: 1px solid rgba(197, 176, 197, 0.667);
+  padding: 20px 60px;
+  background: white;
+
+  .Editpage_container_profile {
+    display: flex;
+
+    .Editpage_container_profile-image {
+      margin-right: 35px;
+      margin-left: 100px;
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .Editpage_container_username {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      strong {
+        color: blueviolet;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Inputs
+  .Editpage_container_inputs {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+
+    .Editpage_container_name {
+      width: 178px;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 34px;
+
+      strong {
+        margin-top: 5px;
+      }
+    }
+
+    .Editpage_container_input {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+
+      input {
+        height: 30px;
+        padding: 5px 10px;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      textarea {
+        padding: 10px 10px;
+      }
+
+      textarea:focus {
+        outline: none;
+      }
+
+      strong {
+        margin-top: 10px;
+        font-size: 15px;
+        color: rgb(175, 176, 175);
+      }
+
+      p {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .Editpage_container_submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-right: 30px;
+
+    input {
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: 2px solid black;
+      background-color: blueviolet;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+.Editpage_meta_container {
+  width: 600px;
+  background-color: white;
+  border: 1px solid rgba(197, 176, 197, 0.667);
+  padding: 20px 60px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  svg {
+    margin-top: 10px;
+  }
+
+  h3 {
+    color: blueviolet;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+}

@@ -62,6 +62,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
+  text-decoration: none;
 
   p {
     font-size: 25px;
@@ -83,7 +84,8 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 4px 10px;
-    background: skyblue;
+    background: red;
+    color: white;
 
     p {
       font-size: 16px;
@@ -119,6 +121,7 @@
     border-radius: 5px;
     padding: 4px 12px;
     background: wheat;
+    color: black;
   }
 
   p:nth-child(2) {
