@@ -1,4 +1,8 @@
 :root {
-    --background-color: rgb(17,24,39);
-    --box-color: rgb(25,35,51);
-  }
+  --background-color: rgb(17, 24, 39);
+  --box-color: rgb(25, 35, 51);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

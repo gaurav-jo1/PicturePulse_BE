@@ -2,15 +2,12 @@ import React, { useState, useContext } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import meta from "../assets/meta.png";
-import anya from "../assets/35-The-Beauty-of-Anya-Forger.png";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../context/AuthContext";
 import "../styling/EditPage.scss";
-import client from "../react-query-client"
-import { Navigate } from "react-router-dom";
 
 const EditPage = () => {
-  const { authTokens, loading } = useContext(AuthContext);
+  const { authTokens } = useContext(AuthContext);
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -29,11 +26,14 @@ const EditPage = () => {
 
   // let userinfos = client.getQueryData(["userinfos"])
 
-  const [ifFun, setSIfFun] =  useState(true);
+  const [ifFun, setIfFun] =  useState(true);
   const [name, setName] =  useState("");
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
+  const [scroll, setScroll] = useState("");
+  const [changeProfile, setChangeProfile] = useState(false);
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
@@ -43,22 +43,24 @@ const EditPage = () => {
     setUsername(userinfos[0].user.username)
     setBio(userinfos[0].profession)
     setEmail(userinfos[0].user.email)
-    setSIfFun(false)
+    setImage(userinfos[0].picture)
+    setIfFun(false)
   }
 
-  console.log(userinfos)
+  console.log(scroll)
+
   return (
-    <div className="Editpage_container">
+    <div className={`Editpage_container ${scroll}`}>
       <Navbar />
       <div className="Editpage_container-div">
         <div className="Editpage_container_div-edit">
           <div className="Editpage_container_profile">
             <div className="Editpage_container_profile-image">
-              <img src={anya} alt="Anya" width="50" height="50" />
+              <img src={`http://127.0.0.1:8000${image}`} alt="Anya" width="50" height="50" />
             </div>
             <div className="Editpage_container_username">
               <p>@{username}</p>
-              <strong>Change profile photo</strong>
+              <strong onClick={() => {setChangeProfile(true); setScroll("disableScroll")}}>Change profile photo</strong>
             </div>
           </div>
 
@@ -136,6 +138,19 @@ const EditPage = () => {
         </div>
       </div>
       <Footer />
+      {
+              changeProfile &&             
+              <div className="Editpage_profile_container">
+                <div className="Editpage_profile_page">
+                  <p>Change Profile Photo</p>
+                  <ul>
+                    <li>Upload Photo</li>
+                    <li>Remove Current Photo</li>
+                    <li onClick={() => {setChangeProfile(false); setScroll("")}}>Cancel</li>
+                  </ul>
+                </div>
+              </div>
+            }
     </div>
   );
 };
