@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import meta from "../assets/meta.png";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { AuthContext } from "../context/AuthContext";
 import "../styling/EditPage.scss";
+import client from "../react-query-client"
 
 const EditPage = () => {
   const { authTokens } = useContext(AuthContext);
@@ -19,12 +20,21 @@ const EditPage = () => {
       body: JSON.stringify(body),
     });
 
+    const postInfo = (url, body) =>
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + String(authTokens.access),
+      },
+      body: JSON.stringify(body),
+    });
+
+
   const { data: userinfos, isLoading, isError} = useQuery(["userinfos"], () => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
     }
   );
-
-  // let userinfos = client.getQueryData(["userinfos"])
 
   const [ifFun, setIfFun] =  useState(true);
   const [name, setName] =  useState("");
@@ -34,6 +44,36 @@ const EditPage = () => {
   const [image, setImage] = useState("");
   const [scroll, setScroll] = useState("");
   const [changeProfile, setChangeProfile] = useState(false);
+
+  const mutation = useMutation(
+    (body) => postInfo("http://127.0.0.1:8000/userinfo/", body),
+    {
+      onSuccess: (data) => {
+        console.log("Got response from backend successfull", data);
+        client.invalidateQueries(["userinfos"])
+      },
+      onError(error) {
+        console.log("Got error from backend", error);
+      },
+    }
+    );
+    const mutationUser = useMutation(
+      (body) => postInfo("http://127.0.0.1:8000/user/", body),
+      {
+        onSuccess: (data) => {
+          console.log("Got response from backend successfull", data);
+          client.invalidateQueries(["userinfos"])
+      },
+      onError(error) {
+        console.log("Got error from backend", error);
+      },
+    }
+  );
+
+  function callMutation() {
+    mutation.mutate({ profession: bio });
+    mutationUser.mutate({first_name:name,username:username,email:email });
+  }
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
@@ -46,9 +86,14 @@ const EditPage = () => {
     setImage(userinfos[0].picture)
     setIfFun(false)
   }
+  // console.log("name: ",name)
+  // console.log("username: ",username)
+  // console.log("bio: ",bio)
+  // console.log("email: ",email)
+  // console.log("_______________________")
+  console.log(userinfos)
 
-  console.log(scroll)
-
+  
   return (
     <div className={`Editpage_container ${scroll}`}>
       <Navbar />
@@ -118,7 +163,7 @@ const EditPage = () => {
             </div>
           </div>
 
-          <div className="Editpage_container_submit">
+          <div onClick={() => callMutation()} className="Editpage_container_submit">
             <input type="submit" placeholder="Submit" />
           </div>
         </div>
@@ -138,8 +183,7 @@ const EditPage = () => {
         </div>
       </div>
       <Footer />
-      {
-              changeProfile &&             
+      {changeProfile &&             
               <div className="Editpage_profile_container">
                 <div className="Editpage_profile_page">
                   <p>Change Profile Photo</p>
