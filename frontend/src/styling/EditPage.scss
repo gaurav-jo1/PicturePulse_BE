@@ -181,6 +181,10 @@
       border-top: 1px solid #fafa;
       padding: 10px;
       cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
     }
 
     li:nth-child(1) {

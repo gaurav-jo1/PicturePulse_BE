@@ -1,14 +1,45 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext} from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { AuthContext } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import meta from "../assets/meta.png";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { AuthContext } from "../context/AuthContext";
+import client from "../react-query-client";
+import axios from "axios";
+
 import "../styling/EditPage.scss";
-import client from "../react-query-client"
 
 const EditPage = () => {
   const { authTokens } = useContext(AuthContext);
+
+  const [ifFun, setIfFun] = useState(true);
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
+  const [scroll, setScroll] = useState("");
+  const [changeProfile, setChangeProfile] = useState(false);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    let file = e.target.files[0]
+    setChangeProfile(false);
+    setScroll("");
+    const formData = new FormData();
+    formData.append("picture", file);
+    axios.patch("http://127.0.0.1:8000/userinfo/", formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: "Bearer " + String(authTokens.access),
+    }})
+    .then(function (response) {
+      console.log(response.status)
+      if (response.status === 201) {
+        client.invalidateQueries(["userinfos"])
+      }
+    })
+  };
+
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -20,7 +51,7 @@ const EditPage = () => {
       body: JSON.stringify(body),
     });
 
-    const postInfo = (url, body) =>
+  const postInfo = (url, body) =>
     fetch(url, {
       method: "PATCH",
       headers: {
@@ -30,41 +61,30 @@ const EditPage = () => {
       body: JSON.stringify(body),
     });
 
+  let onInputClick = (event) => {
+    event.target.value = "";
+  };
 
-  const { data: userinfos, isLoading, isError} = useQuery(["userinfos"], () => {
-      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
-    }
-  );
-
-  const [ifFun, setIfFun] =  useState(true);
-  const [name, setName] =  useState("");
-  const [username, setUsername] = useState("");
-  const [bio, setBio] = useState("");
-  const [email, setEmail] = useState("");
-  const [image, setImage] = useState("");
-  const [scroll, setScroll] = useState("");
-  const [changeProfile, setChangeProfile] = useState(false);
+  const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"], () => {
+    return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
+  });
 
   const mutation = useMutation(
     (body) => postInfo("http://127.0.0.1:8000/userinfo/", body),
-    {
-      onSuccess: (data) => {
+    {onSuccess: (data) => {
         console.log("Got response from backend successfull", data);
-        client.invalidateQueries(["userinfos"])
-      },
-      onError(error) {
+      },onError(error) {
         console.log("Got error from backend", error);
       },
     }
-    );
-    const mutationUser = useMutation(
-      (body) => postInfo("http://127.0.0.1:8000/user/", body),
-      {
-        onSuccess: (data) => {
-          console.log("Got response from backend successfull", data);
-          client.invalidateQueries(["userinfos"])
-      },
-      onError(error) {
+  );
+
+  const mutationUser = useMutation(
+    (body) => postInfo("http://127.0.0.1:8000/user/", body),
+    {onSuccess: (data) => {
+        console.log("Got response from backend successfull", data);
+        client.invalidateQueries(["userinfos"]);
+      },onError(error) {
         console.log("Got error from backend", error);
       },
     }
@@ -72,28 +92,22 @@ const EditPage = () => {
 
   function callMutation() {
     mutation.mutate({ profession: bio });
-    mutationUser.mutate({first_name:name,username:username,email:email });
+    mutationUser.mutate({ first_name: name, username: username, email: email });
   }
 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
 
-  if(userinfos && ifFun) {
-    setName(userinfos[0].user.first_name)
-    setUsername(userinfos[0].user.username)
-    setBio(userinfos[0].profession)
-    setEmail(userinfos[0].user.email)
-    setImage(userinfos[0].picture)
-    setIfFun(false)
+  if (userinfos && ifFun) {
+    setName(userinfos[0].user.first_name);
+    setUsername(userinfos[0].user.username);
+    setBio(userinfos[0].profession);
+    setEmail(userinfos[0].user.email);
+    setIfFun(false);
   }
-  // console.log("name: ",name)
-  // console.log("username: ",username)
-  // console.log("bio: ",bio)
-  // console.log("email: ",email)
-  // console.log("_______________________")
+
   console.log(userinfos)
 
-  
   return (
     <div className={`Editpage_container ${scroll}`}>
       <Navbar />
@@ -101,11 +115,15 @@ const EditPage = () => {
         <div className="Editpage_container_div-edit">
           <div className="Editpage_container_profile">
             <div className="Editpage_container_profile-image">
-              <img src={`http://127.0.0.1:8000${image}`} alt="Anya" width="50" height="50" />
+              {userinfos?.map((userinfo) => (
+              <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt="Anya" width="50" height="50"/>
+              ))}
             </div>
             <div className="Editpage_container_username">
               <p>@{username}</p>
-              <strong onClick={() => {setChangeProfile(true); setScroll("disableScroll")}}>Change profile photo</strong>
+              <strong onClick={() => {setChangeProfile(true); setScroll("disableScroll"); }}>
+                Change profile photo
+              </strong>
             </div>
           </div>
 
@@ -116,10 +134,8 @@ const EditPage = () => {
             </div>
             <div className="Editpage_container_input">
               <input type="text" value={name} onChange={(a) => setName(a.target.value)}/>
-              <p>
-                Help people discover your account by using the name you're known
-                by: either your full name, nickname, or business name.
-              </p>
+              <p>Help people discover your account by using the name you're known
+                by: either your full name, nickname, or business name.</p>
             </div>
           </div>
 
@@ -129,11 +145,9 @@ const EditPage = () => {
               <strong>Username</strong>
             </div>
             <div className="Editpage_container_input">
-              <input type="text" value={username} onChange={(a) => setUsername(a.target.value)}/>
-              <p>
-                In most cases, you'll be able to change your username back to
-                gaurav_jo18 for another 14 days.{" "}
-              </p>
+              <input type="text" value={username} onChange={(a) => setUsername(a.target.value)} />
+              <p>In most cases, you'll be able to change your username back to
+                gaurav_jo18 for another 14 days. </p>
             </div>
           </div>
 
@@ -145,11 +159,9 @@ const EditPage = () => {
             <div className="Editpage_container_input">
               <textarea cols="30" rows="4" value={bio} onChange={(a) => setBio(a.target.value)}></textarea>
               <strong>Personal Information</strong>
-              <p>
-                Provide your personal information, even if the account is used
+              <p>Provide your personal information, even if the account is used
                 for a business, a pet or something else. This won't be a part of
-                your public profile.
-              </p>
+                your public profile.</p>
             </div>
           </div>
 
@@ -168,33 +180,37 @@ const EditPage = () => {
           </div>
         </div>
 
+        {/* META logo Box 2 */}
+
         <div className="Editpage_meta_container">
           <div className="Editpage_meta_container_logo">
             <img src={meta} alt="Meta logo" height="25" width="35" />
             <h4>META</h4>
           </div>
           <h3>Accounts center</h3>
-
-          <p>
-            Control settings for connected experiences across Instagram, the
+          <p>Control settings for connected experiences across Instagram, the
             Facebook app and Messenger, including story and post sharing and
-            logging in.
-          </p>
+            logging in.</p>
         </div>
       </div>
       <Footer />
-      {changeProfile &&             
-              <div className="Editpage_profile_container">
-                <div className="Editpage_profile_page">
-                  <p>Change Profile Photo</p>
-                  <ul>
-                    <li>Upload Photo</li>
-                    <li>Remove Current Photo</li>
-                    <li onClick={() => {setChangeProfile(false); setScroll("")}}>Cancel</li>
-                  </ul>
-                </div>
-              </div>
-            }
+
+      {/* Change Profile */}
+      {changeProfile && (
+        <div className="Editpage_profile_container">
+          <div className="Editpage_profile_page">
+            <p>Change Profile Photo</p>
+            <input type="file" id="picture-input" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }} />
+            <ul>
+              <li>
+                <label htmlFor="picture-input">Upload Photo</label>{" "}
+              </li>
+              <li>Remove Current Photo</li>
+              <li onClick={() => { setChangeProfile(false); setScroll("");}}>Cancel</li>
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -139,8 +139,7 @@ const ProfilePage = () => {
           <label htmlFor="file-input">
             <BsImages size="50px" />
           </label>
-          <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}
-          />
+          <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}/>
           <p>Upload Image</p>
         </div>
       </div>
