@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { BsImages } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FiUpload,FiEdit } from "react-icons/fi";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
+import axios from "axios";
+import client from "../react-query-client";
 
 const ProfilePage = () => {
   const { authTokens, loading } = useContext(AuthContext);
@@ -25,6 +27,8 @@ const ProfilePage = () => {
     event.target.value = "";
   };
 
+  
+
   const getInfo = (url, body) =>
     fetch(url, {
       method: "GET",
@@ -35,15 +39,15 @@ const ProfilePage = () => {
       body: JSON.stringify(body),
     });
 
-  const postMedia = (url) => {
-    const formData = new FormData();
-    formData.append("gallery", file);
-    fetch(url, {
-      method: "POST",
-      headers: { Authorization: "Bearer " + String(authTokens.access) },
-      body: formData,
-    });
-  };
+  // const postMedia = (url) => {
+  //   const formData = new FormData();
+  //   formData.append("gallery", file);
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: { Authorization: "Bearer " + String(authTokens.access) },
+  //     body: formData,
+  //   });
+  // };
 
   const { data: userinfos, isLoading, isError,} = useQuery( ["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
@@ -51,33 +55,53 @@ const ProfilePage = () => {
     { enabled: !loading }
   );
 
-  const mutation = useMutation(
-    (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
-    {
-      onSuccess: (data) => {
-        console.log("Got response from backend successfull", data);
-        setpreviewImage(null);
-        setFile(null);
-        // setTimeout(function call_query() {
+  // const mutation = useMutation(
+  //   (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
+  //   {
+  //     onSuccess: (data) => {
+  //       console.log("Got response from backend successfull", data);
+  //       setpreviewImage(null);
+  //       setFile(null);
+  //     },
+  //     onError(error) {
+  //       console.log("Got error from backend", error);
+  //     },
+  //   }
+  // );
+          // setTimeout(function call_query() {
         // console.log("usermedia query called")
         // client.invalidateQueries("usermedia")
         // },1000)
-      },
-      onError(error) {
-        console.log("Got error from backend", error);
-      },
-    }
-  );
 
   const { data: usermedia } = useQuery( ["usermedia"],() => {
       return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());
     },{ enabled: !loading }
   );
 
-  function callMutation() {
-    mutation.mutate({ gallery: file });
-  }
+  // function callMutation() {
+  //   mutation.mutate({ gallery: file });
+  // }
 
+  function callMutation() {
+    const formData = new FormData();
+    formData.append("gallery", file);
+    axios.post("http://127.0.0.1:8000/usermedia/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: "Bearer " + String(authTokens.access),
+        },
+      })
+      .then(function (response) {
+        console.log(response.status);
+        if (response.status === 201) {
+          console.log("Invalidate Query called")
+          client.invalidateQueries(["usermedia"]);
+          setpreviewImage(null);
+          setFile(null);
+        }
+      });
+  }
+ 
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
   // if (userinfos.code === "token_not_valid") return callLogout();
@@ -92,7 +116,7 @@ const ProfilePage = () => {
           <div className="user-userinfo">
             {( userinfos?.map((userinfo) => (
                 <div key={userinfo.user} className="user_profile_picture-container">
-                  {userinfo.picture ? <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="500" height="600" /> : <img src={no_profile} alt="noprofile" width="500" height="600" /> }
+                  {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="500" height="600" /> : <img src={no_profile} alt="noprofile" width="500" height="600" /> }
                 </div>
               )))}
           </div>
