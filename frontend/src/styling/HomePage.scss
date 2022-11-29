@@ -1,4 +1,13 @@
-.HomePage_container {
+@mixin Homediv($bg,$color) {
   height: 100vh;
-  background-color: #fafafa;
+  background-color: $bg ;
+  color: $color;
+}
+
+.Home_container_dark {
+  @include Homediv(black,white)
+}
+
+.Home_container_light {
+  @include Homediv(#fafafa,black)
 }

@@ -36,7 +36,7 @@ const LoginPage = () => {
         setUser(jwt_decode(data.data.access));
         localStorage.setItem("authTokens", JSON.stringify(data.data));
         navigate("/");
-        setLoading(false)
+        setLoading(true)
       },
       onError(error) {
         alert("Got error from backend", error);
