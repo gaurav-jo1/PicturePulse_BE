@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { AuthContext } from "../context/AuthContext";
+import { ThemeContext } from "../context/ThemeContextProvider";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import meta from "../assets/meta.png";
@@ -11,6 +12,7 @@ import "../styling/EditPage.scss";
 
 const EditPage = () => {
   const { authTokens } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
 
   const [ifFun, setIfFun] = useState(true);
   const [name, setName] = useState("");
@@ -108,10 +110,10 @@ const EditPage = () => {
   }
 
   return (
-    <div className={`Editpage_container ${scroll}`}>
+    <div className={`Editpage_container_${theme} ${scroll}`}>
       <Navbar />
       <div className="Editpage_container-div">
-        <div className="Editpage_container_div-edit">
+        <div className={`Editpage_container_div-edit_${theme}`}>
           <div className="Editpage_container_profile">
             <div className="Editpage_container_profile-image">
               {userinfos?.map((userinfo) => (
@@ -180,7 +182,7 @@ const EditPage = () => {
 
         {/* META logo Box 2 */}
 
-        <div className="Editpage_meta_container">
+        <div className={`Editpage_meta_container_${theme}`}>
           <div className="Editpage_meta_container_logo">
             <img src={meta} alt="Meta logo" height="25" width="35" />
             <h4>META</h4>

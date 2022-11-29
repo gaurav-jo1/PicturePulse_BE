@@ -237,7 +237,7 @@
 }
 
 .Profiepage_user-media_container_dark {
-  @include galleryImage(#050100, var(--box-color), white, white);
+  @include galleryImage(#050100, rgb(38, 28, 44), white, white);
 }
 
 .Profiepage_user-media_container_light {
