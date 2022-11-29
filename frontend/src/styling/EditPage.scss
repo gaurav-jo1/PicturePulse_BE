@@ -85,14 +85,16 @@
     input {
       height: 30px;
       padding: 5px 10px;
+      border-radius: 10px;
     }
-
+    
     input:focus {
       outline: none;
     }
-
+    
     textarea {
       padding: 10px 10px;
+      border-radius: 10px;
     }
 
     textarea:focus {

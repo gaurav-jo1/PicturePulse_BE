@@ -109,6 +109,8 @@ const EditPage = () => {
     setIfFun(false);
   }
 
+  console.log(userinfos)
+
   return (
     <div className={`Editpage_container_${theme} ${scroll}`}>
       <Navbar />
@@ -117,7 +119,7 @@ const EditPage = () => {
           <div className="Editpage_container_profile">
             <div className="Editpage_container_profile-image">
               {userinfos?.map((userinfo) => (
-                <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt="profile" width="50" height="50" />
+                <img key={userinfo.id} src={`http://127.0.0.1:8000${userinfo.picture}`} alt="profile" width="50" height="50" />
               ))}
             </div>
             <div className="Editpage_container_username">
