@@ -79,7 +79,9 @@
     font-weight: bold;
   }
 
-  .user_userinfo-edit {
+}
+
+@mixin edit_profile-btn($bg) {
     display: flex;
     position: absolute;
     cursor: pointer;
@@ -89,13 +91,19 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 4px 10px;
-    background: red;
+    background: $bg;
     color: white;
 
     p {
       font-size: 16px;
     }
-  }
+}
+
+.user_userinfo-edit_light  {
+  @include  edit_profile-btn(rgb(39, 121, 220))
+}
+.user_userinfo-edit_dark  {
+  @include  edit_profile-btn(red)
 }
 
 @mixin userFollow($col) {
@@ -116,7 +124,7 @@
   @include userFollow(rgb(243, 231, 231));
 }
 
-.user_profile_picture-userinfo-follower {
+@mixin follow($border,$bg) {
   display: flex;
   justify-content: space-around;
   padding-top: 35px;
@@ -125,13 +133,22 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 4px 12px;
-    background: wheat;
-    color: black;
+    background: $bg;
+    border: 1px solid $border;
   }
 
   p:nth-child(2) {
     margin: 0 40px;
   }
+}
+
+
+.user_profile_picture-userinfo-follower_light {
+  @include follow(black,rgb(238, 226, 226))
+}
+ 
+.user_profile_picture-userinfo-follower_dark {
+  @include follow(white,rgb(28, 30, 36))
 }
 
 @mixin galleryImage($bg, $bg2, $svg, $font) {
@@ -188,7 +205,7 @@
 
   img {
     height: 500px;
-    width: 400px;
+    width: 450px;
   }
 
   .Profilepage_image-uploader_button {

@@ -93,14 +93,14 @@ const ProfilePage = () => {
               <p>@{userinfo.user.username}</p>
               <i>{userinfo.profession}</i>
               <Link to="/Edit">
-                <div className="user_userinfo-edit">
+                <div className={`user_userinfo-edit_${theme}`}>
                     <p>Edit Profile&nbsp;</p>
                     <p> <FiEdit /></p>
                 </div>
               </Link>
             </div>
           ))}
-          <div className="user_profile_picture-userinfo-follower">
+          <div className={`user_profile_picture-userinfo-follower_${theme}`}>
             <p> <strong>10.3M</strong> Followers  </p>
             <p> <strong>252</strong> Posts </p>
             <p> <strong>496</strong> Following </p>
