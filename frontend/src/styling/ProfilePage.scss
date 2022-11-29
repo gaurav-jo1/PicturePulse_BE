@@ -3,6 +3,11 @@
   background-color: #fafafa;
 }
 
+.disableScroll {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 .Profile_container_dark {
   height: 100vh;
   background-color: #050100;
@@ -130,6 +135,7 @@
 }
 
 @mixin galleryImage($bg, $bg2, $svg, $font) {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 10px;
@@ -165,27 +171,50 @@
   }
 }
 
-.uploading {
-  position: relative;
+.Profilepage_user_image_upload-container {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  overflow-y: hidden;
 
-  .Profilepage_image-uploader_button {
-    position: absolute;
-    bottom: 15px;
+  img {
+    height: 500px;
+    width: 400px;
   }
 
-  button {
-    padding: 5px 12px;
-    margin: 0 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #74a974;
-    align-items: center;
+  .Profilepage_image-uploader_button {
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    margin-top: 15px
 
-    svg {
-      padding-top: 2px;
+  }
+  button {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+
+  button:nth-child(1){
+    &:hover {
+      background-color: red;
+      color: white
+    }
+  }
+  button:nth-child(2){
+    &:hover {
+      background-color: green;
+      color: white
     }
   }
 }

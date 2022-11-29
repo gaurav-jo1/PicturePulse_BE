@@ -14,7 +14,6 @@ import client from "../react-query-client";
 const ProfilePage = () => {
   const { authTokens, loading } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
-
   const [file, setFile] = useState(null);
   const [previewImage, setpreviewImage] = useState(null);
 
@@ -27,8 +26,6 @@ const ProfilePage = () => {
     event.target.value = "";
   };
 
-  
-
   const getInfo = (url, body) =>
     fetch(url, {
       method: "GET",
@@ -39,48 +36,16 @@ const ProfilePage = () => {
       body: JSON.stringify(body),
     });
 
-  // const postMedia = (url) => {
-  //   const formData = new FormData();
-  //   formData.append("gallery", file);
-  //   fetch(url, {
-  //     method: "POST",
-  //     headers: { Authorization: "Bearer " + String(authTokens.access) },
-  //     body: formData,
-  //   });
-  // };
-
   const { data: userinfos, isLoading, isError,} = useQuery( ["userinfos"],() => {
       return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
     },
     { enabled: !loading }
   );
 
-  // const mutation = useMutation(
-  //   (body) => postMedia("http://127.0.0.1:8000/usermedia/", body),
-  //   {
-  //     onSuccess: (data) => {
-  //       console.log("Got response from backend successfull", data);
-  //       setpreviewImage(null);
-  //       setFile(null);
-  //     },
-  //     onError(error) {
-  //       console.log("Got error from backend", error);
-  //     },
-  //   }
-  // );
-          // setTimeout(function call_query() {
-        // console.log("usermedia query called")
-        // client.invalidateQueries("usermedia")
-        // },1000)
-
   const { data: usermedia } = useQuery( ["usermedia"],() => {
       return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());
     },{ enabled: !loading }
   );
-
-  // function callMutation() {
-  //   mutation.mutate({ gallery: file });
-  // }
 
   function callMutation() {
     const formData = new FormData();
@@ -149,7 +114,7 @@ const ProfilePage = () => {
             </div>
           )).reverse()}
         {file && (
-          <div className="Profilepage_user-image_container uploading">
+          <div className="Profilepage_user_image_upload-container">
             <img src={previewImage} alt="" />
             <div className="Profilepage_image-uploader_button">
               <button onClick={() => setFile(null)}>Cancel</button>
