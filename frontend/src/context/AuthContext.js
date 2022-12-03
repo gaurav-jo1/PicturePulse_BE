@@ -10,8 +10,6 @@ const AuthProvider = ({ children }) => {
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
 
-    console.log(loading)
-
     // call logout
 
     function callLogout() {
@@ -27,7 +25,7 @@ const AuthProvider = ({ children }) => {
                 refresh: authTokens.refresh
         })
           .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 setAuthTokens(response.data)
                 setUser(jwt_decode(response.data.access))
                 localStorage.setItem('authTokens', JSON.stringify(response.data))

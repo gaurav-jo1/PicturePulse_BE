@@ -1,7 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.7ecc4c9e.css",
-    "main.js": "/static/js/main.a517e1cf.js",
+    "main.css": "/static/css/main.1b09697d.css",
+    "main.js": "/static/js/main.be2caf49.js",
+    "static/media/jwst_bg.jpg": "/static/media/jwst_bg.8f50b9d6627e9ad868d5.jpg",
+    "static/media/sunflower.jpg": "/static/media/sunflower.b8e26f6992c417a2b5a8.jpg",
+    "static/media/35-The-Beauty-of-Anya-Forger.png": "/static/media/35-The-Beauty-of-Anya-Forger.eb8433e84166bf1855ac.png",
+    "static/media/meta.png": "/static/media/meta.a0277e1facf6bd202622.png",
     "static/media/Instagram_logo_dark.webp": "/static/media/Instagram_logo_dark.e3346fe48456d32f9a2c.webp",
     "static/media/screenshot1.webp": "/static/media/screenshot1.fa5551ad8bad867f40f2.webp",
     "static/media/screenshot4.webp": "/static/media/screenshot4.3cc9190debc9e38e037d.webp",
@@ -12,11 +16,11 @@
     "static/media/play_store.webp": "/static/media/play_store.927da1e20704179d6d76.webp",
     "static/media/apple_store.webp": "/static/media/apple_store.276373ef3b3503b229ad.webp",
     "index.html": "/index.html",
-    "main.7ecc4c9e.css.map": "/static/css/main.7ecc4c9e.css.map",
-    "main.a517e1cf.js.map": "/static/js/main.a517e1cf.js.map"
+    "main.1b09697d.css.map": "/static/css/main.1b09697d.css.map",
+    "main.be2caf49.js.map": "/static/js/main.be2caf49.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ecc4c9e.css",
-    "static/js/main.a517e1cf.js"
+    "static/css/main.1b09697d.css",
+    "static/js/main.be2caf49.js"
   ]
 }

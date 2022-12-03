@@ -1,5 +1,4 @@
 @mixin Homediv($bg,$color) {
-  height: 100vh;
   background-color: $bg ;
   color: $color;
 }
@@ -10,4 +9,14 @@
 
 .Home_container_light {
   @include Homediv(#fafafa,black)
+}
+
+.HomePage_container_div {
+  padding-top: 40px;
+}
+
+.Home_container_navbar-container {
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(15px);
 }
