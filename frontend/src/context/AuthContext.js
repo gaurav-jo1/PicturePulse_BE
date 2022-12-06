@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState,useEffect } from "react";
 import jwt_decode from "jwt-decode"
 
 export const AuthContext = createContext()
@@ -38,8 +38,8 @@ const AuthProvider = ({ children }) => {
         }
     }
 
-    // updating refresh token after revisit and access token expire time
 
+    // updating refresh token after revisit and access token expire time
     useEffect(() => {
         if (loading) {
             updateAccess()
