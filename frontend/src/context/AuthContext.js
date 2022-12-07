@@ -8,7 +8,9 @@ const AuthProvider = ({ children }) => {
 
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    let [loading, setLoading] = useState(true)
+    let [loading, setLoading] = useState(false)
+
+    console.log(loading)
 
     // call logout
 
@@ -29,9 +31,9 @@ const AuthProvider = ({ children }) => {
                 setAuthTokens(response.data)
                 setUser(jwt_decode(response.data.access))
                 localStorage.setItem('authTokens', JSON.stringify(response.data))
-                setLoading(false)
-        })
-              .catch(function (error) {
+                setLoading(true)
+            })
+            .catch(function (error) {
                 console.log(error);
                 callLogout()
         });
@@ -41,21 +43,24 @@ const AuthProvider = ({ children }) => {
 
     // updating refresh token after revisit and access token expire time
     useEffect(() => {
-        if (loading) {
+        if (!loading) {
             updateAccess()
         }
-        let fourMinutes = 1000 * 60 * 20
+        if (!authTokens) {
+            setLoading(true)
+        }
+        let twentyMinutes = 1000 * 60 * 20
         let interval = setInterval(() => {
             if (authTokens) {
                 updateAccess()
             }
-        }, fourMinutes)
+        }, twentyMinutes)
         return () => clearInterval(interval)
     }, [authTokens, loading]) // eslint-disable-line
 
     return (
         <AuthContext.Provider value={{ user, setAuthTokens, setUser, authTokens, setLoading, callLogout, updateAccess, }}>
-            {loading ? null : children}
+            {loading ? children : null }
         </AuthContext.Provider>
     )
 }

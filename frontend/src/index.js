@@ -8,11 +8,9 @@ import client from './react-query-client';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <QueryClientProvider client={client}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>
 );
