@@ -1,22 +1,140 @@
-@mixin Homediv($bg,$color) {
-  background-color: $bg ;
+@mixin Homediv($bg, $color) {
+  background-color: $bg;
   color: $color;
 }
 
 .Home_container_dark {
-  @include Homediv(black,white)
+  @include Homediv(black, white);
 }
 
 .Home_container_light {
-  @include Homediv(#fafafa,black)
+  @include Homediv(#fafafa, black);
 }
 
 .HomePage_container_div {
-  padding-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 60px;
+
 }
 
 .Home_container_navbar-container {
   position: fixed;
   width: 100%;
   backdrop-filter: blur(15px);
+}
+
+.HomePage_container_Images-container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+
+  .HomePage_container_Images-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    .HomePage_container_Images-user_threedot {
+      cursor: pointer;
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .HomePage_container_Images-user_profile-container {
+    display: flex;
+    padding-bottom: 15px;
+    img {
+      border-radius: 50%;
+    }
+
+    .HomePage_container_Images-user_username {
+      padding-left: 10px;
+    }
+  }
+
+  .HomePage_container_Images-img {
+    img {
+      border-radius: 30px;
+    }
+  }
+
+  .HomePage_container_Images-reaction {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    padding-top: 10px;
+
+    .HomePage_container_image_react_icons {
+      display: flex;
+      align-items: center;
+
+      li {
+        padding: 0 10px;
+      }
+
+      li:nth-child(2) {
+        font-size: 26px;
+      }
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+      width: 100%;
+
+      li {
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      li:nth-child(2) {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+.HomePage_container_Profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  height: 160px;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  margin-top: 60px;
+
+  .HomePage_container_Profile_image-container {
+    display: flex;
+
+    img {
+      border-radius: 10%;
+      height: 100%;
+    }
+
+    .HomePage_container_Profile_username {
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .HomePage_container_Profile_bio-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p:nth-child(2) {
+      padding-top: 10px;
+    }
+
+    strong {
+      color: blueviolet;
+    }
+  }
 }
