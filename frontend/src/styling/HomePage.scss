@@ -1,6 +1,7 @@
 @mixin Homediv($bg, $color) {
   background-color: $bg;
   color: $color;
+  height: 100vh;
 }
 
 .Home_container_dark {
@@ -14,8 +15,9 @@
 .HomePage_container_div {
   display: flex;
   justify-content: space-around;
-  padding-top: 60px;
-
+  padding-top: 120px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 .Home_container_navbar-container {
@@ -24,117 +26,149 @@
   backdrop-filter: blur(15px);
 }
 
-.HomePage_container_Images-container {
+@mixin ImageContainer($bg) {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 745px;
+  height: 540px;
+  padding: 20px 20px;
+  background: $bg;
+  border: 1px solid rgba(197, 176, 197, 0.667);
+  overflow: hidden;
+  border-radius: 10px;
+}
 
-  .HomePage_container_Images-user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+.HomePage_container_Images-container_light {
+  @include ImageContainer(white);
+}
+.HomePage_container_Images-container_dark {
+  @include ImageContainer(rgb(38, 28, 44));
+}
 
-    .HomePage_container_Images-user_threedot {
-      cursor: pointer;
-      p {
-        font-size: 20px;
-      }
-    }
-  }
+.HomePage_container_Images-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 
-  .HomePage_container_Images-user_profile-container {
-    display: flex;
-    padding-bottom: 15px;
-    img {
-      border-radius: 50%;
-    }
-
-    .HomePage_container_Images-user_username {
-      padding-left: 10px;
-    }
-  }
-
-  .HomePage_container_Images-img {
-    img {
-      border-radius: 30px;
-    }
-  }
-
-  .HomePage_container_Images-reaction {
-    display: flex;
-    width: 100%;
-    padding: 0 20px;
-    padding-top: 10px;
-
-    .HomePage_container_image_react_icons {
-      display: flex;
-      align-items: center;
-
-      li {
-        padding: 0 10px;
-      }
-
-      li:nth-child(2) {
-        font-size: 26px;
-      }
-    }
-
-    ul {
-      display: flex;
-      list-style: none;
-      justify-content: space-between;
-      width: 100%;
-
-      li {
-        font-size: 25px;
-        cursor: pointer;
-      }
-
-      li:nth-child(2) {
-        font-size: 28px;
-      }
+  .HomePage_container_Images-user_threedot {
+    cursor: pointer;
+    p {
+      font-size: 20px;
     }
   }
 }
 
-.HomePage_container_Profile-container {
+.HomePage_container_Images-user_profile-container {
   display: flex;
-  flex-direction: column;
-  padding: 20px 20px;
-  height: 160px;
-  border: 1px solid whitesmoke;
-  border-radius: 10px;
-  margin-top: 60px;
+  padding-bottom: 15px;
+  img {
+    border-radius: 50%;
+  }
 
-  .HomePage_container_Profile_image-container {
+  .HomePage_container_Images-user_username {
+    padding-left: 10px;
+  }
+}
+
+.HomePage_container_Images-img {
+  img {
+    border-radius: 30px;
+  }
+}
+
+.HomePage_container_Images-reaction {
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  padding-top: 10px;
+
+  .HomePage_container_image_react_icons {
     display: flex;
+    align-items: center;
 
-    img {
-      border-radius: 10%;
-      height: 100%;
+    li {
+      display: flex;
+      padding: 0 10px;
+      text-align: center;
+      align-items: flex-end;
+
+      span {
+        font-size: 15px;
+      }
     }
 
-    .HomePage_container_Profile_username {
-      padding-left: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    li:nth-child(2) {
+      font-size: 26px;
     }
   }
 
-  .HomePage_container_Profile_bio-container {
-    padding-top: 10px;
+  ul {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+    width: 100%;
 
-    p:nth-child(2) {
-      padding-top: 10px;
+    li {
+      font-size: 25px;
+
+      svg {
+        cursor: pointer;
+      }
     }
 
-    strong {
-      color: blueviolet;
+    li:nth-child(2) {
+      font-size: 28px;
     }
+  }
+}
+
+@mixin ProfileContainer($bg) {
+  display: flex;
+  padding: 20px 20px;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 60px;
+  width: 350px;
+  justify-content: space-between;
+  border: 1px solid rgba(197, 176, 197, 0.667);
+  background: $bg;
+  // margin-top: 40px;
+}
+
+.HomePage_container_Profile-container_light {
+  @include ProfileContainer(white);
+}
+
+.HomePage_container_Profile-container_dark {
+  @include ProfileContainer(rgb(38, 28, 44));
+}
+
+.HomePage_container_Profile_image-container {
+  display: flex;
+}
+
+.HomePage_container_Profile_image {
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 20px;
+  }
+}
+
+.HomePage_container_Profile_username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.HomePage_container_Profile_bio-container {
+  display: flex;
+  align-items: center;
+
+  strong {
+    color: blueviolet;
   }
 }

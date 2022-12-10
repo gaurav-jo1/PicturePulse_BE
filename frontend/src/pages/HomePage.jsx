@@ -14,28 +14,33 @@ import "../styling/HomePage.scss";
 const HomePage = () => {
   const { authTokens } = useContext(AuthContext);
 
-  const getInfo = (url, body) =>
-    fetch(url, {
-      method: "GET",
+  const { theme } = useContext(ThemeContext);
+
+  const { data: userinfos, error, status  } = useQuery(["userinfos"], () => {
+    return fetch('http://127.0.0.1:8000/userinfo/', {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + String(authTokens.access),
-      }, body: JSON.stringify(body),
-    });
-
-  const { data: userinfos } = useQuery(["userinfos"], () => {
-    return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
+      }
+    }).then(response => response.json())
   });
 
-  const { theme } = useContext(ThemeContext);
+  if (status === 'loading') {
+    return <p>Loading...</p>
+  }
 
+  if (status === 'error') {
+    return <p>Error: {error.message}</p>
+  }
+
+ 
   return (
     <div className={`Home_container_${theme}`}>
       <div className="Home_container_navbar-container">
         <Navbar />
       </div>
       <div className="HomePage_container_div">
-        <div className="HomePage_container_Images-container">
+        <div className={`HomePage_container_Images-container_${theme}`}>
           <div className="HomePage_container_Images-user">
             <div className="HomePage_container_Images-user_profile-container">
               <div className="HomePage_container_Images-user_profile">
@@ -51,13 +56,13 @@ const HomePage = () => {
             </div>
           </div>
           <div className="HomePage_container_Images-img">
-            <img src="https://picsum.photos/seed/picsum/700/400" alt="" />
+            <img src="https://picsum.photos/seed/picsum/700/400" alt="images" />
           </div>
           <div className="HomePage_container_Images-reaction">
             <ul>
               <div className="HomePage_container_image_react_icons">
-                <li><BsHeart/></li>
-                <li><TbMessageCircle2/></li>
+                <li><BsHeart/>&nbsp; <span>2503</span></li>
+                <li><TbMessageCircle2/>&nbsp;<span>25</span></li>
               </div>
               <li><IoIosShareAlt/></li>
             </ul>
@@ -65,11 +70,11 @@ const HomePage = () => {
         </div>
 
         {userinfos?.map((userinfo) => (
-          <div key={userinfo.id} className="HomePage_container_Profile-container">
+          <div key={userinfo.id} className={`HomePage_container_Profile-container_${theme}`}>
             <div className="HomePage_container_Profile_image-container">
               <div className="HomePage_container_Profile_image">
                 {userinfo.picture ? (
-                  <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="60" height="60"/>
+                  <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="70" height="70"/>
                 ) : (
                   <img src={no_profile} alt="no profile" width="60" height="60"/>
                 )}
@@ -80,7 +85,6 @@ const HomePage = () => {
               </div>
             </div>
             <div className="HomePage_container_Profile_bio-container">
-              <p>{userinfo.profession}</p>
               <p><Link to="/profile"><strong>View Profile</strong></Link></p>
             </div>
           </div>
