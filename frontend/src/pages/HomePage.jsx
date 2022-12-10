@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { AuthContext } from "../context/AuthContext";
@@ -12,7 +12,13 @@ import girl from "../assets/istockphoto-1220780604-612x612.jpg"
 import "../styling/HomePage.scss";
 
 const HomePage = () => {
-  const { authTokens } = useContext(AuthContext);
+  const { authTokens,callLogout} = useContext(AuthContext);
+
+  const [like, setLike] = useState(false)
+
+  const toggleLike = () => {
+    setLike((curr) => (curr === false ? true : false))
+  }
 
   const { theme } = useContext(ThemeContext);
 
@@ -25,13 +31,11 @@ const HomePage = () => {
     }).then(response => response.json())
   });
 
-  if (status === 'loading') {
-    return <p>Loading...</p>
-  }
+  if (status === 'loading') {return <p>Loading...</p>}
 
-  if (status === 'error') {
-    return <p>Error: {error.message}</p>
-  }
+  if (status === 'error') {return <p>Error: {error.message}</p>}
+
+  if (userinfos.code === "token_not_valid") return callLogout();
 
  
   return (
@@ -61,7 +65,7 @@ const HomePage = () => {
           <div className="HomePage_container_Images-reaction">
             <ul>
               <div className="HomePage_container_image_react_icons">
-                <li><BsHeart/>&nbsp; <span>2503</span></li>
+                <li> {like ? <BsHeartFill style={{color: 'red', }}  onClick={() => toggleLike()}/> : < BsHeart  onClick={() => toggleLike()}/>} &nbsp; <span>2503</span></li>
                 <li><TbMessageCircle2/>&nbsp;<span>25</span></li>
               </div>
               <li><IoIosShareAlt/></li>

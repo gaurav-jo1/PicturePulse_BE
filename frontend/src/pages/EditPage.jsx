@@ -11,7 +11,7 @@ import axios from "axios";
 import "../styling/EditPage.scss";
 
 const EditPage = () => {
-  const { authTokens } = useContext(AuthContext);
+  const { authTokens,callLogout} = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
 
   const [ifFun, setIfFun] = useState(true);
@@ -44,16 +44,6 @@ const EditPage = () => {
       });
   };
 
-  const getInfo = (url, body) =>
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + String(authTokens.access),
-      },
-      body: JSON.stringify(body),
-    });
-
   const postInfo = (url, body) =>
     fetch(url, {
       method: "PATCH",
@@ -69,7 +59,12 @@ const EditPage = () => {
   };
 
   const { data: userinfos, isLoading, isError,} = useQuery(["userinfos"], () => {
-    return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
+    return fetch('http://127.0.0.1:8000/userinfo/', {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + String(authTokens.access),
+      }
+    }).then(response => response.json())
   });
 
   const mutation = useMutation(
@@ -108,8 +103,7 @@ const EditPage = () => {
     setEmail(userinfos[0].user.email);
     setIfFun(false);
   }
-
-  console.log(userinfos)
+  if (userinfos.code === "token_not_valid") return callLogout();
 
   return (
     <div className={`Editpage_container_${theme} ${scroll}`}>

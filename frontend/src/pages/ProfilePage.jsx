@@ -12,7 +12,7 @@ import axios from "axios";
 import client from "../react-query-client";
 
 const ProfilePage = () => {
-  const { authTokens, loading } = useContext(AuthContext);
+  const { authTokens, loading,callLogout } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
   const [file, setFile] = useState(null);
   const [previewImage, setpreviewImage] = useState(null);
@@ -26,24 +26,24 @@ const ProfilePage = () => {
     event.target.value = "";
   };
 
-  const getInfo = (url, body) =>
-    fetch(url, {
-      method: "GET",
+  const { data: userinfos, isLoading, isError,} = useQuery( ["userinfos"],() => {
+      return fetch('http://127.0.0.1:8000/userinfo/', {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + String(authTokens.access),
+        }
+      }).then(response => response.json())
+    }, { enabled: !loading }
+  );
+  
+
+  const { data: usermedia } = useQuery( ["usermedia"],() => {
+    return fetch('http://127.0.0.1:8000/usermedia/', {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + String(authTokens.access),
-      },
-      body: JSON.stringify(body),
-    });
-
-  const { data: userinfos, isLoading, isError,} = useQuery( ["userinfos"],() => {
-      return getInfo("http://127.0.0.1:8000/userinfo/").then((t) => t.json());
-    },
-    { enabled: !loading }
-  );
-
-  const { data: usermedia } = useQuery( ["usermedia"],() => {
-      return getInfo("http://127.0.0.1:8000/usermedia/").then((t) => t.json());
+      }
+    }).then(response => response.json())
     },{ enabled: !loading }
   );
 
@@ -69,9 +69,7 @@ const ProfilePage = () => {
  
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>Error with request</h1>;
-  // if (userinfos.code === "token_not_valid") return callLogout();
-
-  console.log(userinfos)
+  if (userinfos.code === "token_not_valid") return callLogout();
 
   return (
     <div>
