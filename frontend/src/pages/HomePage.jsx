@@ -7,9 +7,17 @@ import {BsThreeDots,BsHeart,BsHeartFill} from "react-icons/bs"
 import {TbMessageCircle2} from "react-icons/tb"
 import {IoIosShareAlt} from "react-icons/io"
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
-import girl from "../assets/istockphoto-1220780604-612x612.jpg"
+import girl from "../assets/istockphoto-1220780604-612x612.jpg";
+
+import {users} from "./profileInfo"
+
+
 import "../styling/HomePage.scss";
+
+
 
 const HomePage = () => {
   const { authTokens,callLogout} = useContext(AuthContext);
@@ -19,6 +27,9 @@ const HomePage = () => {
   const toggleLike = () => {
     setLike((curr) => (curr === false ? true : false))
   }
+
+  
+  console.log(users[0].name)
 
   const { theme } = useContext(ThemeContext);
 
@@ -37,6 +48,8 @@ const HomePage = () => {
 
   if (userinfos.code === "token_not_valid") return callLogout();
 
+  // console.log(users.users[0].image)
+
  
   return (
     <div className={`Home_container_${theme}`}>
@@ -44,33 +57,38 @@ const HomePage = () => {
         <Navbar />
       </div>
       <div className="HomePage_container_div">
-        <div className={`HomePage_container_Images-container_${theme}`}>
-          <div className="HomePage_container_Images-user">
-            <div className="HomePage_container_Images-user_profile-container">
-              <div className="HomePage_container_Images-user_profile">
-                <img src={girl} alt="girl"  width="40" height="40"/>
+      <div className="HomePage_container-media">
+        {users.map((user) => (
+              <div key={user.name} className={`HomePage_container_Images-container_${theme}`}>
+                <div className="HomePage_container_Images-user">
+                  <div className="HomePage_container_Images-user_profile-container">
+                    <div className="HomePage_container_Images-user_profile">
+                      <img src={user.profilepics} alt="profile"  width="40" height="40"/>
+                    </div>
+                    <div className="HomePage_container_Images-user_username">
+                      <p>{user.name}</p>
+                      <p>{user.time}</p>
+                    </div>
+                  </div>
+                  <div className="HomePage_container_Images-user_threedot">
+                    <p><BsThreeDots/></p>
+                  </div>
+                </div>
+                <div className="HomePage_container_Images-img">
+                  <img src={user.image} alt="images" />
+                </div>
+                <div className="HomePage_container_Images-reaction">
+                  <ul>
+                    <div className="HomePage_container_image_react_icons">
+                      <li> {like ? <BsHeartFill style={{color: 'red', }}  onClick={() => toggleLike()}/> : < BsHeart  onClick={() => toggleLike()}/>} &nbsp; <span>{user.likes}</span></li>
+                      <li><TbMessageCircle2/>&nbsp;<span>25</span></li>
+                    </div>
+                    <li><IoIosShareAlt/></li>
+                  </ul>
+                </div>
               </div>
-              <div className="HomePage_container_Images-user_username">
-                <p>Gaurav Joshi</p>
-                <p>10 min ago</p>
-              </div>
-            </div>
-            <div className="HomePage_container_Images-user_threedot">
-              <p><BsThreeDots/></p>
-            </div>
-          </div>
-          <div className="HomePage_container_Images-img">
-            <img src="https://picsum.photos/seed/picsum/700/400" alt="images" />
-          </div>
-          <div className="HomePage_container_Images-reaction">
-            <ul>
-              <div className="HomePage_container_image_react_icons">
-                <li> {like ? <BsHeartFill style={{color: 'red', }}  onClick={() => toggleLike()}/> : < BsHeart  onClick={() => toggleLike()}/>} &nbsp; <span>2503</span></li>
-                <li><TbMessageCircle2/>&nbsp;<span>25</span></li>
-              </div>
-              <li><IoIosShareAlt/></li>
-            </ul>
-          </div>
+          ))
+        }
         </div>
 
         {userinfos?.map((userinfo) => (
@@ -93,6 +111,9 @@ const HomePage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="Home_container_footer-container">
+        <Footer />
       </div>
     </div>
   );
