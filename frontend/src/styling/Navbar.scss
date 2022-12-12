@@ -60,6 +60,7 @@
   align-items: center;
   width: 110px;
   text-align: center;
+  border: 1px solid gray;
 
   li {
     padding: 8px 0;
@@ -82,8 +83,12 @@
     display: block;
     position: absolute;
     border-style: solid;
-    border-width: 10px;
-    border-color: rgb(255, 255, 255);
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 1px solid rgb(255, 255, 255);
+    border-top-color: gray;
+    border-left-color: gray;
     transform: rotate(45deg);
     top: -10px;
     margin-right: 4px;
