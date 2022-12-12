@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Insta_logo_light from "../assets/Instagram_logo_light.webp";
 import Insta_logo_dark from "../assets/Instagram_logo_dark.webp";
 import Header from "./Header";
 import { IoPaperPlaneOutline } from "react-icons/io5";
+import {CgProfile} from "react-icons/cg"
 import { BsHeart } from "react-icons/bs";
 import {BiHomeHeart} from "react-icons/bi"
+import {FiLogOut} from "react-icons/fi"
 import { CgAddR } from "react-icons/cg";
 import { HiSearch } from "react-icons/hi";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png"
@@ -16,9 +18,11 @@ import { ThemeContext } from "../context/ThemeContextProvider";
 
 
 const Navbar = () => {
-  const { authTokens, loading } = useContext(AuthContext);
+  const { authTokens, loading, callLogout } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext)
   const [searchValue, setSearchValue] = useState("");
+
+  let navigate = useNavigate()
 
   const getInfo = (url, body) =>
     fetch(url, {
@@ -62,10 +66,15 @@ const Navbar = () => {
           <li> <Link to="/"> <CgAddR /> </Link> </li>
           <li> <Link to="/"> <BsHeart /> </Link> </li>
           {userinfos && userinfos?.map((userinfo) => (
-            <li key={userinfo.user}>
+            <li className="Navbar_profile_logout" key={userinfo.user}>
               <Link to="/profile">
                 {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img src={no_profile} alt="no profile" width="30" height="30"/>}
               </Link>
+              <ul>
+                <span className="triangle"></span>
+                <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>
+                <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
+              </ul>
             </li>
           )) }
           <li> <Header /> </li>
