@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../context/ThemeContextProvider";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import meta from "../assets/meta.png";
@@ -22,6 +23,8 @@ const EditPage = () => {
   const [scroll, setScroll] = useState("");
   const [changeProfile, setChangeProfile] = useState(false);
 
+  let navigate = useNavigate();
+
   const handleChange = (e) => {
     e.preventDefault();
     let file = e.target.files[0];
@@ -40,6 +43,7 @@ const EditPage = () => {
         console.log(response.status);
         if (response.status === 201) {
           client.invalidateQueries(["userinfos"]);
+          navigate("/profile");
         }
       });
   };
@@ -70,7 +74,8 @@ const EditPage = () => {
   const mutation = useMutation(
     (body) => postInfo("http://127.0.0.1:8000/userinfo/", body),
     {onSuccess: (data) => {
-        console.log("Got response from backend successfull", data);
+      console.log("Got response from backend successfull", data);
+      navigate("/profile");
       },onError(error) {
         console.log("Got error from backend", error);
       },
@@ -80,8 +85,9 @@ const EditPage = () => {
   const mutationUser = useMutation(
     (body) => postInfo("http://127.0.0.1:8000/user/", body),
     {onSuccess: (data) => {
-        console.log("Got response from backend successfull", data);
-        client.invalidateQueries(["userinfos"]);
+      console.log("Got response from backend successfull", data);
+      client.invalidateQueries(["userinfos"]);
+      navigate("/profile");
       },onError(error) {
         console.log("Got error from backend", error);
       },

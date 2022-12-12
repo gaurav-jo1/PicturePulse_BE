@@ -10,8 +10,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
-import girl from "../assets/istockphoto-1220780604-612x612.jpg";
-
 import {users} from "./profileInfo"
 
 
