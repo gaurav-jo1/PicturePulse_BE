@@ -9,6 +9,7 @@ import EditPage from "./pages/EditPage";
 import RequireAuth from "./utils/RequireAuth";
 import ThemeContextProvider from "./context/ThemeContextProvider";
 import AuthProvider from "./context/AuthContext";
+import LoadingScreen from "./components/LoadingScreen";
 
 const App = () => {
   return (

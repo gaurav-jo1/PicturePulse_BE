@@ -10,6 +10,7 @@ import { FiUpload,FiEdit } from "react-icons/fi";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
 import axios from "axios";
 import client from "../react-query-client";
+import LoadingScreen from "../components/LoadingScreen";
 
 const ProfilePage = () => {
   const { authTokens, loading,callLogout } = useContext(AuthContext);
@@ -67,7 +68,7 @@ const ProfilePage = () => {
       });
   }
  
-  if (isLoading) return <h1>Loading....</h1>;
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 

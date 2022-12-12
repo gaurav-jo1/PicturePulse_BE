@@ -20,6 +20,7 @@ import Getapp from "../components/Getapp";
 import "../styling/LoginPage.scss";
 import Header from "../components/Header";
 import { AuthContext } from "../context/AuthContext";
+import LoadingScreen from "../components/LoadingScreen";
 
 const LoginPage = () => {
   const { theme } = useContext(ThemeContext);
@@ -43,6 +44,8 @@ const LoginPage = () => {
       },
     }
   );
+
+  if (mutation.status === "loading") return < LoadingScreen/>
 
   function callLogin(e) {
     e.preventDefault();

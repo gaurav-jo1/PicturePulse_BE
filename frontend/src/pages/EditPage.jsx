@@ -10,6 +10,7 @@ import client from "../react-query-client";
 import axios from "axios";
 
 import "../styling/EditPage.scss";
+import LoadingScreen from "../components/LoadingScreen";
 
 const EditPage = () => {
   const { authTokens,callLogout} = useContext(AuthContext);
@@ -99,7 +100,10 @@ const EditPage = () => {
     mutationUser.mutate({ first_name: name, username: username, email: email });
   }
 
-  if (isLoading) return <h1>Loading....</h1>;
+  if (mutation.status === "loading") return < LoadingScreen/>
+  if (mutationUser.status === "loading") return < LoadingScreen/>
+
+  if (isLoading) return <LoadingScreen />;
   if (isError) return <h1>Error with request</h1>;
 
   if (userinfos && ifFun) {

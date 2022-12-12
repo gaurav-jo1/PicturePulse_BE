@@ -7,6 +7,7 @@ import {BsThreeDots,BsHeart,BsHeartFill} from "react-icons/bs"
 import {TbMessageCircle2} from "react-icons/tb"
 import {IoIosShareAlt} from "react-icons/io"
 import Navbar from "../components/Navbar";
+import LoadingScreen from "../components/LoadingScreen";
 import Footer from "../components/Footer";
 
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
@@ -26,9 +27,6 @@ const HomePage = () => {
     setLike((curr) => (curr === false ? true : false))
   }
 
-  
-  console.log(users[0].name)
-
   const { theme } = useContext(ThemeContext);
 
   const { data: userinfos, error, status  } = useQuery(["userinfos"], () => {
@@ -40,14 +38,11 @@ const HomePage = () => {
     }).then(response => response.json())
   });
 
-  if (status === 'loading') {return <p>Loading...</p>}
+  if (status === 'loading') {return <LoadingScreen />}
 
   if (status === 'error') {return <p>Error: {error.message}</p>}
 
   if (userinfos.code === "token_not_valid") return callLogout();
-
-  // console.log(users.users[0].image)
-
  
   return (
     <div className={`Home_container_${theme}`}>

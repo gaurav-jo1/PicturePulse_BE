@@ -15,6 +15,7 @@ import { ThemeContext } from "../context/ThemeContextProvider";
 
 // styling
 import "../styling/SignupPage.scss";
+import LoadingScreen from "../components/LoadingScreen";
 
 const SignupPage = () => {
   const [userEmail, setUserEmail] = useState(null);
@@ -52,6 +53,8 @@ const SignupPage = () => {
     e.preventDefault();
     mutation.mutate({username: userUsername,  password: userPassword, email:userEmail,first_name:userFullName });
   }
+
+  if (mutation.status === "loading") return < LoadingScreen/>
 
   return (
     <div className={`Signup_container ${theme}`}>
