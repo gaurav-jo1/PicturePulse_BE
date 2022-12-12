@@ -63,7 +63,7 @@ const HomePage = () => {
                 <div className="HomePage_container_Images-user">
                   <div className="HomePage_container_Images-user_profile-container">
                     <div className="HomePage_container_Images-user_profile">
-                      <img src={user.profilepics} alt="profile"  width="40" height="40"/>
+                      <img src={user.profilepics} alt="profile pic"  width="40" height="40"/>
                     </div>
                     <div className="HomePage_container_Images-user_username">
                       <p>{user.name}</p>
@@ -86,31 +86,30 @@ const HomePage = () => {
                     <li><IoIosShareAlt/></li>
                   </ul>
                 </div>
-              </div>
-          ))
+              </div> ))
         }
         </div>
 
         {userinfos?.map((userinfo) => (
-          <div key={userinfo.id} className={`HomePage_container_Profile-container_${theme}`}>
-            <div className="HomePage_container_Profile_image-container">
-              <div className="HomePage_container_Profile_image">
-                {userinfo.picture ? (
-                  <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="70" height="70"/>
-                ) : (
-                  <img src={no_profile} alt="no profile" width="60" height="60"/>
-                )}
+            <div key={userinfo.id} className={`HomePage_container_Profile-container_${theme}`}>
+              <div className="HomePage_container_Profile_image-container">
+                <div className="HomePage_container_Profile_image">
+                  {userinfo.picture ? (
+                    <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="70" height="70"/>
+                  ) : (
+                    <img src={no_profile} alt="no profile" width="60" height="60"/>
+                  )}
+                </div>
+                <div className="HomePage_container_Profile_username">
+                  <h4>{userinfo.user.first_name}</h4>
+                  <p>@{userinfo.user.username}</p>
+                </div>
               </div>
-              <div className="HomePage_container_Profile_username">
-                <h4>{userinfo.user.first_name}</h4>
-                <p>@{userinfo.user.username}</p>
+              <div className="HomePage_container_Profile_bio-container">
+                <p><Link to="/profile"><strong>View Profile</strong></Link></p>
               </div>
-            </div>
-            <div className="HomePage_container_Profile_bio-container">
-              <p><Link to="/profile"><strong>View Profile</strong></Link></p>
-            </div>
-          </div>
-        ))}
+            </div>)
+        )}
       </div>
       <div className="Home_container_footer-container">
         <Footer />

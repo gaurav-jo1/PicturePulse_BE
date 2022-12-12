@@ -1,7 +1,7 @@
 @mixin Homediv($bg, $color) {
   background-color: $bg;
   color: $color;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .Home_container_dark {
@@ -30,8 +30,10 @@
   display: flex;
   flex-direction: column;
   width: 745px;
-  height: 585px;
-  padding: 20px 20px;
+  height: 575px;
+  padding: 15px 20px;
+  // padding-bottom: 20px;
+  // padding-top: 10px;
   background: $bg;
   border: 1px solid rgba(197, 176, 197, 0.667);
   overflow: hidden;
@@ -54,6 +56,7 @@
 
   .HomePage_container_Images-user_threedot {
     cursor: pointer;
+    margin-bottom: 10px;
     p {
       font-size: 20px;
     }
@@ -65,15 +68,23 @@
   padding-bottom: 15px;
   img {
     border-radius: 50%;
+    border: 1px solid white;
   }
 
   .HomePage_container_Images-user_username {
     padding-left: 10px;
+
+    p:nth-child(1) {
+      font-weight: bold;
+    }
   }
 }
 
 .HomePage_container_Images-img {
-  height: 460px;
+  height: 450px;
+  box-shadow: 0px 1px 20px 5px rgba(255, 0, 0, 0.672);
+  border-radius: 30px;
+
   img {
     border-radius: 30px;
     height: 100%;
@@ -81,15 +92,32 @@
   }
 }
 
+@keyframes y-axis-rotation {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
 .HomePage_container_Images-reaction {
   display: flex;
   width: 100%;
   padding: 0 20px;
-  padding-top: 5px;
+  padding-top: 8px;
 
   .HomePage_container_image_react_icons {
     display: flex;
     align-items: center;
+
+    
+    li:nth-child(1) {
+      svg {
+        animation: y-axis-rotation 1s linear;
+      }
+    }
 
     li {
       display: flex;
