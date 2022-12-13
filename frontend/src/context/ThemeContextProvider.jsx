@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const ThemeContext = createContext();
 
 const ThemeContextProvider = (props) => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light"? "dark" : "light"))
   }

@@ -11,7 +11,7 @@ import {BiHomeHeart} from "react-icons/bi"
 import {FiLogOut} from "react-icons/fi"
 import { CgAddR } from "react-icons/cg";
 import { HiSearch } from "react-icons/hi";
-import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png"
+import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.webp"
 import "../styling/Navbar.scss";
 import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../context/ThemeContextProvider";

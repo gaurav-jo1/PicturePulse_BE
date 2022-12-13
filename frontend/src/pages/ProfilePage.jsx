@@ -7,7 +7,7 @@ import { ThemeContext } from "../context/ThemeContextProvider";
 import { BsImages } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FiUpload,FiEdit } from "react-icons/fi";
-import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
+import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.webp";
 import axios from "axios";
 import client from "../react-query-client";
 import LoadingScreen from "../components/LoadingScreen";

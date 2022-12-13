@@ -10,7 +10,7 @@ import Navbar from "../components/Navbar";
 import LoadingScreen from "../components/LoadingScreen";
 import Footer from "../components/Footer";
 
-import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.png";
+import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.webp";
 import {users} from "./profileInfo"
 
 

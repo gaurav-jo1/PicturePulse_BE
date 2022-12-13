@@ -1,5 +1,4 @@
 .Profile_container_light {
-  height: 100vh;
   background-color: #fafafa;
 }
 
@@ -9,7 +8,6 @@
 }
 
 .Profile_container_dark {
-  height: 100vh;
   background-color: #050100;
 }
 
@@ -18,7 +16,7 @@
 }
 
 .Profile_container-user_nav_dark {
-  background-image: url("../assets/jwst_bg.jpg");
+  background-image: url("../assets/jwst_bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 30px;
@@ -32,7 +30,7 @@
 }
 
 .Profile_container-user_nav_light {
-  background-image: url("../assets/sunflower.jpg");
+  background-image: url("../assets/sunflower.webp");
   background-repeat: no-repeat;
   padding-bottom: 30px;
   background-size: cover;

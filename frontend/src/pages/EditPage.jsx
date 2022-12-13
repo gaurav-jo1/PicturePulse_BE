@@ -5,7 +5,7 @@ import { ThemeContext } from "../context/ThemeContextProvider";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import meta from "../assets/meta.png";
+import meta from "../assets/meta.webp";
 import client from "../react-query-client";
 import axios from "axios";
 

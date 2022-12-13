@@ -1,6 +1,5 @@
 import React from 'react'
-import meta from "../assets/248814656_249743847178667_2939325260132690749_n.gif"
-import instagram from "../assets/instagram.png"
+import instagram from "../assets/instagram.webp"
 
 import "../styling/LoadingScreen.scss"
 
