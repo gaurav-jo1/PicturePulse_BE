@@ -79,6 +79,11 @@
       color: white;
     }
   }
+
+  li:hover {
+    color: rgba(0, 0, 0, 0.591);
+  }
+
   .triangle {
     display: block;
     position: absolute;
@@ -100,13 +105,13 @@
   flex-direction: column;
 
   ul {
-    @include dropDown(none)
+    @include dropDown(none);
   }
 }
 
 .Navbar_profile_logout:hover {
   ul {
-    @include dropDown(flex)
+    @include dropDown(flex);
   }
 }
 

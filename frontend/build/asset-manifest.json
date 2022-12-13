@@ -1,26 +1,33 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b09697d.css",
-    "main.js": "/static/js/main.87cb0e9c.js",
-    "static/media/jwst_bg.jpg": "/static/media/jwst_bg.8f50b9d6627e9ad868d5.jpg",
-    "static/media/sunflower.jpg": "/static/media/sunflower.b8e26f6992c417a2b5a8.jpg",
-    "static/media/35-The-Beauty-of-Anya-Forger.png": "/static/media/35-The-Beauty-of-Anya-Forger.eb8433e84166bf1855ac.png",
-    "static/media/meta.png": "/static/media/meta.a0277e1facf6bd202622.png",
-    "static/media/Instagram_logo_dark.webp": "/static/media/Instagram_logo_dark.e3346fe48456d32f9a2c.webp",
-    "static/media/screenshot1.webp": "/static/media/screenshot1.fa5551ad8bad867f40f2.webp",
-    "static/media/screenshot4.webp": "/static/media/screenshot4.3cc9190debc9e38e037d.webp",
-    "static/media/Instagram_logo_light.webp": "/static/media/Instagram_logo_light.d22982977c51a6da7877.webp",
-    "static/media/screenshot3.webp": "/static/media/screenshot3.b3386b95b428d33f97d3.webp",
-    "static/media/home_phones.webp": "/static/media/home_phones.74bf09196eabec65584f.webp",
-    "static/media/screenshot2.webp": "/static/media/screenshot2.d9774c7648f75dac01d0.webp",
-    "static/media/play_store.webp": "/static/media/play_store.927da1e20704179d6d76.webp",
-    "static/media/apple_store.webp": "/static/media/apple_store.276373ef3b3503b229ad.webp",
+    "main.css": "/static/css/main.71b2e2e3.css",
+    "main.js": "/static/js/main.9437793b.js",
+    "static/media/jwst_bg.webp": "/static/media/jwst_bg.fd5f26a32938d62b7032.webp",
+    "static/media/sunflower.webp": "/static/media/sunflower.c0567995fbf5fb2bfd56.webp",
+    "static/media/joshua-earle-p2TQ-3Bh3Oo-unsplash.webp": "/static/media/joshua-earle-p2TQ-3Bh3Oo-unsplash.4254a3654757575ac0eb.webp",
+    "static/media/trip-trek-india-P90FFLfr9RM-unsplash.webp": "/static/media/trip-trek-india-P90FFLfr9RM-unsplash.5345504eaf31fec27eaa.webp",
+    "static/media/michael-dam-mEZ3PoFGs_k-unsplash.webp": "/static/media/michael-dam-mEZ3PoFGs_k-unsplash.4d1857a21e8988d23e57.webp",
+    "static/media/martina.webp": "/static/media/martina.5fbcbd24e441abc3691c.webp",
+    "static/media/andre-masek-7hooR7evQiA-unsplash.webp": "/static/media/andre-masek-7hooR7evQiA-unsplash.259546b33f2bb38e0175.webp",
+    "static/media/ashton-bingham-EQFtEzJGERg-unsplash.webp": "/static/media/ashton-bingham-EQFtEzJGERg-unsplash.e8b2ab9fbf72b433adf5.webp",
+    "static/media/35-The-Beauty-of-Anya-Forger.webp": "/static/media/35-The-Beauty-of-Anya-Forger.b111c304d9165854a707.webp",
+    "static/media/meta.webp": "/static/media/meta.8ad4b41288d426f45172.webp",
+    "static/media/screenshot1.webp": "/static/media/screenshot1.6ca5704757f56d35c984.webp",
+    "static/media/screenshot4.webp": "/static/media/screenshot4.e860843acc63f8f6048e.webp",
+    "static/media/Instagram_logo_dark.webp": "/static/media/Instagram_logo_dark.259a4c0f062560ba1953.webp",
+    "static/media/screenshot3.webp": "/static/media/screenshot3.69accf922b4a69efbc59.webp",
+    "static/media/Instagram_logo_light.webp": "/static/media/Instagram_logo_light.0ce9688cff4017dc6722.webp",
+    "static/media/screenshot2.webp": "/static/media/screenshot2.e7a79c6ab3dc74026893.webp",
+    "static/media/home_phones.webp": "/static/media/home_phones.d147f9a22c6deecfd59c.webp",
+    "static/media/instagram.webp": "/static/media/instagram.e45be88deb88f20fc4ba.webp",
+    "static/media/play_store.webp": "/static/media/play_store.21d6f03a4ed3aeded728.webp",
+    "static/media/apple_store.webp": "/static/media/apple_store.5ae3a80470dcd9759c37.webp",
     "index.html": "/index.html",
-    "main.1b09697d.css.map": "/static/css/main.1b09697d.css.map",
-    "main.87cb0e9c.js.map": "/static/js/main.87cb0e9c.js.map"
+    "main.71b2e2e3.css.map": "/static/css/main.71b2e2e3.css.map",
+    "main.9437793b.js.map": "/static/js/main.9437793b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b09697d.css",
-    "static/js/main.87cb0e9c.js"
+    "static/css/main.71b2e2e3.css",
+    "static/js/main.9437793b.js"
   ]
 }

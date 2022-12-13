@@ -46,7 +46,7 @@ const Navbar = () => {
     <div className="Navbar_container">
       <div className="Navbar_container-Box1">
         <div className="Navbar_container-Box1-logo">
-          <Link to="/">
+          <Link to="/Home">
             {theme === "light"
             ? (<img src={Insta_logo_light} alt="Instagram" />)
             : (<img src={Insta_logo_dark} alt="Instagram" />)}
@@ -61,18 +61,18 @@ const Navbar = () => {
       </div>
       <div className="Navbar_container-Box3">
         <ul className={`Navbar_container-Box3-icons_${theme}`}>
-          <li> <Link to="/"> <BiHomeHeart /> </Link> </li>
+          <li> <Link to="/Home"> <BiHomeHeart /> </Link> </li>
           <li> <Link to="/"> <IoPaperPlaneOutline /> </Link> </li>
           <li> <Link to="/"> <CgAddR /> </Link> </li>
           <li> <Link to="/"> <BsHeart /> </Link> </li>
           {userinfos && userinfos?.map((userinfo) => (
             <li className="Navbar_profile_logout" key={userinfo.user}>
-              <Link to="/profile">
+              <Link to="/">
                 {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img src={no_profile} alt="no profile" width="30" height="30"/>}
               </Link>
               <ul>
                 <span className="triangle"></span>
-                <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>
+                <li onClick={() => navigate("/")}> Profile <CgProfile/></li>
                 <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
               </ul>
             </li>

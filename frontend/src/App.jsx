@@ -9,7 +9,6 @@ import EditPage from "./pages/EditPage";
 import RequireAuth from "./utils/RequireAuth";
 import ThemeContextProvider from "./context/ThemeContextProvider";
 import AuthProvider from "./context/AuthContext";
-import LoadingScreen from "./components/LoadingScreen";
 
 const App = () => {
   return (
@@ -18,9 +17,9 @@ const App = () => {
         <ThemeContextProvider>
           <Routes>
             <Route element={<RequireAuth />}>
-              <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/profile" element={<ProfilePage />} />
-              <Route exact path="/Edit/" element={<EditPage />} />
+              <Route exact path="/" element={<ProfilePage />} />
+              <Route exact path="/Home" element={<HomePage />} />
+              <Route exact path="/Edit" element={<EditPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
