@@ -38,9 +38,9 @@ const HomePage = () => {
     }).then(response => response.json())
   });
 
-  if (status === 'loading') {return <LoadingScreen />}
+  if (status === 'loading') return <LoadingScreen />
 
-  if (status === 'error') {return <p>Error: {error.message}</p>}
+  if (status === 'error') return <p>Error: {error.message}</p>
 
   if (userinfos.code === "token_not_valid") return callLogout();
  
@@ -56,7 +56,7 @@ const HomePage = () => {
                 <div className="HomePage_container_Images-user">
                   <div className="HomePage_container_Images-user_profile-container">
                     <div className="HomePage_container_Images-user_profile">
-                      <img src={user.profilepics} alt="profile pic"  width="40" height="40"/>
+                      <img src={user.profilepics} alt="profile pic"  width="45" height="45"/>
                     </div>
                     <div className="HomePage_container_Images-user_username">
                       <p>{user.name}</p>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+
 @mixin Homediv($bg, $color) {
   background-color: $bg;
   color: $color;
@@ -32,13 +34,12 @@
   width: 745px;
   height: 575px;
   padding: 15px 20px;
-  // padding-bottom: 20px;
-  // padding-top: 10px;
   background: $bg;
-  border: 1px solid rgba(197, 176, 197, 0.667);
+  border: 2px solid rgba(197, 176, 197, 0.667);
   overflow: hidden;
   border-radius: 10px;
   margin-top: 60px;
+  align-items: center
 }
 
 .HomePage_container_Images-container_light {
@@ -52,7 +53,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 30px;
+  width: 100%;
 
   .HomePage_container_Images-user_threedot {
     cursor: pointer;
@@ -76,14 +78,17 @@
 
     p:nth-child(1) {
       font-weight: bold;
+      font-size: 18px;
+      font-family: 'Rubik Vinyl', cursive;
     }
   }
 }
 
 .HomePage_container_Images-img {
-  height: 450px;
+  width: 650px;
   box-shadow: 0px 1px 20px 5px rgba(255, 0, 0, 0.672);
   border-radius: 30px;
+  height: 440px;
 
   img {
     border-radius: 30px;
