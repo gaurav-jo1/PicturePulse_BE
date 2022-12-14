@@ -17,8 +17,8 @@ const App = () => {
         <ThemeContextProvider>
           <Routes>
             <Route element={<RequireAuth />}>
-              <Route exact path="/" element={<ProfilePage />} />
-              <Route exact path="/Home" element={<HomePage />} />
+              <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/profile" element={<ProfilePage />} />
               <Route exact path="/Edit" element={<EditPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />

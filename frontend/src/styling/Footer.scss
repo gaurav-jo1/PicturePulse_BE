@@ -55,3 +55,21 @@
   @include footerG3(#422d2d)
 }
 
+
+
+@media (max-width: 800px){
+  .External_Links-container_group-1,
+  .External_Links-container_group-2,
+  .External_Links-container_group-3_light,
+  .External_Links-container_group-3_dark {
+    margin: 10px 0;
+    padding: 0 15px;
+
+    a {
+
+      p {
+        line-height: 20px;
+      }
+    }
+  }
+}

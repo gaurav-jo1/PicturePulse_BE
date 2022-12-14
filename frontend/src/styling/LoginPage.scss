@@ -42,7 +42,8 @@
       }
 
       @keyframes animate {
-        0%, 100% {
+        0%,
+        100% {
           background-image: url(../assets/screenshot1.webp);
         }
 
@@ -161,11 +162,17 @@
     @include box2(white, #314672, #dbd9d9);
   }
   .Login_container_login-form_box-2_dark {
-    @include box2( var(--box-color), rgb(217, 200, 200), #a1a1a1);
+    @include box2(var(--box-color), rgb(217, 200, 200), #a1a1a1);
   }
 
   .Login_container_login-form_box-3 {
     width: 100%;
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 800px){
+  .Login_container-home_phone {
+    display: none;
   }
 }

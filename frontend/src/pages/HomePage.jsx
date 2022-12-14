@@ -99,7 +99,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="HomePage_container_Profile_bio-container">
-                <p><Link to="/"><strong>View Profile</strong></Link></p>
+                <p><Link to="/profile"><strong>View Profile</strong></Link></p>
               </div>
             </div>)
         )}
