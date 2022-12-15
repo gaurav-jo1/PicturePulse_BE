@@ -19,10 +19,10 @@
   margin-top: 20px;
 }
 
-@mixin UpdateBox1($bg,$color) {
-  width: 600px;
+@mixin UpdateBox1($bg, $color, $width, $padding, $marginL) {
+  width: $width;
   border: 1px solid rgba(197, 176, 197, 0.667);
-  padding: 20px 60px;
+  padding: 20px $padding;
   background: $bg;
   color: $color;
   overflow: hidden;
@@ -32,7 +32,7 @@
 
     .Editpage_container_profile-image {
       margin-right: 35px;
-      margin-left: 100px;
+      margin-left: $marginL;
 
       img {
         border-radius: 50%;
@@ -53,12 +53,11 @@
 }
 
 .Editpage_container_div-edit_dark {
-  @include UpdateBox1(rgb(38, 28, 44),white)
-
+  @include UpdateBox1(rgb(38, 28, 44), white, 600px, 60px, 100px);
 }
 
 .Editpage_container_div-edit_light {
-  @include UpdateBox1(white,black)
+  @include UpdateBox1(white, black, 600px, 60px, 100px);
 }
 
 // Inputs
@@ -88,11 +87,11 @@
       padding: 5px 10px;
       border-radius: 10px;
     }
-    
+
     input:focus {
       outline: none;
     }
-    
+
     textarea {
       padding: 10px 10px;
       border-radius: 10px;
@@ -132,11 +131,11 @@
   }
 }
 
-@mixin meta_container($bg,$color) {
-  width: 600px;
+@mixin meta_container($bg, $color, $width,$padding) {
+  width: $width;
   background-color: $bg;
   border: 1px solid rgba(197, 176, 197, 0.667);
-  padding: 20px 60px;
+  padding: 20px $padding;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -163,10 +162,10 @@
 }
 
 .Editpage_meta_container_dark {
-  @include meta_container(rgb(38, 28, 44),white)
+  @include meta_container(rgb(38, 28, 44), white, 600px,60px);
 }
 .Editpage_meta_container_light {
-  @include meta_container(white,black)
+  @include meta_container(white, black, 600px,60px);
 }
 
 .Editpage_profile_container {
@@ -219,4 +218,78 @@
       color: blueviolet;
     }
   }
+}
+
+@media (max-width: 630px) {
+  .Editpage_container_div-edit_dark {
+    @include UpdateBox1(rgb(38, 28, 44), white, 480px, 60px, 100px);
+  }
+
+  .Editpage_container_div-edit_light {
+    @include UpdateBox1(white, black, 480px, 60px, 100px);
+  }
+
+  .Editpage_meta_container_dark {
+    @include meta_container(rgb(38, 28, 44), white,480px,10px);
+  }
+  .Editpage_meta_container_light {
+    @include meta_container(white, black,480px,10px);
+  }
+}
+
+@media (max-width: 500px) {
+  .Editpage_container_div-edit_dark {
+    @include UpdateBox1(rgb(38, 28, 44), white, 320px, 20px, 30px);
+  }
+
+  .Editpage_container_div-edit_light {
+    @include UpdateBox1(white, black, 320px, 20px, 30px);
+  }
+
+  .Editpage_meta_container_dark {
+    @include meta_container(rgb(38, 28, 44), white,320px,10px);
+  }
+  .Editpage_meta_container_light {
+    @include meta_container(white, black,320px,10px);
+  }
+
+  .Editpage_container_inputs {
+    .Editpage_container_name {
+      width: 100px;
+      justify-content: flex-start;
+      padding-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .Editpage_container_inputs {
+    .Editpage_container_input {
+      width: 220px;
+      display: flex;
+      justify-content: flex-end;
+
+      input {
+        font-size: 12px;
+      }
+
+      textarea {
+        width: 190px;
+        font-size: 12px;
+      }
+
+      p {
+        font-size: 8px;
+      }
+    }
+
+    .Editpage_container_name {
+      font-size: 18px;
+      strong {
+        font-size: 16px;
+      }
+    }
+  }
+
+
 }
