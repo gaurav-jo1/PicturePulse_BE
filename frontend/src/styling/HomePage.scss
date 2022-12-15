@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
 
 @mixin Homediv($bg, $color) {
   background-color: $bg;
@@ -28,25 +28,25 @@
   backdrop-filter: blur(15px);
 }
 
-@mixin ImageContainer($bg) {
+@mixin ImageContainer($bg, $width, $height,$border) {
   display: flex;
   flex-direction: column;
-  width: 745px;
-  height: 575px;
-  padding: 15px 20px;
+  width: $width;
+  height: $height;
+  padding: 15px 0px;
   background: $bg;
-  border: 2px solid rgba(197, 176, 197, 0.667);
+  border: 1px solid rgba(197, 176, 197, 0.667);
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: $border;
   margin-top: 60px;
-  align-items: center
+  align-items: center;
 }
 
 .HomePage_container_Images-container_light {
-  @include ImageContainer(white);
+  @include ImageContainer(white, 745px, 575px,0px);
 }
 .HomePage_container_Images-container_dark {
-  @include ImageContainer(rgb(38, 28, 44));
+  @include ImageContainer(rgb(38, 28, 44), 745px, 575px,0px);
 }
 
 .HomePage_container_Images-user {
@@ -69,6 +69,8 @@
   display: flex;
   padding-bottom: 15px;
   img {
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     border: 1px solid white;
   }
@@ -79,19 +81,17 @@
     p:nth-child(1) {
       font-weight: bold;
       font-size: 18px;
-      font-family: 'Rubik Vinyl', cursive;
+      font-family: "Rubik Vinyl", cursive;
     }
   }
 }
 
 .HomePage_container_Images-img {
-  width: 650px;
+  width: 100%;
   box-shadow: 0px 1px 20px 5px rgba(255, 0, 0, 0.672);
-  border-radius: 30px;
   height: 440px;
 
   img {
-    border-radius: 30px;
     height: 100%;
     width: 100%;
   }
@@ -106,18 +106,16 @@
   }
 }
 
-
 .HomePage_container_Images-reaction {
   display: flex;
   width: 100%;
   padding: 0 20px;
-  padding-top: 8px;
+  padding-top: 12px;
 
   .HomePage_container_image_react_icons {
     display: flex;
     align-items: center;
 
-    
     li:nth-child(1) {
       svg {
         animation: y-axis-rotation 1s linear;
@@ -164,7 +162,6 @@
   display: flex;
   padding: 20px 20px;
   height: 100px;
-  border-radius: 10px;
   width: 350px;
   justify-content: space-between;
   border: 1px solid rgba(197, 176, 197, 0.667);
@@ -206,5 +203,81 @@
 
   strong {
     color: blueviolet;
+  }
+}
+
+@media (max-width: 1320px) {
+  .HomePage_container_Profile-container_dark,
+  .HomePage_container_Profile-container_light {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .HomePage_container_Images-container_light {
+    @include ImageContainer(white, 600px, 440px,10px);
+  }
+  .HomePage_container_Images-container_dark {
+    @include ImageContainer(rgb(38, 28, 44), 600px, 440px,10px);
+  }
+
+  .HomePage_container_Images-img {
+    height: 300px;
+  }
+}
+@media (max-width: 630px) {
+  .HomePage_container_Images-container_light {
+    @include ImageContainer(white, 100vw, 500px,0);
+  }
+  .HomePage_container_Images-container_dark {
+    @include ImageContainer(rgb(38, 28, 44), 100vw, 500px,0);
+  }
+
+  .HomePage_container_Images-img {
+    height: 360px;
+  }
+}
+
+@media (max-width: 430px) {
+  .HomePage_container_div {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 60px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .HomePage_container_Images-container_light {
+    @include ImageContainer(white, 100vw, 500px,0);
+  }
+  .HomePage_container_Images-container_dark {
+    @include ImageContainer(rgb(38, 28, 44), 100vw, 500px,0);
+  }
+
+  .HomePage_container_Images-img {
+    height: 370px;
+  }
+
+  .HomePage_container_Images-user_profile-container {
+    img {
+      height: 35px;
+      width: 35px;
+    }
+
+    .HomePage_container_Images-user_username {
+      padding-left: 10px;
+
+      p:nth-child(1) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .HomePage_container_Images-user {
+    padding: 0 14px;
+  }
+  .HomePage_container_Images-user_threedot {
+    p {
+      font-size: 10px;
+    }
   }
 }

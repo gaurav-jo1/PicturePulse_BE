@@ -1,12 +1,28 @@
 .LoadingScreen_container {
-    height: 100vh;
-    background-color: white;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  img {
+    width: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .LoadingScreen_container {
     img {
-        width:250px ;
+      width: 200px;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .LoadingScreen_container {
+    img {
+      width: 150px;
+    }
+  }
 }

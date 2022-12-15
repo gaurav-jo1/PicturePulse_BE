@@ -67,9 +67,20 @@ const Navbar = () => {
           <li> <Link to="/"> <BsHeart /> </Link> </li>
           {userinfos && userinfos?.map((userinfo) => (
             <li className="Navbar_profile_logout" key={userinfo.user}>
-              <Link to="/profile">
                 {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img src={no_profile} alt="no profile" width="30" height="30"/>}
-              </Link>
+              <ul>
+                <span className="triangle"></span>
+                <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>
+                <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
+              </ul>
+            </li>
+          )) }
+          <li> <Header /> </li>
+        </ul>
+        <ul className={`Navbar_container-Box3-icons_two_${theme}`}>
+          {userinfos && userinfos?.map((userinfo) => (
+            <li className="Navbar_profile_logout" key={userinfo.user}>
+                {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="35" height="35"/> :<img src={no_profile} alt="no profile" width="35" height="35"/>}
               <ul>
                 <span className="triangle"></span>
                 <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>

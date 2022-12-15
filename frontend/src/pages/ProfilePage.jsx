@@ -11,6 +11,7 @@ import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.webp";
 import axios from "axios";
 import client from "../react-query-client";
 import LoadingScreen from "../components/LoadingScreen";
+import Footer from "../components/Footer";
 
 const ProfilePage = () => {
   const { authTokens, loading,callLogout } = useContext(AuthContext);
@@ -73,8 +74,7 @@ const ProfilePage = () => {
   if (userinfos.code === "token_not_valid") return callLogout();
 
   return (
-    <div>
-      <div className={`Profile_container_${theme}`}>
+    <div className={`Profile_container_${theme}`}>
         <div className={`Profile_container-user_nav_${theme}`}>
           <Navbar />
           <div className="user-userinfo">
@@ -88,10 +88,16 @@ const ProfilePage = () => {
         <div className={`user_profile_picture-userinfo_fp_${theme}`}>
           {userinfos?.map((userinfo) => (
             <div key={userinfo.user} className="user_profile_picture-userinfo">
+              <Link className="user_profile-edit_small" to="/Edit">
+                <div className={`user_userinfo-edit_small_${theme}`}>
+                    <p>Edit Profile&nbsp;</p>
+                    <p> <FiEdit /></p>
+                </div>
+              </Link>
               <h1> {userinfo.user.first_name} </h1>
               <p>@{userinfo.user.username}</p>
               <i>{userinfo.profession}</i>
-              <Link to="/Edit">
+              <Link className="user_profile-edit_big" to="/Edit">
                 <div className={`user_userinfo-edit_${theme}`}>
                     <p>Edit Profile&nbsp;</p>
                     <p> <FiEdit /></p>
@@ -100,12 +106,11 @@ const ProfilePage = () => {
             </div>
           ))}
           <div className={`user_profile_picture-userinfo-follower_${theme}`}>
-            <p> <strong>10.3M</strong> Followers  </p>
-            <p> <strong>252</strong> Posts </p>
-            <p> <strong>496</strong> Following </p>
+            <span><strong>10.3M</strong> <p>&nbsp;Followers</p></span>
+            <span><strong>252</strong> <p>&nbsp;Posts</p></span>
+            <span><strong>496</strong> <p>&nbsp;Following</p></span>
           </div>
         </div>
-      </div>
       <div className={`Profiepage_user-media_container_${theme}`}>
         {usermedia?.map((images) => (
             <div key={images.id} className="Profilepage_user-image_container">
@@ -130,6 +135,9 @@ const ProfilePage = () => {
           <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}/>
           <p>Upload Image</p>
         </div>
+      </div>
+      <div className="ProfilePage_container_footer-container">
+        <Footer />
       </div>
     </div>
   );

@@ -15,6 +15,10 @@
   padding-top: 20px;
 }
 
+.user_profile-edit_small {
+  display: none;
+}
+
 .Profile_container-user_nav_dark {
   background-image: url("../assets/jwst_bg.webp");
   background-repeat: no-repeat;
@@ -76,89 +80,90 @@
     margin-top: 20px;
     font-weight: bold;
   }
-
 }
 
 @mixin edit_profile-btn($bg) {
-    display: flex;
-    position: absolute;
-    cursor: pointer;
-    right: 20px;
-    top: 25px;
-    justify-content: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 4px 10px;
-    background: $bg;
-    color: white;
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 25px;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px 10px;
+  background: $bg;
+  color: white;
 
-    p {
-      font-size: 16px;
-    }
+  p {
+    font-size: 16px;
+  }
 }
 
-.user_userinfo-edit_light  {
-  @include  edit_profile-btn(rgb(39, 121, 220))
+.user_userinfo-edit_light {
+  @include edit_profile-btn(red);
 }
-.user_userinfo-edit_dark  {
-  @include  edit_profile-btn(red)
+.user_userinfo-edit_dark {
+  @include edit_profile-btn(rgb(39, 121, 220));
 }
 
-@mixin userFollow($col) {
+@mixin userFollow($col, $padding) {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 10px 150px;
+  padding: 10px $padding;
   color: $col;
   font-size: 18px;
   position: relative;
+  overflow: hidden;
 }
 
 .user_profile_picture-userinfo_fp_light {
-  @include userFollow(black);
+  @include userFollow(black, 50px);
 }
 
 .user_profile_picture-userinfo_fp_dark {
-  @include userFollow(rgb(243, 231, 231));
+  @include userFollow(rgb(243, 231, 231), 50px);
 }
 
-@mixin follow($border,$bg) {
+@mixin follow($border, $bg, $fontSize, $margin) {
   display: flex;
   justify-content: space-around;
   padding-top: 35px;
 
-  p {
+  span {
+    display: flex;
     border: 1px solid black;
     border-radius: 5px;
     padding: 4px 12px;
     background: $bg;
     border: 1px solid $border;
+    font-size: $fontSize;
   }
 
-  p:nth-child(2) {
-    margin: 0 40px;
+  span:nth-child(2) {
+    margin: 0 $margin;
   }
 }
-
 
 .user_profile_picture-userinfo-follower_light {
-  @include follow(black,rgb(238, 226, 226))
-}
- 
-.user_profile_picture-userinfo-follower_dark {
-  @include follow(white,rgb(28, 30, 36))
+  @include follow(black, rgb(238, 226, 226), 18px, 40px);
 }
 
-@mixin galleryImage($bg, $bg2, $svg, $font) {
-  position: relative;
+.user_profile_picture-userinfo-follower_dark {
+  @include follow(white, rgb(28, 30, 36), 18px, 40px);
+}
+
+@mixin galleryImage($bg, $bg2, $svg, $font, $min, $height) {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
   grid-gap: 10px;
   padding: 20px 40px;
   background-color: $bg;
+  position: relative;
 
   .Profilepage_user-image_container {
-    height: 370px;
+    height: $height;
     img {
       height: 100%;
       width: 100%;
@@ -210,8 +215,7 @@
     display: flex;
     width: 300px;
     justify-content: space-around;
-    margin-top: 15px
-
+    margin-top: 15px;
   }
   button {
     padding: 8px 16px;
@@ -220,24 +224,110 @@
     border: 1px solid gray;
   }
 
-  button:nth-child(1){
+  button:nth-child(1) {
     &:hover {
       background-color: red;
-      color: white
+      color: white;
     }
   }
-  button:nth-child(2){
+  button:nth-child(2) {
     &:hover {
       background-color: green;
-      color: white
+      color: white;
     }
   }
 }
 
 .Profiepage_user-media_container_dark {
-  @include galleryImage(#050100, rgb(38, 28, 44), white, white);
+  @include galleryImage(#050100, rgb(38, 28, 44), white, white, 300px, 370px);
 }
 
 .Profiepage_user-media_container_light {
-  @include galleryImage(white, rgb(228, 214, 214), #665e68, black);
+  @include galleryImage(
+    white,
+    rgb(228, 214, 214),
+    #665e68,
+    black,
+    300px,
+    370px
+  );
+}
+
+@media (max-width: 460px) {
+  .user_profile_picture-userinfo-follower_light {
+    @include follow(black, rgb(238, 226, 226), 10px, 30px);
+  }
+
+  .user_profile_picture-userinfo-follower_dark {
+    @include follow(white, rgb(28, 30, 36), 10px, 30px);
+  }
+
+  .user_profile_picture-container {
+    img {
+      height: 300px;
+      width: 300px;
+    }
+  }
+
+  .Profiepage_user-media_container_dark {
+    @include galleryImage(#050100, rgb(38, 28, 44), white, white, 240px, 260px);
+  }
+
+  .Profiepage_user-media_container_light {
+    @include galleryImage( white, rgb(228, 214, 214), #665e68, black, 240px, 260px);
+  }
+
+  @mixin edit_profile-btn2($bg) {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px 10px;
+    background: $bg;
+    color: white;
+    margin-bottom: 10px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .user_profile-edit_big {
+    display: none;
+  }
+  .user_profile-edit_small {
+    display: flex;
+
+    .user_userinfo-edit_small_dark {
+      @include edit_profile-btn2(rgb(39, 121, 220));
+    }
+    .user_userinfo-edit_small_light {
+      @include edit_profile-btn2(red);
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .user_profile_picture-userinfo {
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  .user_profile_picture-userinfo_fp_light {
+    @include userFollow(black, 20px);
+  }
+  
+  .user_profile_picture-userinfo_fp_dark {
+    @include userFollow(rgb(243, 231, 231), 20px);
+  }
+
+  .user_profile_picture-container {
+    img {
+      height: 280px;
+      width: 280px;
+    }
+  }
+  
 }

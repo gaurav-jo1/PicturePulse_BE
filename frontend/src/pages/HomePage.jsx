@@ -56,7 +56,7 @@ const HomePage = () => {
                 <div className="HomePage_container_Images-user">
                   <div className="HomePage_container_Images-user_profile-container">
                     <div className="HomePage_container_Images-user_profile">
-                      <img src={user.profilepics} alt="profile pic"  width="45" height="45"/>
+                      <img src={user.profilepics} alt="profile pic" />
                     </div>
                     <div className="HomePage_container_Images-user_username">
                       <p>{user.name}</p>

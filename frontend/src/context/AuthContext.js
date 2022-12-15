@@ -10,8 +10,6 @@ const AuthProvider = ({ children }) => {
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(false)
 
-    console.log(loading)
-
     // call logout
 
     function callLogout() {
