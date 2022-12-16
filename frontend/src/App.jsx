@@ -10,6 +10,7 @@ import RequireAuth from "./utils/RequireAuth";
 import ThemeContextProvider from "./context/ThemeContextProvider";
 import AuthProvider from "./context/AuthContext";
 import LoadingScreen from "./components/LoadingScreen";
+import ChatPage from "./pages/ChatPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Route exact path="/profile" element={<ProfilePage />} />
               <Route exact path="/Edit" element={<EditPage />} />
               <Route exact path="/loading" element={<LoadingScreen />} />
+              <Route exact path="/Chat" element={<ChatPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />

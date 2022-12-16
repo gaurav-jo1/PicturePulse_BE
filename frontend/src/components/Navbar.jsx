@@ -62,7 +62,7 @@ const Navbar = () => {
       <div className="Navbar_container-Box3">
         <ul className={`Navbar_container-Box3-icons_${theme}`}>
           <li> <Link to="/"> <BiHomeHeart /> </Link> </li>
-          <li> <Link to="/"> <IoPaperPlaneOutline /> </Link> </li>
+          <li> <Link to="/Chat"> <IoPaperPlaneOutline /> </Link> </li>
           <li> <Link to="/"> <CgAddR /> </Link> </li>
           <li> <Link to="/"> <BsHeart /> </Link> </li>
           {userinfos && userinfos?.map((userinfo) => (
@@ -84,6 +84,7 @@ const Navbar = () => {
               <ul>
                 <span className="triangle"></span>
                 <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>
+                <li onClick={() => navigate("/Chat")}>Chat <IoPaperPlaneOutline /></li>
                 <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
               </ul>
             </li>
