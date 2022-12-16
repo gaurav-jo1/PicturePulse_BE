@@ -131,7 +131,7 @@
   }
 }
 
-@mixin meta_container($bg, $color, $width,$padding) {
+@mixin meta_container($bg, $color, $width, $padding) {
   width: $width;
   background-color: $bg;
   border: 1px solid rgba(197, 176, 197, 0.667);
@@ -162,10 +162,10 @@
 }
 
 .Editpage_meta_container_dark {
-  @include meta_container(rgb(38, 28, 44), white, 600px,60px);
+  @include meta_container(rgb(38, 28, 44), white, 600px, 60px);
 }
 .Editpage_meta_container_light {
-  @include meta_container(white, black, 600px,60px);
+  @include meta_container(white, black, 600px, 60px);
 }
 
 .Editpage_profile_container {
@@ -230,10 +230,10 @@
   }
 
   .Editpage_meta_container_dark {
-    @include meta_container(rgb(38, 28, 44), white,480px,10px);
+    @include meta_container(rgb(38, 28, 44), white, 480px, 10px);
   }
   .Editpage_meta_container_light {
-    @include meta_container(white, black,480px,10px);
+    @include meta_container(white, black, 480px, 10px);
   }
 }
 
@@ -247,10 +247,10 @@
   }
 
   .Editpage_meta_container_dark {
-    @include meta_container(rgb(38, 28, 44), white,320px,10px);
+    @include meta_container(rgb(38, 28, 44), white, 320px, 10px);
   }
   .Editpage_meta_container_light {
-    @include meta_container(white, black,320px,10px);
+    @include meta_container(white, black, 320px, 10px);
   }
 
   .Editpage_container_inputs {
@@ -291,5 +291,22 @@
     }
   }
 
+  .Editpage_profile_container {
+    .Editpage_profile_page {
+      width: 250px;
+  
+      p {
+        padding: 15px 0px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      li {
+        border-top: 1px solid #fafa;
+        padding: 8px;
+        font-size: 14px;
+      }
+    }
+  }
 
 }

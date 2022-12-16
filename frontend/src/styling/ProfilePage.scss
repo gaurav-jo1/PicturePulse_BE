@@ -276,7 +276,14 @@
   }
 
   .Profiepage_user-media_container_light {
-    @include galleryImage( white, rgb(228, 214, 214), #665e68, black, 240px, 260px);
+    @include galleryImage(
+      white,
+      rgb(228, 214, 214),
+      #665e68,
+      black,
+      240px,
+      260px
+    );
   }
 
   @mixin edit_profile-btn2($bg) {
@@ -308,6 +315,38 @@
       @include edit_profile-btn2(red);
     }
   }
+
+  .Profilepage_user_image_upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    overflow-y: hidden;
+
+    img {
+      height: 350px;
+      width: 300px;
+    }
+
+    .Profilepage_image-uploader_button {
+      display: flex;
+      width: 300px;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+    button {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
 }
 
 @media (max-width: 380px) {
@@ -320,7 +359,7 @@
   .user_profile_picture-userinfo_fp_light {
     @include userFollow(black, 20px);
   }
-  
+
   .user_profile_picture-userinfo_fp_dark {
     @include userFollow(rgb(243, 231, 231), 20px);
   }
@@ -331,5 +370,6 @@
       width: 280px;
     }
   }
-  
+
+
 }
