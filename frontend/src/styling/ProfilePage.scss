@@ -257,11 +257,11 @@
 
 @media (max-width: 460px) {
   .user_profile_picture-userinfo-follower_light {
-    @include follow(black, rgb(238, 226, 226), 10px, 30px);
+    @include follow(black, rgb(238, 226, 226), 13px, 15px);
   }
 
   .user_profile_picture-userinfo-follower_dark {
-    @include follow(white, rgb(28, 30, 36), 10px, 30px);
+    @include follow(white, rgb(28, 30, 36), 13px, 15px);
   }
 
   .user_profile_picture-container {
@@ -347,21 +347,12 @@
       border-radius: 5px;
     }
   }
-}
-
-@media (max-width: 380px) {
-  .user_profile_picture-userinfo {
-    h1 {
-      font-size: 30px;
-    }
-  }
-
   .user_profile_picture-userinfo_fp_light {
-    @include userFollow(black, 20px);
+    @include userFollow(black, 15px);
   }
 
   .user_profile_picture-userinfo_fp_dark {
-    @include userFollow(rgb(243, 231, 231), 20px);
+    @include userFollow(rgb(243, 231, 231), 15px);
   }
 
   .user_profile_picture-container {
@@ -370,6 +361,14 @@
       width: 280px;
     }
   }
+}
 
+@media (max-width: 340px) {
+  .user_profile_picture-userinfo-follower_light {
+    @include follow(black, rgb(238, 226, 226), 10px, 20px);
+  }
 
+  .user_profile_picture-userinfo-follower_dark {
+    @include follow(white, rgb(28, 30, 36), 10px, 20px);
+  }
 }

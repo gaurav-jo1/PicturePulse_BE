@@ -286,7 +286,7 @@
     .Editpage_container_name {
       font-size: 18px;
       strong {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
@@ -309,4 +309,7 @@
     }
   }
 
+  .Editpage_container_submit {
+    margin-right: 0px;
+  }
 }
