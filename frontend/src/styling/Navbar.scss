@@ -112,6 +112,7 @@
 .Navbar_profile_logout:hover {
   ul {
     @include dropDown(flex);
+    z-index: 10;
   }
 }
 
