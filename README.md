@@ -11,6 +11,26 @@ username: kendalljenner
 password: mypassword123
 <hr/>
 
+# How to Get Started
+
+After cloning the project- ```git clone https://github.com/Gaurav-jo1/Instagram_clone.git```
+
+## Install Python on your system- [Python Download](https://www.python.org/downloads/)
+
+Install Django
+```python -m pip install Django```
+
+Install Django Rest Framework
+```pip install djangorestframework```
+
+Install Cors Headers
+```pip install django-cors-headers```
+
+After Installing all the packages
+
+Run ``` python manage.py runserver ```
+
+
 # Sneak peak of Project
 ![Screenshot 2022-12-18 192508](https://user-images.githubusercontent.com/93304640/208305199-89790eb0-8db3-48e0-a3f7-7f981fd5fadf.png)
 
