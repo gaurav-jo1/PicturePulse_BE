@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps
     'userProfile',
+    'Chat',
     # Tools
     "corsheaders",
     'rest_framework',
