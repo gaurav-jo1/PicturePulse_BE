@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,13 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Apps
+    'chat.apps.ChatConfig',
     'userProfile',
-    'Chat',
     # Tools
     "corsheaders",
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
 ]
+
+ASGI_APPLICATION = "backend.asgi.application"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
