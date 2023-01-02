@@ -40,6 +40,7 @@
   border-radius: $border;
   margin-top: 60px;
   align-items: center;
+  box-shadow: 0px 1px 20px 5px rgba(255, 0, 0, 0.807);
 }
 
 .HomePage_container_Images-container_light {
@@ -57,7 +58,7 @@
   width: 100%;
 
   .HomePage_container_Images-user_threedot {
-    cursor: pointer;
+    cursor: default;
     margin-bottom: 10px;
     p {
       font-size: 20px;
@@ -88,7 +89,6 @@
 
 .HomePage_container_Images-img {
   width: 100%;
-  box-shadow: 0px 1px 20px 5px rgba(255, 0, 0, 0.672);
   height: 440px;
 
   img {
@@ -167,6 +167,7 @@
   border: 1px solid rgba(197, 176, 197, 0.667);
   background: $bg;
   margin-top: 100px;
+  box-shadow: 0px 1px 20px 5px rgba(222, 190, 190, 0.672);
 }
 
 .HomePage_container_Profile-container_light {

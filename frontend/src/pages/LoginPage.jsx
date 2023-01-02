@@ -25,8 +25,8 @@ import LoadingScreen from "../components/LoadingScreen";
 const LoginPage = () => {
   const { theme } = useContext(ThemeContext);
   const { setAuthTokens, setUser,setLoading } = useContext(AuthContext);
-  const [userInput, setUserInput] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [userInput, setUserInput] = useState("zuck");
+  const [userPassword, setUserPassword] = useState("mypassword123");
   let navigate = useNavigate();
 
   const mutation = useMutation(['getKeys'],

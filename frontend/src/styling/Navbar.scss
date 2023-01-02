@@ -65,7 +65,6 @@
   li {
     padding: 8px 0;
     width: 100%;
-    cursor: pointer;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -103,6 +102,7 @@
 .Navbar_profile_logout {
   display: flex;
   flex-direction: column;
+  margin-bottom: 8px;
 
   ul {
     @include dropDown(none);
@@ -126,11 +126,16 @@
   li:first-child {
     a {
       font-size: 28px;
+      cursor: pointer;
     }
   }
 
   li:last-child {
     padding-bottom: 5px;
+  }
+
+  .Navbar_profile_logout {
+    cursor: pointer;
   }
 
   li {
@@ -139,6 +144,7 @@
       border-radius: 50%;
     }
     a {
+      cursor: default;
       text-decoration: none;
       color: $bg;
       font-size: 25px;

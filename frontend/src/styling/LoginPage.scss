@@ -101,6 +101,7 @@
     margin-top: 8px;
     text-decoration: none;
     font-weight: bold;
+    cursor: default;
 
     .Login_container_login_facebook {
       display: flex;
@@ -120,6 +121,7 @@
     margin-top: 10px;
     font-size: 12px;
     color: $col2;
+    cursor: default;
   }
 }
 
