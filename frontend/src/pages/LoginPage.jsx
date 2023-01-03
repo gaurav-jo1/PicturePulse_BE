@@ -74,7 +74,7 @@ const LoginPage = () => {
                 <div className="form_container_inputs">
                   <div className={`form_container-input_label_div-${theme}`}>
                     <label>
-                      <input type="text" name="username" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Phone number, username, or email" required />
+                      <input type="text" name="username" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Username" required />
                     </label>
                   </div>
                   <div className={`form_container-input_label_div-${theme}`}>

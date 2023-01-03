@@ -67,7 +67,7 @@ const Navbar = () => {
           <li> <Link to="/"> <BsHeart /> </Link> </li>
           {userinfos && userinfos?.map((userinfo) => (
             <li className="Navbar_profile_logout" key={userinfo.user}>
-                {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img src={no_profile} alt="no profile" width="30" height="30"/>}
+                {userinfo.picture ? <img onClick={() => navigate("/profile")} src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img onClick={() => navigate("/profile")} src={no_profile} alt="no profile" width="30" height="30"/>}
               <ul>
                 <span className="triangle"></span>
                 <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>

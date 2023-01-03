@@ -22,9 +22,12 @@ const HomePage = () => {
   const { authTokens,callLogout} = useContext(AuthContext);
 
   const [like, setLike] = useState(false)
+  const [likeNo, setLikeNo] = useState(0)
+
 
   const toggleLike = () => {
     setLike((curr) => (curr === false ? true : false))
+    setLikeNo((currno) => (currno === 0 ? 1 : 0))
   }
 
   const { theme } = useContext(ThemeContext);
@@ -73,7 +76,7 @@ const HomePage = () => {
                 <div className="HomePage_container_Images-reaction">
                   <ul>
                     <div className="HomePage_container_image_react_icons">
-                      <li> {like ? <BsHeartFill style={{color: 'red', }}  onClick={() => toggleLike()}/> : < BsHeart  onClick={() => toggleLike()}/>} &nbsp; <span>{user.likes}</span></li>
+                      <li> {like ? <BsHeartFill style={{color: 'red', }}  onClick={() => toggleLike()}/> : < BsHeart  onClick={() => toggleLike()}/>} &nbsp; <span>{user.likes + likeNo }</span></li>
                       <li><TbMessageCircle2/>&nbsp;<span>25</span></li>
                     </div>
                     <li><IoIosShareAlt/></li>
@@ -84,22 +87,24 @@ const HomePage = () => {
         </div>
 
         {userinfos?.map((userinfo) => (
-            <div key={userinfo.id} className={`HomePage_container_Profile-container_${theme}`}>
-              <div className="HomePage_container_Profile_image-container">
-                <div className="HomePage_container_Profile_image">
-                  {userinfo.picture ? (
-                    <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="70" height="70"/>
-                  ) : (
-                    <img src={no_profile} alt="no profile" width="60" height="60"/>
-                  )}
+          <div className="HomePage_container_Profile-div"  key={userinfo.id} >
+            <div className={`HomePage_container_Profile-container_${theme}`}>
+                <div className="HomePage_container_Profile_image-container">
+                  <div className="HomePage_container_Profile_image">
+                    {userinfo.picture ? (
+                      <img src={`http://127.0.0.1:8000/${userinfo.picture}`} alt={userinfo.user} width="70" height="70"/>
+                    ) : (
+                      <img src={no_profile} alt="no profile" width="60" height="60"/>
+                    )}
+                  </div>
+                  <div className="HomePage_container_Profile_username">
+                    <h4>{userinfo.user.first_name}</h4>
+                    <p>@{userinfo.user.username}</p>
+                  </div>
                 </div>
-                <div className="HomePage_container_Profile_username">
-                  <h4>{userinfo.user.first_name}</h4>
-                  <p>@{userinfo.user.username}</p>
+                <div className="HomePage_container_Profile_bio-container">
+                  <p><Link to="/profile"><strong>View Profile</strong></Link></p>
                 </div>
-              </div>
-              <div className="HomePage_container_Profile_bio-container">
-                <p><Link to="/profile"><strong>View Profile</strong></Link></p>
               </div>
             </div>)
         )}
