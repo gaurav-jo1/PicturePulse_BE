@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
+@mixin Welcomediv($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.Welcome_container_dark {
+  @include Welcomediv(black, white);
+}
+
+.Welcome_container_light {
+  @include Welcomediv(#fafafa, black);
+}
+
+.Welcome_container_navbar-container {
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(15px);
+}
+
+.Welcome_text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  //   padding-top: 100px;
+  text-align: center;
+
+  h1 {
+    font-size: 65px;
+    font-weight: bold;
+
+    span {
+      background: linear-gradient(to right, #0059ff, #ffaa00);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      font-family: "Abril Fatface", cursive;
+    }
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+@mixin WelcomeProfileContainer($bg) {
+  display: flex;
+  padding: 20px 20px;
+  height: 100px;
+  width: 400px;
+  justify-content: space-between;
+  border: 1px solid rgba(197, 176, 197, 0.667);
+  background: $bg;
+  box-shadow: 0px 1px 5px 2px rgba(222, 190, 190, 0.672);
+  margin-top: 50px;
+}
+
+.Welcomepage-container_light {
+  @include WelcomeProfileContainer(white);
+}
+
+.Welcomepage-container_dark {
+  @include WelcomeProfileContainer(rgb(38, 28, 44));
+}
+
+.Welcome_profile-container {
+    margin-top: 20px;
+}
+
+.Welcome_container_Profile_image-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.Welcome_container_Profile_image {
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 20px;
+  }
+}
+
+.Welcome_container_Profile_username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h4 {
+    font-size: 25px;
+  }
+
+  h5 {
+    font-size: 20px;
+    color: rgb(197, 159, 159);
+    margin-top: 2px;
+  }
+}
+
+.Welcome_view_profile-button {
+  margin-top: 25px;
+
+  button {
+    padding: 10px 20px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #0059ff;
+    border: 1px solid gray;
+
+    strong {
+      font-size: 18px;
+      color: white;
+    }
+  }
+
+  button:hover {
+    box-shadow: 0px 0px 5px 2px blue;
+    cursor: pointer;
+    strong {
+      color: rgba(255, 255, 255, 0.764);
+    }
+  }
+}

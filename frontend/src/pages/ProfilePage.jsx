@@ -4,9 +4,9 @@ import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import "../styling/ProfilePage.scss";
 import { ThemeContext } from "../context/ThemeContextProvider";
-import { BsImages } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { FiUpload,FiEdit } from "react-icons/fi";
+import { FiUpload,FiEdit, } from "react-icons/fi";
+import { FaCloudUploadAlt } from "react-icons/fa";
 import no_profile from "../assets/35-The-Beauty-of-Anya-Forger.webp";
 import axios from "axios";
 import client from "../react-query-client";
@@ -130,7 +130,7 @@ const ProfilePage = () => {
         )}
         <div className="Profilepage_user-image_uploader">
           <label htmlFor="file-input">
-            <BsImages size="50px" />
+            <FaCloudUploadAlt size="60px" />
           </label>
           <input id="file-input" type="file" onChange={handleChange} onClick={onInputClick} style={{ display: "none" }}/>
           <p>Upload Image</p>
