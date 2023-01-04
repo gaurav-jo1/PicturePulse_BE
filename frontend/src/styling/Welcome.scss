@@ -101,3 +101,140 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .Welcome_text-container {
+  
+    h1 {
+      font-size: 55px;
+    }
+  
+    h2 {
+      font-size: 42px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 750px) {
+  .Welcome_text-container {
+  
+    h1 {
+      font-size: 40px;
+    }
+  
+    h2 {
+      font-size: 34px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .Welcome_view_profile-button {
+    margin-top: 60px;
+  
+    button {
+      padding: 10px 20px;
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 560px)  {
+  .Welcome_text-container {
+  
+    h1 {
+      font-size: 30px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
+
+  .Welcome_view_profile-button {
+    margin-top: 40px;
+  
+    button {
+      padding: 6px 0px;
+      width: 200px;
+      
+      strong {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px)  {
+  .Welcome_text-container {
+  
+    h1 {
+      font-size: 25px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
+
+  .Welcome_view_profile-button {
+    margin-top: 30px;
+  
+    button {
+      padding: 6px 0px;
+      width: 160px;
+      
+      strong {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px)  {
+  .Welcome_text-container {
+  
+    h1 {
+      font-size: 22px;
+    }
+  
+    h2 {
+      font-size: 18px;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 8px;
+    }
+  }
+
+  .Welcome_view_profile-button {
+    margin-top: 20px;
+  
+    button {
+      padding: 6px 0px;
+      width: 140px;
+      
+      strong {
+        font-size: 12px;
+      }
+    }
+  }
+}
