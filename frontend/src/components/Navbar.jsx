@@ -5,7 +5,6 @@ import Insta_logo_light from "../assets/Instagram_logo_light.webp";
 import Insta_logo_dark from "../assets/Instagram_logo_dark.webp";
 import Header from "./Header";
 import { IoPaperPlaneOutline } from "react-icons/io5";
-import {CgProfile} from "react-icons/cg"
 import { BsHeart } from "react-icons/bs";
 import {BiHomeHeart} from "react-icons/bi"
 import {FiLogOut} from "react-icons/fi"
@@ -70,7 +69,6 @@ const Navbar = () => {
                 {userinfo.picture ? <img onClick={() => navigate("/profile")} src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="30" height="30"/> :<img onClick={() => navigate("/profile")} src={no_profile} alt="no profile" width="30" height="30"/>}
               <ul>
                 <span className="triangle"></span>
-                {/* <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li> */}
                 <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
               </ul>
             </li>
@@ -83,7 +81,6 @@ const Navbar = () => {
                 {userinfo.picture ? <img onClick={() => navigate("/profile")} src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="35" height="35"/> :<img src={no_profile} onClick={() => navigate("/profile")} alt="no profile" width="35" height="35"/>}
               <ul>
                 <span className="triangle"></span>
-                {/* <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li> */}
                 <li onClick={() => callLogout()}>Logout <FiLogOut/> </li>
               </ul>
             </li>
