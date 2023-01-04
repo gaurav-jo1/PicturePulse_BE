@@ -80,7 +80,7 @@ const Navbar = () => {
         <ul className={`Navbar_container-Box3-icons_two_${theme}`}>
           {userinfos && userinfos?.map((userinfo) => (
             <li className="Navbar_profile_logout" key={userinfo.user}>
-                {userinfo.picture ? <img src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="35" height="35"/> :<img src={no_profile} alt="no profile" width="35" height="35"/>}
+                {userinfo.picture ? <img onClick={() => navigate("/profile")} src={`http://127.0.0.1:8000${userinfo.picture}`} alt={userinfo.user} width="35" height="35"/> :<img src={no_profile} onClick={() => navigate("/profile")} alt="no profile" width="35" height="35"/>}
               <ul>
                 <span className="triangle"></span>
                 <li onClick={() => navigate("/profile")}> Profile <CgProfile/></li>

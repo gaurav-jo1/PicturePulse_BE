@@ -44,7 +44,7 @@ const Footer = () => {
           </select>
           &nbsp;
           &nbsp;
-          <p> &#169; 2022 Instagram from Meta</p>
+          <p> &#169; 2023 Instagram from Meta</p>
         </div>
     </div>
     </footer>
