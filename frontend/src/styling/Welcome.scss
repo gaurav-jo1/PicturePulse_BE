@@ -21,6 +21,16 @@
   backdrop-filter: blur(15px);
 }
 
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}
+
 .Welcome_text-container {
   display: flex;
   flex-direction: column;
@@ -33,7 +43,11 @@
 
   h1 {
     font-size: 65px;
+    overflow: hidden;
     font-weight: bold;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
 
     span {
       background: linear-gradient(to right, #0059ff, #ffaa00);
@@ -44,7 +58,12 @@
     }
   }
 
+  h2 {
+    font-size: 52px;
+  }
+
   p {
+    margin-top: 10px;
     font-size: 16px;
   }
 }
@@ -70,7 +89,7 @@
 }
 
 .Welcome_profile-container {
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .Welcome_container_Profile_image-container {
@@ -104,12 +123,12 @@
 }
 
 .Welcome_view_profile-button {
-  margin-top: 25px;
+  margin-top: 60px;
 
   button {
     padding: 10px 20px;
     width: 400px;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #0059ff;
     border: 1px solid gray;
 

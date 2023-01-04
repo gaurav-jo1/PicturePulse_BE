@@ -44,14 +44,13 @@ const Welcome = () => {
             <span>Welcome</span> <span>to</span> <span>Instagram!</span>
           </h1>
         </div>
-        <div className="Welcome_text-container_p">
-          <p>
-            Ready to share your own moments? Simply snap a photo, and share it
-            with your followers
-          </p>
+        <div className="Welcome_text-container_h2">
+          {userinfos?.map((userinfo) => (
+            <h2 key={userinfo.id}>{userinfo.user.first_name}</h2>
+          ))}
         </div>
 
-        <div className="Welcome_profile-container">
+        {/* <div className="Welcome_profile-container">
           {userinfos?.map((userinfo) => (
             <div className={`Welcomepage-container_${theme}`} key={userinfo.id}>
               <div className="Welcome_container_Profile_image-container">
@@ -79,7 +78,7 @@ const Welcome = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="Welcome_view_profile-button">
             <Link to="/profile">
@@ -88,7 +87,14 @@ const Welcome = () => {
             </button>
             </Link>
         </div>
+        <div className="Welcome_text-container_p">
+          <p>
+            Ready to share your own moments? Simply snap a photo, and share it
+            with your followers
+          </p>
+        </div>
       </div>
+      
     </div>
   );
 };
