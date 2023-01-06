@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.5bf5221a.css",
-    "main.js": "/static/js/main.75ce94ac.js",
+    "main.js": "/static/js/main.08ed77e1.js",
     "static/media/jwst_bg.webp": "/static/media/jwst_bg.fd5f26a32938d62b7032.webp",
     "static/media/sunflower.webp": "/static/media/sunflower.c0567995fbf5fb2bfd56.webp",
     "static/media/35-The-Beauty-of-Anya-Forger.webp": "/static/media/35-The-Beauty-of-Anya-Forger.b111c304d9165854a707.webp",
@@ -18,10 +18,10 @@
     "static/media/apple_store.webp": "/static/media/apple_store.5ae3a80470dcd9759c37.webp",
     "index.html": "/index.html",
     "main.5bf5221a.css.map": "/static/css/main.5bf5221a.css.map",
-    "main.75ce94ac.js.map": "/static/js/main.75ce94ac.js.map"
+    "main.08ed77e1.js.map": "/static/js/main.08ed77e1.js.map"
   },
   "entrypoints": [
     "static/css/main.5bf5221a.css",
-    "static/js/main.75ce94ac.js"
+    "static/js/main.08ed77e1.js"
   ]
 }

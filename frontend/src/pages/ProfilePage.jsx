@@ -49,6 +49,9 @@ const ProfilePage = () => {
     },{ enabled: !loading }
   );
 
+  console.log("usermedia: ",usermedia)
+  console.log("userinfos: ",userinfos)
+
   function callMutation() {
     const formData = new FormData();
     formData.append("gallery", file);
