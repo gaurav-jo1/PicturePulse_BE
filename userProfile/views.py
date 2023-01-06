@@ -13,12 +13,6 @@ from rest_framework import exceptions
 
 # Create your views here.
 
-
-def front(request):
-    context = {}
-    return render(request, "index.html", context)
-
-
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
