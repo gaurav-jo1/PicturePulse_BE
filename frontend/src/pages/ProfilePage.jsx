@@ -73,6 +73,8 @@ const ProfilePage = () => {
   if (isError) return <h1>Error with request</h1>;
   if (userinfos.code === "token_not_valid") return callLogout();
 
+  console.log("usermedia",usermedia )
+
   return (
     <div className={`Profile_container_${theme}`}>
         <div className={`Profile_container-user_nav_${theme}`}>

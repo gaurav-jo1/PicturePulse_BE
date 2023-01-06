@@ -31,6 +31,8 @@ const Welcome = () => {
 
   if (userinfos.code === "token_not_valid") return callLogout();
 
+  console.log("userinfos:",userinfos)
+
   return (
     <div className={`Welcome_container_${theme}`}>
       <div className="Welcome_container_navbar-container">
