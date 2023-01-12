@@ -1,6 +1,6 @@
 <h1 align="center"> The Instagram-Inspired Social Media Site </h1>
 
-# My Blog Posts 👇
+# My Blog Post about the project 👇
 
 
 <p align="left">
