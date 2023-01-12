@@ -1,4 +1,4 @@
-# Instagram_clone 
+# The Instagram-Inspired Social Media Site
 
 ## Some Username and Password (You can also sign up)
 
