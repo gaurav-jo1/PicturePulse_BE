@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-qkp^_#&x0t#7c(ytz9ww+z*9n%rey#7o3993(mbp))$ezht2h#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["instagramdjangobackend.up.railway.app","instagrambygaurav.up.railway.app"]
+ALLOWED_HOSTS = ["instagramdjangobackend.up.railway.app","instagrambygaurav.up.railway.app","localhost"]
 
 
 # Application definition
@@ -179,6 +179,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "https://instagrambygaurav.up.railway.app",
+    "http://localhost:3000",
 ]
 
 import dj_database_url
