@@ -1,10 +1,10 @@
-<h1 align="center">The Instagram-Inspired Social Media Site </h1>
+<h1 align="center">PICTURE PULSE</h1>
 
 # Link of the site
 <p align="left">
-<a href="https://instagrambygaurav.up.railway.app/" title="Link of the site">
+<a href="https://picturepulse.up.railway.app/" title="Link of the site">
 <img src="https://user-images.githubusercontent.com/93304640/212469587-c1d01ada-af36-4a3e-9b02-84b8f8b56b18.png" alt="Link of the site" height="170px" width="300px" align="left"  />
-<a href="https://instagrambygaurav.up.railway.app/" title="Link of the site"><strong>Instagram By Gaurav </strong></a>
+<a href="https://picturepulse.up.railway.app/" title="Link of the site"><strong>Pictue Pulse</strong></a>
 <div><strong>Build with React and Django</strong></div>
 <br/> The application includes features such as authentication and authorization, the ability to upload and share photos, and the ability to update user information such as name, username, bio, email, and profile picture.
 </p> <br/> <br/>
