@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qkp^_#&x0t#7c(ytz9ww+z*9n%rey#7o3993(mbp))$ezht2h#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["picturepulsebackend.up.railway.app","picturepulse.up.railway.app","localhost"]
 
