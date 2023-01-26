@@ -19,6 +19,6 @@
 <a href="https://gauravjoshi.hashnode.dev/introducing-picture-pulse-new-social-media-site" title="PICTURE PULSE">
 <img src="https://user-images.githubusercontent.com/93304640/214798757-aab64a39-8839-4cb4-a934-ac0780455b0d.png" alt="PICTURE PULSE" width="300px" align="left" /></a>
 <a href="https://gauravjoshi.hashnode.dev/the-instagram-inspired-social-media-site" title="PICTURE PULSE"><strong>PICTURE PULSE</strong></a>
-<div><strong>Jan 12, 2023 </strong></div>
+<div><strong>Jan 26, 2023 </strong></div>
 <br/> Building a social media platform like Picture Pulse can be a challenging and exciting project for a programmer.This application has a wide range of features.
 </p> <br/> <br/>
