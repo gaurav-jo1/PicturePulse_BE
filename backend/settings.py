@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-qkp^_#&x0t#7c(ytz9ww+z*9n%rey#7o3993(mbp))$ezht2h#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["picturepulsebackend.up.railway.app","picturepulse.up.railway.app","localhost"]
+ALLOWED_HOSTS = ["picturepulse.up.railway.app","picturepulse.netlify.app","localhost"]
 
 
 # Application definition
@@ -178,7 +178,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://picturepulse.up.railway.app",
+    "https://picturepulse.netlify.app",
     "http://localhost:3000",
 ]
 
