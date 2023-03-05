@@ -2,7 +2,7 @@
 
 # Link of the site
 <p align="left">
-<a href="https://picturepulse.up.railway.app/" title="Link of the site">
+<a href="https://picturepulse.netlify.app/" title="Link of the site">
 <img src="https://user-images.githubusercontent.com/93304640/214776451-2d02fc78-e379-4b9a-b1c3-8e79984934d7.png" alt="Link of the site" height="170px" width="300px" align="left"  />
 
 
