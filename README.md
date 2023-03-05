@@ -6,7 +6,7 @@
 <img src="https://user-images.githubusercontent.com/93304640/214776451-2d02fc78-e379-4b9a-b1c3-8e79984934d7.png" alt="Link of the site" height="170px" width="300px" align="left"  />
 
 
-<a href="https://picturepulse.up.railway.app/" title="Link of the site"><strong>PICTURE PULSE</strong></a>
+<a href="https://picturepulse.netlify.app/" title="Link of the site"><strong>PICTURE PULSE</strong></a>
 <div><strong>Build with React and Django</strong></div>
 <br/> The application includes features such as authentication and authorization, the ability to upload and share photos, and the ability to update user information such as name, username, bio, email, and profile picture.
 </p> <br/> <br/>
